@@ -40,3 +40,11 @@ export const Logo = () => {
     </svg>
   )
 }
+
+export const Play = () => {
+  return (
+    <svg className="play-icon" viewBox="0 0 63 73" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M63 36.4235L0 -2.75382e-06L-3.19093e-06 73L63 36.4235ZM3.71928 66.4958L3.71928 6.50419L55.4096 36.4235L3.71928 66.4958Z" fill="#F7F5E7"/>
+    </svg>
+  )
+}

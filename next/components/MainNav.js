@@ -34,7 +34,7 @@ const links = [
 const MainNav = () => {
   const router = useRouter()
 
-  console.log(router)
+  // console.log(router)
 
   let navClass = styles.default
 

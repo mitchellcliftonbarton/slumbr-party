@@ -15,8 +15,6 @@ import styles from './../styles/Pages.module.scss'
 export default function About({ data }) {
   console.log(data)
 
-  //668319395
-
   const showInfo = data.text || data.clientTitle || data.clients.length > 0
 
   const [videoLoaded, setVideoLoaded] = useState(false)

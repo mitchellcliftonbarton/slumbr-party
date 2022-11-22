@@ -63,3 +63,26 @@
   //   opacity: 1;
   // }
 }
+
+.main-video {
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  background-color: black;
+}
+
+.play {
+  svg {
+    width: 6.3rem;
+  }
+}
+
+.video-poster {
+  opacity: 1;
+  transition: opacity .3s;
+  pointer-events: auto;
+
+  &.started {
+    opacity: 0;
+    pointer-events: none;
+  }
+}

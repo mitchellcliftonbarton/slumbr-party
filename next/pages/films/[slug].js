@@ -1,15 +1,30 @@
 import Head from 'next/head'
+import Vimeo from '@u-wave/react-vimeo'
 
 // Components
 import DefaultLayout from '../../components/layouts/DefaultLayout'
 import Link from 'next/link'
 import DefImage from '../../components/DefImage'
+import { Play } from '../../components/icons/Icons'
 
 // Styles
-// import styles from './../../styles/Pages.module.scss'
+import styles from './../../styles/Pages.module.scss'
+
+// React
+import { useRef, useState } from 'react'
 
 export default function FilmDetail({ data }) {
-  
+  console.log(data)
+
+  const video = useRef(null)
+  const [videoStarted, setVideoStarted] = useState(false)
+
+  const playVideo = () => {
+    // console.log(video)
+    setVideoStarted(true)
+    video.current.player.play()
+  }
+
   return (
     <div className={`push-nav def-x bg-periwinkle`}>
       <Head>
@@ -17,8 +32,40 @@ export default function FilmDetail({ data }) {
         <meta name="description" content="Slumbr Party" />
       </Head>
 
+      <h1 className="wcag-hidden">{data.title}</h1>
+
       <div className="pt-12 pb-60">
-        <h1 className='level-1 text-merlot'>{data.title}</h1>
+        {data.vimeoId && (
+          <div className={`${styles['main-video']} relative`}>
+            <Vimeo
+              video={data.vimeoId}
+              responsive
+              ref={video}
+              className='w-full'
+            />
+
+            {data.videoPoster && (
+              <div className={`${styles['video-poster']} ${videoStarted ? styles.started : null} featured-image absolute top-0 left-0 w-full h-full`}>
+                <DefImage
+                  src={data.videoPoster[0].url}
+                  layout="fill"
+                  objectFit="cover"
+                  alt={data.videoPoster[0].alt}
+                />
+
+                <button 
+                  onClick={() => playVideo()} 
+                  className="absolute top-0 left-0 w-full h-full flex justify-center items-center"
+                >
+                  <p className={`${styles.play} level-1 text-parchment flex items-center`}>
+                    <span className='pr-10'>Play</span>
+                    <Play />
+                  </p>
+                </button>
+              </div>
+            )}
+          </div>
+        )}
       </div>
     </div>
   )
@@ -74,7 +121,27 @@ export async function getStaticProps(context) {
       body: JSON.stringify({
         query: `page('Films').children.find('${slug}')`,
         select: {
-          title: true
+          title: true,
+          vimeoId: "page.vimeo_id",
+          videoTitle: "page.video_title",
+          featuredImage: {
+            query: "page.featured_image.toFiles",
+            select: {
+              url: true,
+              width: true,
+              height: true,
+              alt: true,
+            }
+          },
+          videoPoster: {
+            query: "page.video_poster.toFiles",
+            select: {
+              url: true,
+              width: true,
+              height: true,
+              alt: true,
+            }
+          }
         }
       }),
   })
