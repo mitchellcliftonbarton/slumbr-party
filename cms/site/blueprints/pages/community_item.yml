@@ -1,0 +1,55 @@
+title: Community Item
+icon: account
+
+columns:
+  - width: 3/4
+    sections:
+      content:
+        type: fields
+        fields:
+          event_type:
+            type: text
+            label: Event Type
+            help: i.e. "Short Film Premiere"
+          featured_image:
+            type: files
+            label: Featured Image
+            multiple: false
+            help: This image will appear in the corresponding item in the community archive page.
+          poster_image:
+            type: files
+            label: Poster Image
+            multiple: false
+            help: This will appear as the image if selected as an upcoming event.
+          date:
+            type: date
+            label: Date
+          location:
+            type: text
+            label: Location
+          time:
+            type: text
+            label: Time
+          rsvp_link:
+            type: url
+            label: RSVP Link
+          description:
+            type: textarea
+            label: Description
+          gallery_images:
+            type: files
+            label: Gallery Images
+            multiple: true
+  - width: 1/4
+    sections:
+      build:
+        type: fields
+        fields:
+          webhookButton:
+            type: button
+            label: Build Site
+            text: Build Site
+            url: https://api.vercel.com/v1/integrations/deploy/prj_ngjvYJBmifi6uYFPAS4YSgmLYHbU/jo6RBzmzxP
+            theme: positive
+            reload: true # trigger a page refresh on success to display updated data
+            help: Trigger a site build here.

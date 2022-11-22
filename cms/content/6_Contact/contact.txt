@@ -1,0 +1,35 @@
+Contact-people-items:
+
+- 
+  name: Sarah Donnenberg
+  title: Executive Producer, Partner
+  email: sarah@slmbrprty.com
+- 
+  name: Kirstin Vanskiver
+  title: Head of Production, Partner
+  email: kirstin@slmbrprty.com
+- 
+  name: Carly Reicho
+  title: 'Director, Film & Community Programs'
+  email: carly@slmbrprty.com
+
+----
+
+Contact-location-items:
+
+- 
+  name: East Coast
+  title: Simpatico, Jolie Miller
+  email: jolie@wearesimpatico.com
+- 
+  name: Midwest
+  title: 'Renee & Melissa, Melissa Erke'
+  email: melissa@reneeandmelissa.com
+- 
+  name: West Coast
+  title: Simpatico West, Faith Loop
+  email: faith@wearesimpatico.com
+- 
+  name: Latinx US
+  title: Kontakto, Isabel Echeverry
+  email: isabel@kontaktoreps.com

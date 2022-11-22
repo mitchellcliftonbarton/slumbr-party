@@ -1,0 +1,42 @@
+title: Home
+icon: home
+
+columns:
+  - width: 3/4
+    sections:
+      reel:
+        type: fields
+        fields:
+          reel_vimeo_id:
+            label: Reel Vimeo ID
+            type: text
+          reel_poster_image:
+            label: Reel Poster Image
+            type: files
+            multiple: false
+      directors:
+        type: fields
+        fields:
+          headline:
+            label: Directors Section Headline
+            type: textarea
+            size: medium
+          films:
+            label: Directors Section Films
+            type: pages
+            multiple: true
+            query: site.find('Films')
+            subpages: false
+  - width: 1/4
+    sections:
+      build:
+        type: fields
+        fields:
+          webhookButton:
+            type: button
+            label: Build Site
+            text: Build Site
+            url: https://api.vercel.com/v1/integrations/deploy/prj_ngjvYJBmifi6uYFPAS4YSgmLYHbU/jo6RBzmzxP
+            theme: positive
+            reload: true # trigger a page refresh on success to display updated data
+            help: Trigger a site build here.

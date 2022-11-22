@@ -1,0 +1,65 @@
+.home,
+.contact,
+.community,
+.directors,
+.films {
+  .hero {
+    height: 80vh;
+  }
+}
+
+.director-detail {
+  min-height: 100vh;
+  
+  .director-title {
+    z-index: 200;
+  }
+}
+
+.film-item {
+  padding-bottom: 56.25%;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+
+.film-detail-item {
+  border-top: 1px solid theme('colors.merlot');
+
+  &:last-of-type {
+    border-bottom: 1px solid theme('colors.merlot');
+  }
+
+  .film-image {
+    padding-bottom: 56.25%;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+  }
+}
+
+.clients {
+  list-style: none;
+  
+  li {
+    width: 50%;
+  }
+}
+
+.bg-vid {
+  z-index: -1;
+  opacity: 0;
+  transition: opacity .3s;
+
+  &.loaded {
+    opacity: 1;
+  }
+}
+
+.bg-image {
+  z-index: -1;
+  // opacity: 0;
+  // transition: opacity .3s;
+
+  // &.loaded {
+  //   opacity: 1;
+  // }
+}
