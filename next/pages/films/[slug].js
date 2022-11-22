@@ -20,7 +20,6 @@ export default function FilmDetail({ data }) {
   const [videoStarted, setVideoStarted] = useState(false)
 
   const playVideo = () => {
-    // console.log(video)
     setVideoStarted(true)
     video.current.player.play()
   }
