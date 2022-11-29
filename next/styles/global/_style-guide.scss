@@ -18,6 +18,11 @@
   .def-padding {
     @apply p-def;
   }
+
+  .upright {
+    text-orientation: upright;
+    writing-mode: vertical-lr;
+  }
 }
 
 ::selection {

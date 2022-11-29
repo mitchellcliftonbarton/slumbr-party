@@ -6,7 +6,6 @@ import { useState } from 'react'
 
 // Components
 import DefaultLayout from '../components/layouts/DefaultLayout'
-// import Image from 'next/image'
 import DefImage from '../components/DefImage'
 
 // Styles

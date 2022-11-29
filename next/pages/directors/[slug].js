@@ -15,7 +15,7 @@ export default function DirectorsDetail({ data, filmsData }) {
   return (
     <div className={`${styles['director-detail']} push-nav def-x bg-parchment`}>
       <Head>
-        <title>SLUMBR PARTY | Directors - {data.title}</title>
+        <title>SLUMBR PARTY | {data.title}</title>
         <meta name="description" content="Slumbr Party" />
       </Head>
 

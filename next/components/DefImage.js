@@ -16,7 +16,7 @@ const DefImage = ({src, layout, objectFit, alt, style}) => {
       style={style}
       className={`${styles['def-image']} ${loaded ? styles.loaded : false}`}
       onLoadingComplete={img => {
-        console.log('image loaded', img)
+        // console.log('image loaded', img)
         setLoaded(true)
       }}
     />

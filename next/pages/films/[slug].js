@@ -27,43 +27,45 @@ export default function FilmDetail({ data }) {
   return (
     <div className={`push-nav def-x bg-periwinkle`}>
       <Head>
-        <title>SLUMBR PARTY | Film - {data.title}</title>
+        <title>SLUMBR PARTY | {data.title}</title>
         <meta name="description" content="Slumbr Party" />
       </Head>
 
-      <h1 className="wcag-hidden">{data.title}</h1>
-
       <div className="pt-12 pb-60">
         {data.vimeoId && (
-          <div className={`${styles['main-video']} relative`}>
-            <Vimeo
-              video={data.vimeoId}
-              responsive
-              ref={video}
-              className='w-full'
-            />
+          <>
+            <div className={`${styles['main-video']} relative mb-def`}>
+              <Vimeo
+                video={data.vimeoId}
+                responsive
+                ref={video}
+                className='w-full'
+              />
 
-            {data.videoPoster && (
-              <div className={`${styles['video-poster']} ${videoStarted ? styles.started : null} featured-image absolute top-0 left-0 w-full h-full`}>
-                <DefImage
-                  src={data.videoPoster[0].url}
-                  layout="fill"
-                  objectFit="cover"
-                  alt={data.videoPoster[0].alt}
-                />
+              {data.videoPoster && (
+                <div className={`${styles['video-poster']} ${videoStarted ? styles.started : null} featured-image absolute top-0 left-0 w-full h-full`}>
+                  <DefImage
+                    src={data.videoPoster[0].url}
+                    layout="fill"
+                    objectFit="cover"
+                    alt={data.videoPoster[0].alt}
+                  />
 
-                <button 
-                  onClick={() => playVideo()} 
-                  className="absolute top-0 left-0 w-full h-full flex justify-center items-center"
-                >
-                  <p className={`${styles.play} level-1 text-parchment flex items-center`}>
-                    <span className='pr-10'>Play</span>
-                    <Play />
-                  </p>
-                </button>
-              </div>
-            )}
-          </div>
+                  <button 
+                    onClick={() => playVideo()} 
+                    className="absolute top-0 left-0 w-full h-full flex justify-center items-center"
+                  >
+                    <p className={`${styles.play} level-1 text-parchment flex items-center`}>
+                      <span className='pr-10'>Play</span>
+                      <Play />
+                    </p>
+                  </button>
+                </div>
+              )}
+            </div>
+
+            <h1 className='level-subhead text-merlot'>{data.title}{data.videoTitle ? data.videoTitle : ''}</h1>
+          </>
         )}
       </div>
     </div>

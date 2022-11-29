@@ -85,3 +85,14 @@
     opacity: 1;
   }
 }
+
+.load-overlay {
+  z-index: 100;
+
+  svg {
+    width: calc(100% - 20px);
+    position: absolute;
+    top: 10px;
+    left: 10px;
+  }
+}
