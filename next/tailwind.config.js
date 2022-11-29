@@ -35,6 +35,7 @@ module.exports = {
     extend: {
       spacing: {
         'def': '2rem',
+        'def-mobile': '1rem',
       },
     },
   },

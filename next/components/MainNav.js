@@ -1,6 +1,7 @@
 // Components
 import Link from 'next/link'
 import { WordMark } from './icons/Icons'
+import { Diamond } from './icons/Icons'
 
 // Styles
 import styles from './../styles/Globals.module.scss'
@@ -8,36 +9,20 @@ import styles from './../styles/Globals.module.scss'
 // React
 import { useRouter } from 'next/router'
 
-const links = [
-  {
-    text: 'Directors',
-    link: '/directors'
-  },
-  {
-    text: 'Films',
-    link: '/films'
-  },
-  {
-    text: 'Community',
-    link: '/community'
-  },
-  {
-    text: 'About',
-    link: '/about'
-  },
-  {
-    text: 'Contact',
-    link: '/contact'
-  },
-]
-
-const MainNav = () => {
+const MainNav = ({links, menuOpen, setMenuOpen}) => {
   const router = useRouter()
 
   let navClass = styles.default
 
   if (router.pathname === '/directors' || router.pathname === '/directors/[slug]' || router.pathname === '/films' || router.pathname === '/films/[slug]' || router.pathname === '/') {
     navClass = styles.merlot
+  }
+
+  const menuOn = () => {
+    setMenuOpen(true)
+    if (document !== undefined) {
+      document.body.style.overflow = 'hidden'
+    }
   }
 
   return (
@@ -52,15 +37,25 @@ const MainNav = () => {
         <WordMark />
       </Link>
 
-      <div className={`${styles.links} flex items-center`}>
+      <div className={`${styles.links} hidden lg:flex items-center`}>
         {links.map((link, index) => (
           <Link 
             href={link.link} 
-            className="level-subhead" 
+            className={`${router.asPath === link.link ? styles.active : null} level-subhead`} 
             key={index}
-          >◊ {link.text}</Link>
+          >
+            <Diamond />
+            <span>{link.text}</span>
+          </Link>
         ))}
       </div>
+
+      <button
+        onClick={() => menuOn()}
+        className={`${styles['mobile-button']} lg:hidden`}
+      >
+        <Diamond />
+      </button>
     </header>
   )
 }

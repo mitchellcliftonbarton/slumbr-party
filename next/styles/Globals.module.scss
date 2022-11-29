@@ -4,16 +4,41 @@
 
   .home-link {
     svg {
-      width: 250px;
+      width: 175px;
+
+      @media screen and (min-width: theme("screens.lg")) {
+        width: 250px;
+      }
     }
   }
 
   .links {
     a {
       margin-left: 1.7rem;
+      display: flex;
+      align-items: center;
+      transition: color .3s;
+
+      svg {
+        width: 1rem;
+        margin-right: .65rem;
+        
+        path,
+        polygon {
+          transition: fill .3s;
+        }
+      }
 
       &:first-child {
         margin-left: 0rem;
+      }
+
+      &.active {
+        svg {
+          polygon {
+            fill: theme('colors.merlot');
+          }
+        }
       }
     }
   }
@@ -30,6 +55,20 @@
     .links {
       a {
         color: theme('colors.parchment');
+
+        svg {
+          path {
+            fill: theme('colors.parchment');
+          }
+        }
+
+        &.active {
+          svg {
+            polygon {
+              fill: theme('colors.parchment');
+            }
+          }
+        }
       }
     }
   }
@@ -46,19 +85,70 @@
     .links {
       a {
         color: theme('colors.merlot');
+
+        svg {
+          path {
+            fill: theme('colors.merlot');
+          }
+        }
+
+        &.active {
+          svg {
+            polygon {
+              fill: theme('colors.merlot');
+            }
+          }
+        }
       }
     }
+  }
+
+  .mobile-button {
+    svg {
+      width: 1.4rem;
+    }
+  }
+}
+
+#mobile-menu {
+  z-index: 600;
+  opacity: 0;
+  transition: opacity .3s;
+  pointer-events: none;
+
+  & > div:first-child {
+    background-color: theme('colors.periwinkle');
+    border-radius: var(--border-radius);
+  }
+
+  .x {
+    svg {
+      width: 1.6rem;
+    }
+  }
+
+  &.open {
+    opacity: 1;
+    pointer-events: auto;
   }
 }
 
 #footer {
   .top {
-    margin-bottom: 400px;
+    margin-bottom: 110px;
+
+    @media screen and (min-width: theme("screens.lg")) {
+      margin-bottom: 400px;
+    }
   }
 
   .logo {
     svg {
-      width: 110px;
+      width: 54px;
+
+      @media screen and (min-width: theme("screens.lg")) {
+        width: 110px;
+      }
     }
   }
 }
@@ -91,19 +181,13 @@
   cursor: pointer;
   pointer-events: none;
 
-  // .bg {
-  //   width: calc(100% - 20px);
-  //   height: calc(100% - 20px);
-  //   border-radius: var(--border-radius);
-  //   position: absolute;
-  //   top: 10px;
-  //   left: 50%;
-  //   transform: translateX(-50%);
-  //   background-color: theme('colors.periwinkle');
-  //   opacity: .6;
-  // }
+  svg:first-child {
+    width: calc(100% - 20px);
+    position: relative;
+    top: 10px;
+  }
 
-  svg {
+  svg:nth-child(2) {
     width: calc(100% - 20px);
     position: relative;
     top: 10px;

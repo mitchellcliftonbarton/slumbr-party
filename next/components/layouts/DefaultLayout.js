@@ -1,18 +1,43 @@
-import MainNav from '../MainNav'
-import MainFooter from '../MainFooter'
-import { Logo } from '../icons/Icons'
-
 // React
 import { useEffect, useState } from 'react'
-import { useRouter } from 'next/router'
+// import { useRouter } from 'next/router'
 
 // Styles
 import styles from './../../styles/Globals.module.scss'
 
+// Components
+import MainNav from '../MainNav'
+import MainFooter from '../MainFooter'
+import MobileMenu from '../MobileMenu'
+import { Logo } from '../icons/Icons'
+
+const links = [
+  {
+    text: 'Directors',
+    link: '/directors'
+  },
+  {
+    text: 'Films',
+    link: '/films'
+  },
+  {
+    text: 'Community',
+    link: '/community'
+  },
+  {
+    text: 'About',
+    link: '/about'
+  },
+  {
+    text: 'Contact',
+    link: '/contact'
+  },
+]
+
 const Layout = ({ children }) => {
-  const router = useRouter()
   const [cursorX, setCursorX] = useState(0)
   const [cursorY, setCursorY] = useState(0)
+  const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
     document.addEventListener('mousemove', e => {
@@ -23,7 +48,11 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <MainNav />
+      <MainNav 
+        links={links} 
+        menuOpen={menuOpen}
+        setMenuOpen={setMenuOpen}
+      />
 
       <main role="main">{children}</main>
 
@@ -32,8 +61,14 @@ const Layout = ({ children }) => {
         directors={children.props.directorsData}
       />
 
+      <MobileMenu
+        links={links}
+        menuOpen={menuOpen}
+        setMenuOpen={setMenuOpen}
+      />
+
       <div
-        className={styles['main-cursor']}
+        className={`${styles['main-cursor']} hidden lg:block`}
         style={{
           transform: `translate3d(${cursorX}px, ${cursorY}px, 0px)`
         }}

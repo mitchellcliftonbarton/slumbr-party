@@ -48,3 +48,31 @@ export const Play = () => {
     </svg>
   )
 }
+
+export const Diamond = () => {
+  return (
+    <svg 
+      className="diamond-icon" 
+      xmlns="http://www.w3.org/2000/svg"
+      x="0px" 
+      y="0px"
+      viewBox="0 0 14 18"
+    >
+      <path fill="#460223" d="M0.1,9l6.2,9h1.3l6.2-9L7.7,0H6.3L0.1,9z M12.2,9L7,16.6L1.8,9L7,1.4L12.2,9z"/>
+      <polygon fill="none" points="1.8,9 7,16.6 12.2,9 7,1.4 	"/>
+    </svg>
+  )
+}
+
+export const XIcon = () => {
+  return (
+    <svg 
+      className="x-icon" 
+      viewBox="0 0 14 20" 
+      fill="none" 
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path d="M6.99898 8.782L1.38298 0.279999L0.238984 0.982L6.21898 9.978L0.238984 18.844L1.27898 19.598L6.97298 11.096L12.667 19.598L13.785 18.792L7.80498 9.926L13.733 1.008L12.641 0.279999L6.99898 8.782Z" fill="#460223"/>
+    </svg>
+  )
+}

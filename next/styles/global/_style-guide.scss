@@ -8,15 +8,27 @@
   }
 
   .def-x {
-    @apply px-def;
+    @apply px-def-mobile;
+
+    @media screen and (min-width: theme("screens.lg")) {
+      @apply px-def;
+    }
   }
 
   .def-y {
-    @apply py-def;
+    @apply py-def-mobile;
+
+    @media screen and (min-width: theme("screens.lg")) {
+      @apply py-def;
+    }
   }
 
   .def-padding {
-    @apply p-def;
+    @apply p-def-mobile;
+
+    @media screen and (min-width: theme("screens.lg")) {
+      @apply p-def;
+    }
   }
 
   .upright {

@@ -41,6 +41,7 @@
 
   .level-3 {
     @apply text-level-3-mobile font-secondary;
+    line-height: 1.4;
 
     @media screen and (min-width: theme("screens.lg")) {
       @apply text-level-3;
