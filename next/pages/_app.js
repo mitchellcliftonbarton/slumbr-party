@@ -4,7 +4,13 @@ import '../styles/index.scss'
 function MyApp({ Component, pageProps, footerData, directorsData }) {
   const getLayout = Component.getLayout || ((page) => page)
 
-  return getLayout(<Component {...pageProps} footerData={footerData} directorsData={directorsData} />)
+  return getLayout(
+    <Component 
+      {...pageProps} 
+      footerData={footerData} 
+      directorsData={directorsData}
+    />
+  )
 }
 
 MyApp.getInitialProps = async () => {

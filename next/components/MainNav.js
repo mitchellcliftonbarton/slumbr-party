@@ -34,8 +34,6 @@ const links = [
 const MainNav = () => {
   const router = useRouter()
 
-  // console.log(router)
-
   let navClass = styles.default
 
   if (router.pathname === '/directors' || router.pathname === '/directors/[slug]' || router.pathname === '/films' || router.pathname === '/films/[slug]' || router.pathname === '/') {

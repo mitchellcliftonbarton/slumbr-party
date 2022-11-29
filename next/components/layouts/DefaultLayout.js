@@ -4,20 +4,18 @@ import { Logo } from '../icons/Icons'
 
 // React
 import { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
 
 // Styles
 import styles from './../../styles/Globals.module.scss'
 
 const Layout = ({ children }) => {
+  const router = useRouter()
   const [cursorX, setCursorX] = useState(0)
   const [cursorY, setCursorY] = useState(0)
 
   useEffect(() => {
-    console.log('layout loaded')
-
     document.addEventListener('mousemove', e => {
-      // console.log(e.clientX, e.clientY)
-
       setCursorX(e.clientX + 20)
       setCursorY(e.clientY + 20)
     })
@@ -26,7 +24,9 @@ const Layout = ({ children }) => {
   return (
     <>
       <MainNav />
+
       <main role="main">{children}</main>
+
       <MainFooter 
         data={children.props.footerData} 
         directors={children.props.directorsData}

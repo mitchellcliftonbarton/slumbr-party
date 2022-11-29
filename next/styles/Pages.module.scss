@@ -1,10 +1,10 @@
 .home {
   .hero {
-    height: 100vh;
     position: relative;
     overflow: hidden;
     opacity: 0;
     transition: opacity .3s;
+    padding-bottom: 61.6%;
 
     &.loaded {
       opacity: 1;
