@@ -12,8 +12,6 @@ import DefImage from '../components/DefImage'
 import styles from './../styles/Pages.module.scss'
 
 export default function About({ data }) {
-  console.log(data)
-
   const showInfo = data.text || data.clientTitle || data.clients.length > 0
 
   const [videoLoaded, setVideoLoaded] = useState(false)
@@ -68,13 +66,13 @@ export default function About({ data }) {
       
       {data.largeText && (
         <div 
-          className="large-text level-1 text-center w-full lg:w-3/4 mx-auto py-60" 
+          className="enter-in-1 large-text level-1 text-center w-full lg:w-3/4 mx-auto py-60" 
           dangerouslySetInnerHTML={{ __html: data.largeText }}
         ></div>
       )}
 
       {showInfo && (
-        <div className="info w-full lg:w-5/12 mb-60">
+        <div className="enter-in-1 delay-100 info w-full lg:w-5/12 mb-60">
           {data.text && (
             <div 
               className="level-body rich-text" 

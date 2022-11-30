@@ -70,17 +70,19 @@ export default function Home({ data }) {
       )}
 
       <div className="directors bg-parchment def-x py-12 grid grid-cols-12 gap-def pb-40">
-        <h2 className={`${styles['directors-title']} upright level-subhead text-merlot hidden lg:block`}>Directors</h2>
+        <h2 className={`${styles['directors-title']} enter-in-1 upright level-subhead text-merlot hidden lg:block`}>Directors</h2>
 
         <div className="col-span-12 lg:col-span-11 lg:col-start-2 mb-24 lg:mb-20">
           {data.directorHeadline && (
             <div 
-              className="level-2 text-merlot mb-12 lg:mb-16" 
+              className="enter-in-1 delay-100 level-2 text-merlot mb-12 lg:mb-16" 
               dangerouslySetInnerHTML={{ __html: data.directorHeadline }}
             ></div>
           )}
 
-          <Link href="/directors" className='level-subhead text-merlot'>View All Directors →</Link>
+          <p className='enter-in-1 delay-200 level-subhead text-merlot'>
+            <Link href="/directors">View All Directors →</Link>
+          </p>
         </div>
 
         {data.directorFilms.map((film, index) => {

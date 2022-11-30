@@ -3,7 +3,7 @@
     position: relative;
     overflow: hidden;
     opacity: 0;
-    transition: opacity .3s;
+    transition: opacity 1s;
     padding-bottom: 206%;
 
     @media screen and (min-width: theme("screens.lg")) {
@@ -37,6 +37,11 @@
   }
 }
 
+.films-marquee {
+  position: sticky;
+  bottom: 0px;
+}
+
 .film-item {
   padding-bottom: 56.25%;
   border-radius: var(--border-radius);
@@ -68,7 +73,7 @@
 .bg-vid {
   z-index: -1;
   opacity: 0;
-  transition: opacity .3s;
+  transition: opacity 1s;
 
   &.loaded {
     opacity: 1;

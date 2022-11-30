@@ -1,6 +1,6 @@
 @layer utilities {
   .push-nav {
-    padding-top: var(--nav-height);
+    padding-top: var(--mobile-nav-height);
 
     @media screen and (min-width: theme("screens.lg")) {
       padding-top: var(--nav-height);
@@ -35,6 +35,10 @@
     text-orientation: upright;
     writing-mode: vertical-lr;
   }
+
+  .border-radius-def {
+    border-radius: var(--border-radius);
+  }
 }
 
 ::selection {
@@ -49,7 +53,7 @@ html {
 body {
   height: 100%;
   color: theme('colors.parchment');
-  background-color: black;
+  background-color: theme('colors.coral');
   -webkit-font-smoothing: antialiased!important;
 
   .wcag-hidden {
@@ -130,4 +134,8 @@ body {
 
 .delay-100 {
   animation-delay: 100ms;
+}
+
+.delay-200 {
+  animation-delay: 200ms;
 }

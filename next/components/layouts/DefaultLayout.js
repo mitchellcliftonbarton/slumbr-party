@@ -73,7 +73,7 @@ const Layout = ({ children }) => {
           transform: `translate3d(${cursorX}px, ${cursorY}px, 0px)`
         }}
       >
-        <Logo />
+        <Logo fill="#6944FF" />
       </div>
     </>
   )

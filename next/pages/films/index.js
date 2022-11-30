@@ -23,7 +23,7 @@ export default function Films({ data }) {
       <div className="pt-32 pb-def">
         {data.introText && data.introText !== '' && (
           <div 
-            className="level-body text-merlot w-full lg:w-5/12 pb-def" 
+            className="enter-in-1 level-body text-merlot w-full lg:w-5/12 pb-def" 
             dangerouslySetInnerHTML={{ __html: data.introText }}
           ></div>
         )}
@@ -35,7 +35,12 @@ export default function Films({ data }) {
                 className={`${styles['film-detail-item']} w-full grid grid-cols-12 gap-def py-def`} 
                 key={index}
               >
-                <div className="col-span-5">
+                <div
+                  className="enter-in-1 col-span-5"
+                  style={{
+                    animationDelay: `${(index + 1) * 100}ms`
+                  }}
+                >
                   <Link href={`/films/${film.slug}`}>
                     <h2 className="level-3 text-merlot mb-12">{film.title}</h2>
                   </Link>
@@ -55,7 +60,12 @@ export default function Films({ data }) {
                   )}
                 </div>
 
-                <div className="col-span-7">
+                <div
+                  className="enter-in-1 col-span-7"
+                  style={{
+                    animationDelay: `${(index + 2) * 100}ms`
+                  }}
+                >
                   <div className={`${styles['film-image']} relative`}>
                     <div className="absolute top-0 left-0 w-full h-full">
                       <DefImage
