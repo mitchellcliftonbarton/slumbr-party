@@ -1,11 +1,11 @@
 import Head from 'next/head'
 
+// Styles
+import styles from './../../styles/Pages.module.scss'
+
 // Components
 import DefaultLayout from '../../components/layouts/DefaultLayout'
 import DefImage from '../../components/DefImage'
-
-// Styles
-import styles from './../../styles/Pages.module.scss'
 import Link from 'next/link'
 
 export default function Films({ data }) {
@@ -55,7 +55,23 @@ export default function Films({ data }) {
                   {film.awards.length > 0 && (
                     <div className="awards">
                       <h3 className="level-body text-merlot">Accolades</h3>
-                      <div className="grid grid-cols-5 gap-def"></div>
+                      <ul className="grid grid-cols-4 gap-def">
+                        {film.awards.map((award, index) => (
+                          <li 
+                            className='col-span-2 text-merlot level-body' 
+                            key={index}
+                          >
+                            {award.link
+                              ? <Link 
+                                  href={award.link}
+                                  target="_blank" 
+                                  rel="noreferrer"
+                              >○ {award.title}</Link>
+                              : <p>○ {award.title}</p>
+                            }
+                          </li>
+                        ))}
+                      </ul>
                     </div>
                   )}
                 </div>

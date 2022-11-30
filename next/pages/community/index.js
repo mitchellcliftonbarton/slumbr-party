@@ -1,24 +1,183 @@
 import Head from 'next/head'
-
-// Components
-import DefaultLayout from '../../components/layouts/DefaultLayout'
+import { useState } from 'react'
+import { motion, AnimatePresence } from "framer-motion"
+import { format } from 'date-fns'
+import { defaultCurve } from '../../lib/consts'
 
 // Styles
 import styles from './../../styles/Pages.module.scss'
 
+// Components
+import DefaultLayout from '../../components/layouts/DefaultLayout'
+import Link from 'next/link'
+import { Logo, XIcon } from '../../components/icons/Icons'
+import DefImage from '../../components/DefImage'
+
 export default function Community({ data }) {
   console.log(data)
+
+  const [modalOpen, setModalOpen] = useState(false)
+
+  const toggleModal = () => {
+    if (modalOpen) {
+      setModalOpen(false)
+      
+      if (document !== undefined) {
+        document.body.style.overflow = 'initial'
+      }
+    } else {
+      setModalOpen(true)
+      
+      if (document !== undefined) {
+        document.body.style.overflow = 'hidden'
+      }
+    }
+  }
   
   return (
-    <div className={`${styles.community} push-nav def-x bg-coral`}>
+    <div className={`${styles.community} bg-coral`}>
       <Head>
         <title>SLUMBR PARTY | Community</title>
         <meta name="description" content="Slumbr Party" />
       </Head>
 
-      <div className={styles.hero}>
-        <h1 className='level-1'>Community</h1>
+      <h1 className="wcag-hidden">Community</h1>
+
+      <div className="min-h-screen push-nav def-x">
+        {data.mainText && (
+          <div 
+            className="enter-in-1 level-1 text-merlot text-center pt-32 pb-40" 
+            dangerouslySetInnerHTML={{ __html: data.mainText }}
+          ></div>
+        )}
+
+        <div className="links text-center flex flex-col items-center pb-60">
+          <button
+            onClick={() => toggleModal()}
+            className='enter-in-1 delay-100 level-1 text-merlot lg:hover:italic'
+          >Upcoming Events</button>
+          <Link 
+            href="/community/archive" 
+            className='enter-in-1 delay-200 level-1 text-merlot lg:hover:italic'
+          >Community Archive</Link>
+        </div>
       </div>
+
+      <AnimatePresence>
+        {modalOpen && (
+          <motion.div
+            key="modal-div"
+            initial={{
+              opacity: 0,
+              y: 20
+            }}
+            animate={{
+              opacity: 1,
+              y: 0
+            }}
+            exit={{
+              opacity: 0,
+              y: -20
+            }}
+            transition={{
+              duration: 1,
+              ease: defaultCurve
+            }}
+            className={`${styles['modal-container']} fixed top-0 left-0 w-full h-full flex justify-center items-center p-def`}
+          >
+            <div
+              onClick={() => toggleModal()}
+              className="cursor-pointer closer absolute top-0 left-0 w-full h-full"
+            ></div>
+
+            <div className="modal relative w-1/2 bg-merlot border-radius-def h-full z-10 p-5 grid grid-cols-6 gap-def">
+              <button
+                onClick={() => toggleModal()}
+                className={`${styles['modal-x']} absolute top-6 right-6 z-10`}
+              >
+                <XIcon/>
+              </button>
+
+              {(() => {
+                if (data.upcomingEvent) {
+                  return (
+                    <div className="col-span-6 h-full flex flex-col justify-between items-center text-center def-x relative">
+                      <p className="absolute top-3 left-0 upright text-parchment level-subhead">Upcoming Event</p>
+
+                      <div className="top flex flex-col items-center w-full">
+                        <p className="level-3 text-parchment mb-32">{data.upcomingEvent.eventType}</p>
+
+                        <h2 className="level-2 text-white mb-32">{data.upcomingEvent.title}</h2>
+
+                        <div className="image w-1/3 border-radius-def border-coral border p-def-mobile">
+                          <DefImage
+                            src={data.upcomingEvent.posterImage[0].url}
+                            alt={data.upcomingEvent.posterImage[0].alt}
+                            width={data.upcomingEvent.posterImage[0].width}
+                            height={data.upcomingEvent.posterImage[0].height}
+                            className="border-radius-def overflow-hidden"
+                          />
+                        </div>
+                      </div>
+
+                      <div className="bottom text-center pb-20">
+                        {data.upcomingEvent.date && (
+                          <p className="level-3 text-white">{format(new Date(data.upcomingEvent.date), 'LLLL do, y')}</p>
+                        )}
+
+                        {data.upcomingEvent.location && (
+                          <p className="level-3 text-white">{data.upcomingEvent.location}</p>
+                        )}
+
+                        {data.upcomingEvent.time && (
+                          <p className="level-3 text-white">{data.upcomingEvent.time}</p>
+                        )}
+
+                        {data.upcomingEvent.rsvpLink && (
+                          <Link 
+                            href={data.upcomingEvent.rsvpLink} 
+                            target="_blank"
+                            rel="noreferrer"
+                            className="level-3 text-white"
+                          >RSVP</Link>
+                        )}
+                      </div>
+                    </div>
+                  )
+                } else {
+                  return (
+                    <>
+                      <div className="col-span-1 h-full display flex flex-col justify-between items-start">
+                        <p className='upright text-parchment level-subhead'>Stay tuned</p>
+                        
+                        <Logo className="w-full" fill="#FFF" />
+                      </div>
+
+                      <div className="col-span-5 flex flex-col">
+                        <div 
+                          className="level-3 text-white lg:pr-16 pb-16 flex-0-0" 
+                          dangerouslySetInnerHTML={{ __html: data.noUpcomingEventText }}
+                        ></div>
+
+                        <div className="image w-full h-full overflow-hidden border-radius-def flex-1 relative">
+                          <div className="absolute top-0 left-0 w-full h-full">
+                            <DefImage
+                              src={data.noUpcomingEventImage[0].url}
+                              layout="fill"
+                              objectFit="cover"
+                              alt={data.noUpcomingEventImage[0].alt}
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </>
+                  )
+                }
+              })()}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   )
 }
@@ -39,6 +198,39 @@ export async function getStaticProps() {
       },
       body: JSON.stringify({
         query: "page('Community')",
+        select: {
+          mainText: "page.main_text.markdown",
+          upcomingEvent: {
+            query: "page.upcoming_event.toPage",
+            select: {
+              title: true,
+              eventType: "page.event_type",
+              posterImage: {
+                query: "page.poster_image.toFiles",
+                select: {
+                  url: true,
+                  alt: true,
+                  width: true,
+                  height: true
+                }
+              },
+              date: true,
+              location: true,
+              time: true,
+              rsvpLink: "page.rsvp_link"
+            }
+          },
+          noUpcomingEventText: "page.no_upcoming_event_text.markdown",
+          noUpcomingEventImage: {
+            query: "page.no_upcoming_event_image.toFiles",
+            select: {
+              url: true,
+              alt: true,
+              width: true,
+              height: true
+            }
+          }
+        }
       }),
   })
 

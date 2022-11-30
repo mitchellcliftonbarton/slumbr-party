@@ -12,10 +12,10 @@ import { useRouter } from 'next/router'
 const MainNav = ({links, menuOpen, setMenuOpen}) => {
   const router = useRouter()
 
-  let navClass = styles.default
+  let navClass = styles.merlot
 
-  if (router.pathname === '/directors' || router.pathname === '/directors/[slug]' || router.pathname === '/films' || router.pathname === '/films/[slug]' || router.pathname === '/') {
-    navClass = styles.merlot
+  if (router.pathname === '/about') {
+    navClass = styles.default
   }
 
   const menuOn = () => {

@@ -11,11 +11,6 @@ columns:
             type: text
             label: Event Type
             help: i.e. "Short Film Premiere"
-          featured_image:
-            type: files
-            label: Featured Image
-            multiple: false
-            help: This image will appear in the corresponding item in the community archive page.
           poster_image:
             type: files
             label: Poster Image

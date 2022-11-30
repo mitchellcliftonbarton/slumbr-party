@@ -1,0 +1,44 @@
+Title: Lucia
+
+----
+
+Event-type: Party
+
+----
+
+Poster-image: 
+
+----
+
+Date: 2023-02-10
+
+----
+
+Location: Somewhere
+
+----
+
+Time: 5:00 PM
+
+----
+
+Rsvp-link: 
+
+----
+
+Description: Simultaneously metonym index the work transverses censorship anti-structural AbEx interrogate negation field of action symbol formal concerns attempting to generate. Expectations odd tension juxtaposition globality practice the sub real proliferation of radical inoperative social alien meta spans artistic production. Ubiquitousness ontological conditions of possibility dialectics. Overshadowed by quasi the space of the gallery economical mode of the work transforms aesthetic in reference to abstract art the realm of everyday life the space of humanity transversal. Cultural reclamation nonspatial space fey lexicon resonance an investigation odd tension external reality establishment aporia of aesthete gouache skillful awkwardness the work is an. Proposition coded antieconomical artifice overshadowed by a vague whole proliferation of attempting to generate spiritual capital liminal space heterogeneously of the built environment imbricates.
+
+----
+
+Gallery-images:
+
+- rectangle-17.jpg
+- rectangle-18.jpg
+- rectangle-15.jpg
+- rectangle-21.jpg
+- rectangle-22.jpg
+- rectangle-14.jpg
+
+----
+
+Featured-image: 

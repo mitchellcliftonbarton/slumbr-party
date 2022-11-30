@@ -1,0 +1,1 @@
+export const defaultCurve = [0, 0.84, 0.24, 1]

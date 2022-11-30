@@ -22,6 +22,7 @@ columns:
             help: This text will show up at the top of the community page.
             size: medium
           upcoming_event:
+            label: Upcoming Event
             type: select
             options: query
             query: page.children.published
@@ -35,6 +36,11 @@ columns:
             multiple: false
             label: No Upcoming Event Image
             help: This image will appear in the upcoming event modal if no upcoming event is selected.
+          archive_description:
+            type: textarea
+            label: Archive Description
+            help: This text will show up at the top of the community archive page.
+            size: medium
   - width: 1/4
     sections:
       build:
