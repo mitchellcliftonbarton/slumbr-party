@@ -6,6 +6,10 @@ Featured-image: - rectangle-19.jpg
 
 ----
 
+Hover-video: - buzzer.mp4
+
+----
+
 Vimeo-id: 245134138
 
 ----
@@ -38,4 +42,4 @@ Awards:
 
 ----
 
-Awards-image: 
+Awards-image: - awards.png

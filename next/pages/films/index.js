@@ -76,8 +76,9 @@ export default function Films({ data }) {
                   )}
                 </div>
 
-                <div
-                  className="enter-in-1 col-span-7"
+                <Link
+                  href={`/films/${film.slug}`}
+                  className="enter-in-1 col-span-7 inline-block"
                   style={{
                     animationDelay: `${(index + 2) * 100}ms`
                   }}
@@ -85,14 +86,25 @@ export default function Films({ data }) {
                   <div className={`${styles['film-image']} relative`}>
                     <div className="absolute top-0 left-0 w-full h-full">
                       <DefImage
-                        src={film.image[0].url}
+                        src={film.image.url}
                         layout="fill"
                         objectFit="cover"
-                        alt={film.image[0].alt}
+                        alt={film.image.alt}
                       />
                     </div>
+
+                    {film.awardsImage && (
+                      <div className={`${styles['film-awards-image']} absolute top-0 left-0 w-full h-full`}>
+                        <DefImage
+                          src={film.awardsImage.url}
+                          layout="fill"
+                          objectFit="cover"
+                          alt={film.awardsImage.alt}
+                        />
+                      </div>
+                    )}
                   </div>
-                </div>
+                </Link>
               </div>
             ))}
           </div>
@@ -126,7 +138,7 @@ export async function getStaticProps() {
               title: true,
               slug: true,
               image: {
-                query: "page.featured_image.toFiles",
+                query: "page.featured_image.toFiles.first",
                 select: {
                   url: true,
                   width: true,
@@ -141,6 +153,15 @@ export async function getStaticProps() {
                 select: {
                   title: true,
                   link: true
+                }
+              },
+              awardsImage: {
+                query: "page.awards_image.toFiles.first",
+                select: {
+                  url: true,
+                  width: true,
+                  height: true,
+                  alt: true
                 }
               }
             }

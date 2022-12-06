@@ -18,16 +18,28 @@ const LoadOverlay = ({showLoadOverlay, setShowLoadOverlay}) => {
     setHasTransition(true)
     setShowLoadOverlay(false)
     Cookies.set('slumbr-party-splash', 'true', { expires: .5 })
+  }
 
-    if (document !== undefined) {
-      document.body.style.overflow = 'initial'
-    }
+  if (showLoadOverlay) {
+    document.body.addEventListener('click', () => {
+      if (showLoadOverlay) {
+        toggleOff()
+      }
+    })
+
+    window.addEventListener('scroll', () => {
+      if (showLoadOverlay) {
+        toggleOff()
+      }
+    })
+
+    setTimeout(() => {
+      toggleOff()
+    }, 4000)
   }
 
   return (
     <div
-      onClick={() => toggleOff()}
-      onWheel={() => toggleOff()}
       className={`${styles['load-overlay']} ${showLoadOverlay ? styles.open : null} absolute top-0 left-0 w-full h-full flex justify-center items-start`}
       style={{
         transition: hasTransition ? 'opacity .6s' : 'none'

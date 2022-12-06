@@ -2,6 +2,14 @@ Background-vimeo-id: 668319395
 
 ----
 
+Background-video: - 2mass.mp4
+
+----
+
+Background-video-poster: - nkubota_07.jpg
+
+----
+
 Background-image: - about.jpg
 
 ----

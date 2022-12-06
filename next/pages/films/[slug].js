@@ -34,21 +34,25 @@ export default function FilmDetail({ data }) {
       <div className="pt-12 pb-60">
         {data.vimeoId && (
           <>
-            <div className={`${styles['main-video']} relative mb-def`}>
+            <div
+              className={`${styles['main-video']} enter-in-1 relative mb-def`}
+              style={{
+                paddingBottom: '56.25%'
+              }}
+            >
               <Vimeo
                 video={data.vimeoId}
-                responsive
                 ref={video}
-                className='w-full'
+                className='w-full h-full absolute top-0 left-0'
               />
 
               {data.videoPoster && (
                 <div className={`${styles['video-poster']} ${videoStarted ? styles.started : null} featured-image absolute top-0 left-0 w-full h-full`}>
                   <DefImage
-                    src={data.videoPoster[0].url}
+                    src={data.videoPoster.url}
                     layout="fill"
                     objectFit="cover"
-                    alt={data.videoPoster[0].alt}
+                    alt={data.videoPoster.alt}
                   />
 
                   <button 
@@ -135,7 +139,7 @@ export async function getStaticProps(context) {
             }
           },
           videoPoster: {
-            query: "page.video_poster.toFiles",
+            query: "page.video_poster.toFiles.first",
             select: {
               url: true,
               width: true,

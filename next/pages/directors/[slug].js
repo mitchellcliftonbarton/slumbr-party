@@ -3,13 +3,12 @@ import Head from 'next/head'
 // Components
 import DefaultLayout from '../../components/layouts/DefaultLayout'
 import Link from 'next/link'
-import DefImage from '../../components/DefImage'
+import VideoBlock from '../../components/VideoBlock'
 
 // Styles
 import styles from './../../styles/Pages.module.scss'
 
 export default function DirectorsDetail({ data, filmsData }) {
-  // console.log(data)
   console.log(filmsData)
   
   return (
@@ -19,28 +18,24 @@ export default function DirectorsDetail({ data, filmsData }) {
         <meta name="description" content="Slumbr Party" />
       </Head>
 
-      <div className={`${styles['director-title']} fixed top-0 left-0 w-full h-full pointer-events-none flex justify-center items-center`}>
-        <h1 className='text-merlot level-1'>{data.title}</h1>
+      <div
+        className={`${styles['director-title']} fixed top-0 left-0 w-full h-full pointer-events-none flex justify-center items-center`}
+      >
+        <h1 className={`enter-in-1 text-merlot level-1`}>{data.title}</h1>
       </div>
 
       <div className="pt-12">
         {filmsData.length > 0 && (
           <div className='films grid grid-cols-12 gap-def mb-def'>
             {filmsData.map((film, index) => (
-              <Link 
-                href={`/films/${film.slug}`}
-                className={`${styles['film-item']} col-span-12 lg:col-span-6 relative`} 
+              <VideoBlock
+                film={film}
+                classes="enter-in-1 col-span-12 lg:col-span-6 relative"
                 key={index}
-              >
-                <div className="absolute top-0 left-0 w-full h-full">
-                  <DefImage
-                    src={film.image[0].url}
-                    layout="fill"
-                    objectFit="cover"
-                    alt={film.image[0].alt}
-                  />
-                </div>
-              </Link>
+                style={{
+                  animationDelay: `${2000 + (100 * (index + 1))}ms`
+                }}
+              />
             ))}
           </div>
         )}
@@ -136,14 +131,20 @@ export async function getStaticProps(context) {
         select: {
           title: true,
           slug: true,
-          image: {
-            query: "page.featured_image.toFiles",
+          featuredImage: {
+            query: "page.featured_image.toFiles.first",
             select: {
               url: true,
               width: true,
               height: true,
               alt: true,
               type: true
+            }
+          },
+          hoverVideo: {
+            query: "page.hover_video.toFiles.first",
+            select: {
+              url: true
             }
           }
         }

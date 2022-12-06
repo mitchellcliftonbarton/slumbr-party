@@ -1,8 +1,10 @@
 import Head from 'next/head'
-import Vimeo from '@u-wave/react-vimeo'
+import { gsap } from 'gsap/dist/gsap'
+import { ScrollToPlugin } from 'gsap/dist/ScrollToPlugin'
+gsap.registerPlugin(ScrollToPlugin)
 
 // React
-import { useState } from 'react'
+import { useState, useRef, useEffect, useLayoutEffect } from 'react'
 
 // Components
 import DefaultLayout from '../components/layouts/DefaultLayout'
@@ -15,9 +17,49 @@ export default function About({ data }) {
   const showInfo = data.text || data.clientTitle || data.clients.length > 0
 
   const [videoLoaded, setVideoLoaded] = useState(false)
+  const video = useRef(null)
+  const tl = useRef()
+  const aboutContainer = useRef(null)
+
+  useEffect(() => {
+    setTimeout(() => {
+      setVideoLoaded(true)
+    }, 100)
+  }, [])
+
+  useEffect(() => {
+    if (window !== undefined) {
+      const height = document.documentElement.scrollHeight
+      const time = height / 50
+
+      tl.current = gsap
+        .timeline({
+          paused: false,
+          onStart: () => {
+            console.log('started timeline')
+          },
+          onUpdate: () => {
+            console.log('timeline updating')
+          }
+        })
+        .set(window, {
+          scrollTo: {
+            y: 0
+          }
+        })
+        .to(window, {
+          duration: time,
+          ease: 'none',
+          scrollTo: {
+            y: height,
+            autoKill: true
+          }
+        })
+    }
+  }, [])
   
   return (
-    <div className='push-nav def-x relative'>
+    <div ref={aboutContainer} className='push-nav def-x relative'>
       <Head>
         <title>SLUMBR PARTY | About</title>
         <meta name="description" content="Slumbr Party" />
@@ -26,38 +68,32 @@ export default function About({ data }) {
       <h1 className="wcag-hidden">About</h1>
 
       {(() => {
-        if (data.backgroundVimeoId && data.backgroundVimeoId !== '') {
+        if (data.backgroundVideo && data.backgroundVideoPoster !== '') {
           return (
             <div className={`${styles['bg-vid']} ${videoLoaded ? styles.loaded : null} fixed top-0 left-0 w-full h-full pointer-events-none`}>
-              <Vimeo
-                video={data.backgroundVimeoId}
-                background
-                autoplay
-                loop
-                className="vimeo-player"
-                onReady={() => {
-                  setTimeout(() => {
-                    setVideoLoaded(true)
-                  }, 500)
-                }}
-                style={{
-                  position: 'absolute',
-                  top: '0px',
-                  left: '0px',
-                  width: '100%',
-                  height: '100%'
-                }}
-              />
+              <div className="absolute top-0 left-0 w-full h-full">
+                <video 
+                  ref={video}
+                  src={data.backgroundVideo.url} 
+                  poster={data.backgroundVideoPoster.url}
+                  muted 
+                  autoPlay 
+                  loop 
+                  preload="true"
+                  playsInline
+                  className='object-cover w-full h-full'
+                ></video>
+              </div>
             </div>
           )
         } else if (data.backgroundImage.length > 0) {
           return (
             <div className={`${styles['bg-image']} fixed top-0 left-0 w-full h-full pointer-events-none`}>
               <DefImage
-                src={data.backgroundImage[0].url}
+                src={data.backgroundImage.url}
                 layout="fill"
                 objectFit="cover"
-                alt={data.backgroundImage[0].alt}
+                alt={data.backgroundImage.alt}
               />
             </div>
           )
@@ -66,13 +102,16 @@ export default function About({ data }) {
       
       {data.largeText && (
         <div 
-          className="enter-in-1 large-text level-1 text-center w-full lg:w-3/4 mx-auto py-60" 
+          className="fade-in large-text level-1 text-center w-full lg:w-3/4 mx-auto pb-60" 
           dangerouslySetInnerHTML={{ __html: data.largeText }}
+          style={{
+            paddingTop: '60vh'
+          }}
         ></div>
       )}
 
       {showInfo && (
-        <div className="enter-in-1 delay-100 info w-full lg:w-5/12 mb-60">
+        <div className="delay-100 info w-full lg:w-5/12 mb-60">
           {data.text && (
             <div 
               className="level-body rich-text" 
@@ -117,8 +156,20 @@ export async function getStaticProps() {
         query: "page('About')",
         select: {
           backgroundVimeoId: "page.background_vimeo_id",
+          backgroundVideo: {
+            query: "page.background_video.toFiles.first",
+            select: {
+              url: true
+            }
+          },  
+          backgroundVideoPoster: {
+            query: "page.background_video_poster.toFiles.first",
+            select: {
+              url: true
+            }
+          },
           backgroundImage: {
-            query: "page.background_image.toFiles",
+            query: "page.background_image.toFiles.first",
             select: {
               url: true,
               width: true,

@@ -96,10 +96,10 @@ export default function Directors({ data }) {
                           >
                             <div className="absolute top-0 left-0 w-full h-full">
                               <DefImage
-                                src={film.image[0].url}
+                                src={film.image.url}
                                 layout="fill"
                                 objectFit="cover"
-                                alt={film.image[0].alt}
+                                alt={film.image.alt}
                               />
                             </div>
                           </div>
@@ -163,7 +163,7 @@ export async function getStaticProps() {
           slug: true,
           directors: "page.directors",
           image: {
-            query: "page.featured_image.toFiles",
+            query: "page.featured_image.toFiles.first",
             select: {
               url: true,
               width: true,

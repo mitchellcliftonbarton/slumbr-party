@@ -111,10 +111,10 @@ export default function Community({ data }) {
 
                         <div className="image w-1/3 border-radius-def border-coral border p-def-mobile">
                           <DefImage
-                            src={data.upcomingEvent.posterImage[0].url}
-                            alt={data.upcomingEvent.posterImage[0].alt}
-                            width={data.upcomingEvent.posterImage[0].width}
-                            height={data.upcomingEvent.posterImage[0].height}
+                            src={data.upcomingEvent.posterImage.url}
+                            alt={data.upcomingEvent.posterImage.alt}
+                            width={data.upcomingEvent.posterImage.width}
+                            height={data.upcomingEvent.posterImage.height}
                             className="border-radius-def overflow-hidden"
                           />
                         </div>
@@ -162,10 +162,10 @@ export default function Community({ data }) {
                         <div className="image w-full h-full overflow-hidden border-radius-def flex-1 relative">
                           <div className="absolute top-0 left-0 w-full h-full">
                             <DefImage
-                              src={data.noUpcomingEventImage[0].url}
+                              src={data.noUpcomingEventImage.url}
                               layout="fill"
                               objectFit="cover"
-                              alt={data.noUpcomingEventImage[0].alt}
+                              alt={data.noUpcomingEventImage.alt}
                             />
                           </div>
                         </div>
@@ -206,7 +206,7 @@ export async function getStaticProps() {
               title: true,
               eventType: "page.event_type",
               posterImage: {
-                query: "page.poster_image.toFiles",
+                query: "page.poster_image.toFiles.first",
                 select: {
                   url: true,
                   alt: true,
@@ -222,7 +222,7 @@ export async function getStaticProps() {
           },
           noUpcomingEventText: "page.no_upcoming_event_text.markdown",
           noUpcomingEventImage: {
-            query: "page.no_upcoming_event_image.toFiles",
+            query: "page.no_upcoming_event_image.toFiles.first",
             select: {
               url: true,
               alt: true,

@@ -10,6 +10,14 @@ columns:
           reel_vimeo_id:
             label: Reel Vimeo ID
             type: text
+          reel_video:
+            label: Reel Video
+            type: files
+            multiple: false
+          reel_video_poster:
+            label: Reel Video Poster
+            type: files
+            multiple: false
       directors:
         type: fields
         fields:

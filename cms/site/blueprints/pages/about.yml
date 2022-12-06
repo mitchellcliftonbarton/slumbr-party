@@ -10,6 +10,14 @@ columns:
           background_vimeo_id:
             label: Background Vimeo ID
             type: text
+          background_video:
+            label: Background Video
+            type: files
+            multiple: false
+          background_video_poster:
+            label: Background Video Poster
+            type: files
+            multiple: false
           background_image:
             label: Background Image
             type: files

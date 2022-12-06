@@ -8,9 +8,11 @@ import styles from './../styles/Globals.module.scss'
 
 // React
 import { useRouter } from 'next/router'
+import { useEffect, useState } from 'react'
 
-const MainNav = ({links, menuOpen, setMenuOpen}) => {
+const MainNav = ({links, menuOpen, setMenuOpen, showLoadOverlay, setContactModalOpen}) => {
   const router = useRouter()
+  const [hovered, setHovered] = useState(false)
 
   let navClass = styles.merlot
 
@@ -25,10 +27,17 @@ const MainNav = ({links, menuOpen, setMenuOpen}) => {
     }
   }
 
+  useEffect(() => {
+    console.log('route changed')
+    setHovered(false)
+  }, [router.asPath])
+
   return (
     <header 
       id={styles['main-nav']} 
-      className={`${navClass} fixed top-0 left-0 w-full flex justify-between items-center def-x`}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      className={`${navClass} ${hovered ? styles.hovered : null} fixed top-0 left-0 w-full flex justify-between items-center def-x`}
     >
       <Link 
         href="/" 
@@ -48,6 +57,20 @@ const MainNav = ({links, menuOpen, setMenuOpen}) => {
             <span>{link.text}</span>
           </Link>
         ))}
+
+        <Link
+          href={{
+            pathname: router.pathname,
+            query: {
+              contact: true
+            }
+          }}
+          scroll={false}
+          className={`${router.asPath === '/contact' ? styles.active : null} level-subhead`}
+        >
+          <Diamond />
+          <span>Contact</span>
+        </Link>
       </div>
 
       <button

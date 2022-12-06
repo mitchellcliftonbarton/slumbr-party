@@ -1,34 +1,28 @@
 import Head from 'next/head'
-import Vimeo from '@u-wave/react-vimeo'
-// import Cookies from 'js-cookie'
 
 // Components
 import DefaultLayout from '../components/layouts/DefaultLayout'
 import Link from 'next/link'
-import DefImage from '../components/DefImage'
 
 // React
-import { useEffect, useState } from 'react'
-import Cookies from 'js-cookie'
+import { useState, useRef, useEffect } from 'react'
 
 // Styles
 import styles from './../styles/Pages.module.scss'
 
 // Components
 import LoadOverlay from '../components/LoadOverlay'
+import VideoBlock from '../components/VideoBlock'
 
 export default function Home({ data }) {
+  console.log(this)
   const [videoLoaded, setVideoLoaded] = useState(false)
-  const [showLoadOverlay, setShowLoadOverlay] = useState(false)
+  const video = useRef(null)
 
   useEffect(() => {
-    if (!Cookies.get('slumbr-party-splash')) {
-      setShowLoadOverlay(true)
-      
-      if (document !== undefined) {
-        document.body.style.overflow = 'hidden'
-      }
-    }
+    setTimeout(() => {
+      setVideoLoaded(true)
+    }, 100)
   }, [])
   
   return (
@@ -40,32 +34,26 @@ export default function Home({ data }) {
 
       <h1 className="wcag-hidden">Slumbr Party | Home</h1>
 
-      {data.reelVimeoId && (
+      {data.reelVideo && data.reelVideoPoster && (
         <div className={`${styles.hero} ${videoLoaded ? styles.loaded : null}`}>
-          <Vimeo
-            video={data.reelVimeoId}
-            background
-            autoplay
-            loop
-            className="vimeo-player"
-            onReady={() => {
-              setTimeout(() => {
-                setVideoLoaded(true)
-              }, 500)
-            }}
-            style={{
-              position: 'absolute',
-              top: '0px',
-              left: '0px',
-              width: '100%',
-              height: '100%'
-            }}
-          />
+          <div className="absolute top-0 left-0 w-full h-full">
+            <video 
+              ref={video}
+              src={data.reelVideo.url} 
+              poster={data.reelVideoPoster.url}
+              muted 
+              autoPlay 
+              loop 
+              preload="true"
+              playsInline
+              className='object-cover w-full h-full'
+            ></video>
+          </div>
 
-          <LoadOverlay 
+          {/* <LoadOverlay 
             showLoadOverlay={showLoadOverlay} 
             setShowLoadOverlay={setShowLoadOverlay}
-          />
+          /> */}
         </div>
       )}
 
@@ -99,24 +87,12 @@ export default function Home({ data }) {
           title += ` ${film.title}`
 
           return (
-            <Link 
-              href={`/films/${film.slug}`} 
-              className={`${styles['director-film']} col-span-12 lg:col-span-11 lg:col-start-2 mb-20`}
+            <VideoBlock
+              film={film}
+              title={title}
+              classes="col-span-12 lg:col-span-11 lg:col-start-2"
               key={index}
-            >
-              <div className={`${styles['director-film-image']} relative mb-def-mobile lg:mb-def`}>
-                <div className="absolute top-0 left-0 w-full h-full">
-                  <DefImage
-                    src={film.featuredImage[0].url}
-                    layout="fill"
-                    objectFit="cover"
-                    alt={film.featuredImage[0].alt}
-                  />
-                </div>
-              </div>
-
-              <h3 className='level-subhead text-merlot'>{title}</h3>
-            </Link>
+            />
           )
         })}
       </div>
@@ -142,6 +118,18 @@ export async function getStaticProps() {
         query: "page('Home')",
         select: {
           reelVimeoId: "page.reel_vimeo_id",
+          reelVideo: {
+            query: "page.reel_video.toFiles.first",
+            select: {
+              url: true
+            }
+          },  
+          reelVideoPoster: {
+            query: "page.reel_video_poster.toFiles.first",
+            select: {
+              url: true
+            }
+          },  
           directorHeadline: "page.headline.markdown",
           directorFilms: {
             query: "page.films.toPages",
@@ -149,12 +137,18 @@ export async function getStaticProps() {
               title: true,
               slug: true,
               featuredImage: {
-                query: "page.featured_image.toFiles",
+                query: "page.featured_image.toFiles.first",
                 select: {
                   url: true,
                   width: true,
                   height: true,
                   alt: true
+                }
+              },
+              hoverVideo: {
+                query: "page.hover_video.toFiles.first",
+                select: {
+                  url: true
                 }
               },
               directors: {

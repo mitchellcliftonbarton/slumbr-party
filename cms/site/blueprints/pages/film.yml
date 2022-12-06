@@ -21,6 +21,11 @@ columns:
             label: Featured Image
             multiple: false
             help: This image will show up as the image for the corresponding film on the films page.
+          hover_video:
+            type: files
+            label: Hover Video
+            multiple: false
+            help: This video will show up in the hover state for the film on the films page.
           vimeo_id:
             type: text
             label: Vimeo ID

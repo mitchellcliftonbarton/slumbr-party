@@ -6,6 +6,10 @@ Featured-image: - rectangle-23.jpg
 
 ----
 
+Hover-video: - guitar.mp4
+
+----
+
 Vimeo-id: 399671714
 
 ----
@@ -34,4 +38,4 @@ Awards:
 
 ----
 
-Awards-image: 
+Awards-image: - awards.png

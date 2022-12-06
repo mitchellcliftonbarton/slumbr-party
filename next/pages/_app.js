@@ -1,7 +1,7 @@
 import '../styles/index.scss'
 
 // MyApp
-function MyApp({ Component, pageProps, footerData, directorsData }) {
+function MyApp({ Component, pageProps, footerData, directorsData, contactData }) {
   const getLayout = Component.getLayout || ((page) => page)
 
   return getLayout(
@@ -9,6 +9,7 @@ function MyApp({ Component, pageProps, footerData, directorsData }) {
       {...pageProps} 
       footerData={footerData} 
       directorsData={directorsData}
+      contactData={contactData}
     />
   )
 }
@@ -57,10 +58,43 @@ MyApp.getInitialProps = async () => {
   })
 
   const directorsJson = await directorsData.json()
+
+  /* GET CONTACT DATA */
+
+  const contactData = await fetch(process.env.API_HOST, {
+      method: "POST",
+      headers: {
+        Authorization: `Basic ${process.env.AUTH}`,
+      },
+      body: JSON.stringify({
+        query: "page('Contact')",
+        select: {
+          contactPeopleItems: {
+            query: "page.contact_people_items.toStructure",
+            select: {
+              name: true,
+              title: true,
+              email: true
+            }
+          },
+          contactLocationItems: {
+            query: "page.contact_location_items.toStructure",
+            select: {
+              name: true,
+              title: true,
+              email: true
+            }
+          }
+        }
+      }),
+  })
+
+  const contactJson = await contactData.json()
   
   return {
     footerData: footerJson.result,
     directorsData: directorsJson.result,
+    contactData: contactJson.result
   }
 }
 
