@@ -66,7 +66,7 @@ export default function FilmDetail({ data, films }) {
         <meta name="description" content="Slumbr Party" />
       </Head>
 
-      <div className="pt-12 pb-60">
+      <div className="pt-32 lg:pt-12 pb-60">
         {data.vimeoId && (
           <div className='def-x mb-32'>
             <div
@@ -119,7 +119,7 @@ export default function FilmDetail({ data, films }) {
           >
             {films.map((film, index) => (
               <div 
-                className="item w-1/3 lg:w-1/4 flex-0-0 whitespace-nowrap px-def-1/2" 
+                className="item w-3/4 lg:w-1/4 flex-0-0 whitespace-nowrap px-def-1/2" 
                 key={index}
               >
                 <Link 

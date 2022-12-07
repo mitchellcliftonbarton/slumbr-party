@@ -78,6 +78,9 @@ const Layout = ({ children }) => {
 
     // close mobile menu on route change
     setMenuOpen(false)
+    if (document !== undefined) {
+      document.body.style.overflow = 'initial'
+    }
   }, [router.asPath])
 
   return (

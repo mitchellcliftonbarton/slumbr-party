@@ -22,7 +22,7 @@ export default function DirectorsDetail({ data, filmsData }) {
         <h1 className={`enter-in-1 text-merlot level-1`}>{data.title}</h1>
       </div>
 
-      <div className="pt-12 pb-40">
+      <div className="pt-32 lg:pt-12 pb-40">
         {filmsData.length > 0 && (
           <div className='films grid grid-cols-12 gap-def mb-def'>
             {filmsData.map((film, index) => (
