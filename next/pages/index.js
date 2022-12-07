@@ -15,7 +15,6 @@ import LoadOverlay from '../components/LoadOverlay'
 import VideoBlock from '../components/VideoBlock'
 
 export default function Home({ data }) {
-  console.log(this)
   const [videoLoaded, setVideoLoaded] = useState(false)
   const video = useRef(null)
 
@@ -92,6 +91,7 @@ export default function Home({ data }) {
               title={title}
               classes="col-span-12 lg:col-span-11 lg:col-start-2"
               key={index}
+              href={`/films/${film.slug}`}
             />
           )
         })}

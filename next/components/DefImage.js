@@ -4,14 +4,12 @@ import { useState } from 'react'
 // Styles
 import styles from './../styles/Globals.module.scss'
 
-const DefImage = ({src, layout, objectFit, alt, style, width, height, className}) => {
+const DefImage = ({src, alt, style, width, height, className}) => {
   const [loaded, setLoaded] = useState(false)
 
   return (
     <Image
       src={src}
-      layout={layout}
-      objectFit={objectFit}
       alt={alt}
       style={style}
       className={`${styles['def-image']} ${loaded ? styles.loaded : false} ${className}`}

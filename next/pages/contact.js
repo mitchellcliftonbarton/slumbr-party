@@ -9,8 +9,6 @@ import styles from './../styles/Pages.module.scss'
 import { Diamond, Logo } from '../components/icons/Icons'
 
 export default function Contact({ data }) {
-  console.log(data)
-  
   return (
     <div className={`${styles.contact} push-nav def-x bg-periwinkle min-h-screen relative`}>
       <Head>

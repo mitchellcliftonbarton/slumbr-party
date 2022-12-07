@@ -62,8 +62,6 @@ const Layout = ({ children }) => {
   }, [])
 
   useEffect(() => {
-    console.log(router)
-
     if (router.query.contact && router.query.contact === 'true') {
       setContactModalOpen(true)
 

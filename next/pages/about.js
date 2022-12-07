@@ -36,10 +36,10 @@ export default function About({ data }) {
         .timeline({
           paused: false,
           onStart: () => {
-            console.log('started timeline')
+            // console.log('started timeline')
           },
           onUpdate: () => {
-            console.log('timeline updating')
+            // console.log('timeline updating')
           }
         })
         .set(window, {
@@ -91,9 +91,10 @@ export default function About({ data }) {
             <div className={`${styles['bg-image']} fixed top-0 left-0 w-full h-full pointer-events-none`}>
               <DefImage
                 src={data.backgroundImage.url}
-                layout="fill"
-                objectFit="cover"
                 alt={data.backgroundImage.alt}
+                className="object-cover w-full h-full"
+                width={data.backgroundImage.width}
+                height={data.backgroundImage.height}
               />
             </div>
           )

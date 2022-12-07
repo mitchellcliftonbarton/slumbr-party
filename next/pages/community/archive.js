@@ -10,8 +10,6 @@ import styles from './../../styles/Pages.module.scss'
 import 'swiper/css'
 
 export default function CommunityArchive({ data }) {
-  console.log(data)
-  
   return (
     <div className={`push-nav bg-parchment`}>
       <Head>

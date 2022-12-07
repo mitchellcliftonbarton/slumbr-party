@@ -14,8 +14,6 @@ import { Logo, XIcon } from '../../components/icons/Icons'
 import DefImage from '../../components/DefImage'
 
 export default function Community({ data }) {
-  console.log(data)
-
   const [modalOpen, setModalOpen] = useState(false)
 
   const toggleModal = () => {
@@ -163,9 +161,10 @@ export default function Community({ data }) {
                           <div className="absolute top-0 left-0 w-full h-full">
                             <DefImage
                               src={data.noUpcomingEventImage.url}
-                              layout="fill"
-                              objectFit="cover"
                               alt={data.noUpcomingEventImage.alt}
+                              className="object-cover w-full h-full"
+                              width={data.noUpcomingEventImage.width}
+                              height={data.noUpcomingEventImage.height}
                             />
                           </div>
                         </div>

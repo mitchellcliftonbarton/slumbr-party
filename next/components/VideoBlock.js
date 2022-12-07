@@ -5,7 +5,7 @@ import Link from "next/link"
 import DefImage from './DefImage'
 import { useState, useRef } from 'react'
 
-const VideoBlock = ({ film, title, classes, style }) => {
+const VideoBlock = ({ film, title, classes, style, href }) => {
   const [showVideo, setShowVideo] = useState(false)
   const [hideImage, setHideImage] = useState(false)
   const hoverVideo = useRef(null)
@@ -28,7 +28,7 @@ const VideoBlock = ({ film, title, classes, style }) => {
 
   return (
     <Link 
-      href={`/films/${film.slug}`} 
+      href={href} 
       onMouseEnter={() => handleMouseEnter()}
       onMouseLeave={() => handleMouseLeave()}
       className={`${styles['director-film']} ${hideImage ? styles['show-video'] : null} ${classes}`}
@@ -51,9 +51,10 @@ const VideoBlock = ({ film, title, classes, style }) => {
         <div className={`${styles['director-film-image-inner']} absolute top-0 left-0 w-full h-full`}>
           <DefImage
             src={film.featuredImage.url}
-            layout="fill"
-            objectFit="cover"
             alt={film.featuredImage.alt}
+            className="object-cover w-full h-full"
+            width={film.featuredImage.width}
+            height={film.featuredImage.height}
           />
         </div>
       </div>

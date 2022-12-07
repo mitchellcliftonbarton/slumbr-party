@@ -16,7 +16,7 @@ const MainNav = ({links, menuOpen, setMenuOpen, showLoadOverlay, setContactModal
 
   let navClass = styles.merlot
 
-  if (router.pathname === '/about') {
+  if (router.pathname === '/about' || router.pathname === '/directors/film/[slug]') {
     navClass = styles.default
   }
 
@@ -28,7 +28,6 @@ const MainNav = ({links, menuOpen, setMenuOpen, showLoadOverlay, setContactModal
   }
 
   useEffect(() => {
-    console.log('route changed')
     setHovered(false)
   }, [router.asPath])
 

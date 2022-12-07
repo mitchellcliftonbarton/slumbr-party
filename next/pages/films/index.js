@@ -9,8 +9,6 @@ import DefImage from '../../components/DefImage'
 import Link from 'next/link'
 
 export default function Films({ data }) {
-  console.log(data)
-  
   return (
     <div className={`push-nav def-x bg-parchment`}>
       <Head>
@@ -87,9 +85,10 @@ export default function Films({ data }) {
                     <div className="absolute top-0 left-0 w-full h-full">
                       <DefImage
                         src={film.image.url}
-                        layout="fill"
-                        objectFit="cover"
                         alt={film.image.alt}
+                        className="object-cover w-full h-full"
+                        width={film.image.width}
+                        height={film.image.height}
                       />
                     </div>
 
@@ -97,9 +96,10 @@ export default function Films({ data }) {
                       <div className={`${styles['film-awards-image']} absolute top-0 left-0 w-full h-full`}>
                         <DefImage
                           src={film.awardsImage.url}
-                          layout="fill"
-                          objectFit="cover"
                           alt={film.awardsImage.alt}
+                          className="object-cover w-full h-full"
+                          width={film.awardsImage.width}
+                          height={film.awardsImage.height}
                         />
                       </div>
                     )}

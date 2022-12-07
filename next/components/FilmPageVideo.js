@@ -50,9 +50,10 @@ const FilmPageVideo = ({ film, title }) => {
         <div className={`${styles['director-film-image-inner']} absolute top-0 left-0 w-full h-full`}>
           <DefImage
             src={film.featuredImage.url}
-            layout="fill"
-            objectFit="cover"
             alt={film.featuredImage.alt}
+            className="object-cover w-full h-full"
+            width={film.featuredImage.width}
+            height={film.featuredImage.height}
           />
         </div>
       </div>

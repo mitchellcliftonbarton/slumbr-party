@@ -1,16 +1,14 @@
 import Head from 'next/head'
 
 // Components
-import DefaultLayout from '../../components/layouts/DefaultLayout'
+import DefaultLayout from '../../../components/layouts/DefaultLayout'
 import Link from 'next/link'
-import VideoBlock from '../../components/VideoBlock'
+import VideoBlock from '../../../components/VideoBlock'
 
 // Styles
-import styles from './../../styles/Pages.module.scss'
+import styles from './../../../styles/Pages.module.scss'
 
 export default function DirectorsDetail({ data, filmsData }) {
-  console.log(filmsData)
-  
   return (
     <div className={`${styles['director-detail']} push-nav def-x bg-parchment`}>
       <Head>
@@ -24,7 +22,7 @@ export default function DirectorsDetail({ data, filmsData }) {
         <h1 className={`enter-in-1 text-merlot level-1`}>{data.title}</h1>
       </div>
 
-      <div className="pt-12">
+      <div className="pt-12 pb-40">
         {filmsData.length > 0 && (
           <div className='films grid grid-cols-12 gap-def mb-def'>
             {filmsData.map((film, index) => (
@@ -32,6 +30,7 @@ export default function DirectorsDetail({ data, filmsData }) {
                 film={film}
                 classes="enter-in-1 col-span-12 lg:col-span-6 relative"
                 key={index}
+                href={`/directors/${data.slug}/film/${film.slug}`}
                 style={{
                   animationDelay: `${2000 + (100 * (index + 1))}ms`
                 }}
@@ -111,6 +110,7 @@ export async function getStaticProps(context) {
         query: `page('Directors').children.find('${slug}')`,
         select: {
           title: true,
+          slug: true,
           bio: "page.bio.markdown",
           instagramLinkTitle: "page.instagram_link_title",
           instagramLink: "page.instagram_link"
