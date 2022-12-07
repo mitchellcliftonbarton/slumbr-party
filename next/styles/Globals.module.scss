@@ -1,7 +1,14 @@
 #main-nav {
   height: var(--nav-height);
   z-index: 500;
-  transition: background-color .6s;
+  transition: background-color .6s, opacity .3s;
+  // opacity: 0;
+  // pointer-events: none;
+
+  // &.show {
+  //   opacity: 1;
+  //   pointer-events: auto;
+  // }
 
   .home-link {
     svg {

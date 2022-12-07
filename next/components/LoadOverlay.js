@@ -3,8 +3,12 @@ import styles from './../styles/Globals.module.scss'
 
 import { useEffect, useState } from 'react'
 import Cookies from 'js-cookie'
+import { useAppState, useAppUpdate } from '../context'
 
-const LoadOverlay = ({showLoadOverlay, setShowLoadOverlay}) => {
+const LoadOverlay = () => {
+  const state = useAppState()
+  const update = useAppUpdate()
+
   const [hasTransition, setHasTransition] = useState(false)
   const [isLargeQuery, setIsLargeQuery] = useState(false)
 
@@ -12,23 +16,30 @@ const LoadOverlay = ({showLoadOverlay, setShowLoadOverlay}) => {
     if (typeof window !== "undefined") {
       setIsLargeQuery(window.matchMedia( '(min-width: 992px)' ).matches)
     }
+
+    if (!Cookies.get('slumbr-party-splash')) {
+      update.setShowLoadOverlay(true)
+    }
   }, [])
 
   const toggleOff = () => {
     setHasTransition(true)
-    setShowLoadOverlay(false)
+    update.setShowLoadOverlay(false)
+    update.setShowNav(true)
+
+    console.log(state)
     Cookies.set('slumbr-party-splash', 'true', { expires: .5 })
   }
 
-  if (showLoadOverlay) {
+  if (state.showLoadOverlay) {
     document.body.addEventListener('click', () => {
-      if (showLoadOverlay) {
+      if (state.showLoadOverlay) {
         toggleOff()
       }
     })
 
     window.addEventListener('scroll', () => {
-      if (showLoadOverlay) {
+      if (state.showLoadOverlay) {
         toggleOff()
       }
     })
@@ -40,7 +51,7 @@ const LoadOverlay = ({showLoadOverlay, setShowLoadOverlay}) => {
 
   return (
     <div
-      className={`${styles['load-overlay']} ${showLoadOverlay ? styles.open : null} absolute top-0 left-0 w-full h-full flex justify-center items-start`}
+      className={`${styles['load-overlay']} ${state.showLoadOverlay ? styles.open : null} absolute top-0 left-0 w-full h-full flex justify-center items-start`}
       style={{
         transition: hasTransition ? 'opacity .6s' : 'none'
       }}

@@ -10,7 +10,7 @@ import styles from './../styles/Globals.module.scss'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 
-const MainNav = ({links, menuOpen, setMenuOpen, showLoadOverlay, setContactModalOpen}) => {
+const MainNav = ({links, menuOpen, setMenuOpen, setContactModalOpen}) => {
   const router = useRouter()
   const [hovered, setHovered] = useState(false)
 

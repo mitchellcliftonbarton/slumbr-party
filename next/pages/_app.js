@@ -16,7 +16,6 @@ function MyApp({ Component, pageProps, footerData, directorsData, contactData })
 
 MyApp.getInitialProps = async () => {
   /* GET FOOTER DATA */
-
   const footerData = await fetch(process.env.API_HOST, {
     method: "POST",
     headers: {

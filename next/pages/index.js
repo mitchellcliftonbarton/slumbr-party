@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import { useAppState, useAppUpdate } from '../context'
 
 // Components
 import DefaultLayout from '../components/layouts/DefaultLayout'
@@ -49,10 +50,7 @@ export default function Home({ data }) {
             ></video>
           </div>
 
-          {/* <LoadOverlay 
-            showLoadOverlay={showLoadOverlay} 
-            setShowLoadOverlay={setShowLoadOverlay}
-          /> */}
+          <LoadOverlay/>
         </div>
       )}
 

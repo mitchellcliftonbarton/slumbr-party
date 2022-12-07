@@ -1,8 +1,7 @@
-import Cookies from 'js-cookie'
-
 // React
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
+import { AppWrapper } from '../../context'
 
 // Styles
 import styles from './../../styles/Globals.module.scss'
@@ -35,19 +34,18 @@ const links = [
 
 const Layout = ({ children }) => {
   const router = useRouter()
+
   const [cursorX, setCursorX] = useState(0)
   const [cursorY, setCursorY] = useState(0)
-  const [showCursor, setShowCursor] = useState(true)
+  const [showCursor, setShowCursor] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
-  const [showLoadOverlay, setShowLoadOverlay] = useState(false)
   const [contactModalOpen, setContactModalOpen] = useState(false)
 
   useEffect(() => {
-    if (!Cookies.get('slumbr-party-splash')) {
-      setShowLoadOverlay(true)
-    }
-
     document.addEventListener('mousemove', e => {
+      if (!showCursor) {
+        setShowCursor(true)
+      }
       setCursorX(e.clientX + 20)
       setCursorY(e.clientY + 20)
     })
@@ -83,12 +81,11 @@ const Layout = ({ children }) => {
   }, [router.asPath])
 
   return (
-    <>
+    <AppWrapper>
       <MainNav 
         links={links} 
         menuOpen={menuOpen}
         setMenuOpen={setMenuOpen}
-        showLoadOverlay={showLoadOverlay}
         setContactModalOpen={setContactModalOpen}
       />
 
@@ -115,12 +112,12 @@ const Layout = ({ children }) => {
         className={`${styles['main-cursor']} hidden lg:block`}
         style={{
           transform: `translate3d(${cursorX}px, ${cursorY}px, 0px)`,
-          opacity: showCursor ? '1' : 0
+          opacity: showCursor ? 1 : 0
         }}
       >
         <Logo fill="#6944FF" />
       </div>
-    </>
+    </AppWrapper>
   )
 }
 
