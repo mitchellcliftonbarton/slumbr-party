@@ -30,7 +30,7 @@ export default function DirectorsDetail({ data, filmsData }) {
                 film={film}
                 classes="enter-in-1 col-span-12 lg:col-span-6 relative"
                 key={index}
-                href={`/directors/${data.slug}/film/${film.slug}`}
+                href={`/films/${film.slug}`}
                 style={{
                   animationDelay: `${2000 + (100 * (index + 1))}ms`
                 }}

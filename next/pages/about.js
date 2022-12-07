@@ -18,43 +18,31 @@ export default function About({ data }) {
 
   const [videoLoaded, setVideoLoaded] = useState(false)
   const video = useRef(null)
-  const tl = useRef()
   const aboutContainer = useRef(null)
 
   useEffect(() => {
     setTimeout(() => {
       setVideoLoaded(true)
     }, 100)
-  }, [])
 
-  useEffect(() => {
-    if (window !== undefined) {
+    if (window !== undefined && document !== undefined) {
       const height = document.documentElement.scrollHeight
       const time = height / 50
 
-      tl.current = gsap
-        .timeline({
-          paused: false,
-          onStart: () => {
-            // console.log('started timeline')
-          },
-          onUpdate: () => {
-            // console.log('timeline updating')
-          }
-        })
-        .set(window, {
-          scrollTo: {
-            y: 0
-          }
-        })
-        .to(window, {
-          duration: time,
-          ease: 'none',
-          scrollTo: {
-            y: height,
-            autoKill: true
-          }
-        })
+      gsap.set(window, {
+        scrollTo: {
+          y: 0
+        }
+      })
+
+      gsap.to(window, {
+        duration: time,
+        ease: 'none',
+        scrollTo: {
+          y: 'max',
+          autoKill: true
+        }
+      })
     }
   }, [])
   
