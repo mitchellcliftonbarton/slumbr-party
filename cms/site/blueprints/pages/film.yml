@@ -37,9 +37,9 @@ columns:
             type: text
             label: Video Title
             help: i.e. "Watch trailer"
-          directors:
-            type: multiselect
-            label: Directors
+          director:
+            type: select
+            label: Director
             options: query
             query: site.find('Directors').children
           categories:

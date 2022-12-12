@@ -44,15 +44,15 @@ export default function Directors({ data }) {
             <div className='enter-in-1 delay-100 directors py-48 text-center px-def-mobile lg:px-20'>
               <div
                 onMouseLeave={() => handleMouseLeave()}
-                className="inner"
+                className="inner flex flex-col items-center"
               >
                 {data.directors.map((director, index) => (
                   <Link
                     key={index}
                     href={`/directors/${director.slug}`}
-                    className="level-1 text-merlot"
+                    className="level-1 text-merlot lg:hover:italic"
                     onMouseEnter={() => handleMouseEnter(index)}
-                  >{director.title}{index !== data.directors.length - 1 ? ', ' : ''}</Link>
+                  >{director.title}</Link>
                 ))}
               </div>
             </div>
@@ -162,7 +162,13 @@ export async function getStaticProps() {
         select: {
           title: true,
           slug: true,
-          directors: "page.directors",
+          director: {
+            query: "page.director.toPage",
+            select: {
+              title: true,
+              slug: true
+            },
+          },
           image: {
             query: "page.featured_image.toFiles.first",
             select: {
@@ -184,9 +190,7 @@ export async function getStaticProps() {
     const films = []
 
     filmsJsonData.result.forEach(film => {
-      const arr = film.directors.split(/[ ,]+/)
-
-      if (arr.some(item => `Directors/${slug}` === item)) {
+      if (film.director && film.director.slug === slug) {
         films.push(film)
       }
     })

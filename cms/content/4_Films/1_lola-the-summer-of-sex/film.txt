@@ -22,7 +22,7 @@ Video-title:
 
 ----
 
-Directors: Directors/luka-wilson
+Director: Directors/luka-wilson
 
 ----
 
@@ -43,3 +43,7 @@ Awards:
 ----
 
 Awards-image: - awards.png
+
+----
+
+Directors: Directors/luka-wilson

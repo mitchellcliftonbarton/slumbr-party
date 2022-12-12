@@ -22,7 +22,7 @@ Video-title:
 
 ----
 
-Directors: Directors/victoria-rivera
+Director: Directors/savannah-o-leary
 
 ----
 
@@ -39,3 +39,7 @@ Awards:
 ----
 
 Awards-image: - awards.png
+
+----
+
+Directors: Directors/victoria-rivera

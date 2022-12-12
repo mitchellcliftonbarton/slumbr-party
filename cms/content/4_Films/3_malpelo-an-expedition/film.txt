@@ -6,6 +6,10 @@ Featured-image: - rectangle-7.jpg
 
 ----
 
+Hover-video: 
+
+----
+
 Vimeo-id: 3925299
 
 ----
@@ -18,7 +22,7 @@ Video-title: Watch trailer
 
 ----
 
-Directors: Directors/luka-wilson
+Director: Directors/luka-wilson
 
 ----
 
@@ -42,3 +46,7 @@ Awards:
 ----
 
 Awards-image: 
+
+----
+
+Directors: Directors/luka-wilson

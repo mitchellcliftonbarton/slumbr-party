@@ -30,7 +30,7 @@ export default function DirectorsDetail({ data, filmsData }) {
                 film={film}
                 classes="fade-in col-span-12 lg:col-span-6 relative"
                 key={index}
-                href={`/films/${film.slug}`}
+                href={`/directors/film/${film.slug}`}
                 style={{
                   animationDelay: `${2000 + (100 * (index + 1))}ms`
                 }}
@@ -39,7 +39,12 @@ export default function DirectorsDetail({ data, filmsData }) {
           </div>
         )}
 
-        <div className="info">
+        <div
+          className="fade-in info"
+          style={{
+            animationDelay: `2500ms`
+          }}
+        >
           {data.bio && (
             <div 
               className="w-full lg:w-5/12 level-body text-merlot mb-60" 
@@ -127,7 +132,7 @@ export async function getStaticProps(context) {
         Authorization: `Basic ${process.env.AUTH}`,
       },
       body: JSON.stringify({
-        query: `page('Films').children.filterBy('directors', 'Directors/${slug}', ',')`,
+        query: `page('Films').children.filterBy('director', 'Directors/${slug}', ',')`,
         select: {
           title: true,
           slug: true,

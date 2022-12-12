@@ -16,6 +16,7 @@ import LoadOverlay from '../components/LoadOverlay'
 import VideoBlock from '../components/VideoBlock'
 
 export default function Home({ data }) {
+  console.log(data)
   const [videoLoaded, setVideoLoaded] = useState(false)
   const video = useRef(null)
 
@@ -71,17 +72,7 @@ export default function Home({ data }) {
         </div>
 
         {data.directorFilms.map((film, index) => {
-          let title = ''
-
-          film.directors.forEach((director, idx) => {
-            if (idx === film.directors.length - 1) {
-              title += director.title.toUpperCase()
-            } else {
-              title += `${director.title.toUpperCase()}, `
-            }
-          })
-
-          title += ` ${film.title}`
+          let title = `${film.director ? `${film.director.title.toUpperCase()} ` : ''}${film.title}`
 
           return (
             <VideoBlock
@@ -149,8 +140,8 @@ export async function getStaticProps() {
                   url: true
                 }
               },
-              directors: {
-                query: "page.directors.toPages",
+              director: {
+                query: "page.director.toPage",
                 select: {
                   title: true,
                   slug: true

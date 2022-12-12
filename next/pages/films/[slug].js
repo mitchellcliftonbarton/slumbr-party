@@ -115,7 +115,7 @@ export default function FilmDetail({ data, films }) {
             ref={marquee}
             onMouseEnter={() => handleMarqueeEnter()}
             onMouseLeave={() => handleMarqueeLeave()}
-            className="wrapper flex overflow-hidden"
+            className="wrapper flex overflow-hidden w-full"
           >
             {films.map((film, index) => (
               <div 
@@ -259,11 +259,19 @@ export async function getStaticProps(context) {
   })
 
   const filmsJsonData = await filmsData.json()
+  const filmsJsonDataResult = filmsJsonData.result
+  let filmsArray = null
+
+  if (filmsJsonData.result.length < 4) {
+    filmsArray = filmsJsonDataResult.concat(filmsJsonDataResult).concat(filmsJsonDataResult)
+  } else {
+    filmsArray = filmsJsonDataResult
+  }
 
   return {
     props: {
       data: result,
-      films: filmsJsonData.result
+      films: filmsArray
     },
   }
 }
