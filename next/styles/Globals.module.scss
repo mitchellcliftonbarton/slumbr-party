@@ -182,11 +182,17 @@
 }
 
 #footer {
+  height: auto;
+
+  @media screen and (min-width: theme("screens.lg")) {
+    height: 100vh;
+  }
+
   .top {
     margin-bottom: 110px;
 
     @media screen and (min-width: theme("screens.lg")) {
-      margin-bottom: 400px;
+      margin-bottom: 0px;
     }
   }
 
@@ -196,6 +202,31 @@
 
       @media screen and (min-width: theme("screens.lg")) {
         width: 110px;
+      }
+    }
+  }
+
+  .footer-link {
+    display: flex;
+    align-items: center;
+
+    svg {
+      width: 1rem;
+      margin-right: 0.65rem;
+
+      path {
+        fill: theme('colors.parchment');
+      }
+
+      polygon {
+        fill: none;
+        transition: fill .3s;
+      }
+    }
+
+    &:hover {
+      svg polygon {
+        fill: theme('colors.parchment');
       }
     }
   }

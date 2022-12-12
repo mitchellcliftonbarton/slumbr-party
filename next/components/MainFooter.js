@@ -1,6 +1,6 @@
 // Components
 import Link from 'next/link'
-import { Logo } from './icons/Icons'
+import { Diamond, Logo } from './icons/Icons'
 
 // Styles
 import styles from './../styles/Globals.module.scss'
@@ -9,7 +9,7 @@ const MainFooter = ({ data, directors }) => {
   return (
     <footer 
       id={styles.footer} 
-      className="def-padding bg-merlot"
+      className="def-padding bg-merlot flex flex-col justify-between"
     >
       <div className={`${styles.top} flex flex-wrap lg:flex-nowrap justify-between items-start`}>
         {data.footerIntroText && (
@@ -26,11 +26,14 @@ const MainFooter = ({ data, directors }) => {
               <nav className="w-2/3 lg:w-3/4">
                 <ul>
                   {directors.map((director, index) => (
-                    <li key={index} className="mb-1">
+                    <li key={index}>
                       <Link 
                         href={`/directors/${director.slug}`} 
-                        className="level-subhead"
-                      >◊ {director.title}</Link>
+                        className={`${styles['footer-link']} level-subhead pb-1`}
+                      >
+                        <Diamond />
+                        <span>{director.title}</span>
+                      </Link>
                     </li>
                   ))}
                 </ul>
@@ -44,13 +47,16 @@ const MainFooter = ({ data, directors }) => {
               <nav className="w-2/3 lg:w-3/4">
                 <ul>
                   {data.footerCommunityLinks.map((link, index) => (
-                    <li key={index} className="mb-1">
+                    <li key={index}>
                       <Link 
                         href={link.link} 
-                        className="level-subhead"
+                        className={`${styles['footer-link']} level-subhead pb-1`}
                         target="_blank"
                         rel="noreferrer"
-                      >◊ {link.title}</Link>
+                      >
+                        <Diamond />
+                        <span>{link.title}</span>
+                      </Link>
                     </li>
                   ))}
                 </ul>
@@ -66,8 +72,11 @@ const MainFooter = ({ data, directors }) => {
                   <li className="mb-1">
                     <Link 
                       href={`mailto:${data.contactEmail}`} 
-                      className="level-subhead"
-                    >◊ {data.contactEmail}</Link>
+                      className={`${styles['footer-link']} level-subhead`}
+                    >
+                      <Diamond />
+                      <span>{data.contactEmail}</span>
+                    </Link>
                   </li>
                 </ul>
               </nav>

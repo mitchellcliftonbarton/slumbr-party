@@ -28,7 +28,7 @@ export default function DirectorsDetail({ data, filmsData }) {
             {filmsData.map((film, index) => (
               <VideoBlock
                 film={film}
-                classes="enter-in-1 col-span-12 lg:col-span-6 relative"
+                classes="fade-in col-span-12 lg:col-span-6 relative"
                 key={index}
                 href={`/films/${film.slug}`}
                 style={{
