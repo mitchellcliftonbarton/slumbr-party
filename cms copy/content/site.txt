@@ -1,0 +1,35 @@
+Title: SLUMBR PARTY
+
+----
+
+Footer-intro-text: We are producers, directors, sound mixers, writers, editors, cinema-tographers, colorists, VFX artists, and everything in between. We promote each other's work, learn from one another, share resources and collaborate.
+
+----
+
+Footer-community-links:
+
+- 
+  title: Instagram
+  link: http://instagram.com/slmbr_prty
+- 
+  title: Vimeo
+  link: http://vimeo.com/user65512218
+- 
+  title: Facebook
+  link: https://www.facebook.com/slmbrprty/
+
+----
+
+Contact-email: info@slmbrprty.com
+
+----
+
+Default-site-title: Slumbr Party
+
+----
+
+Default-og-image: 
+
+----
+
+Default-site-description: This is an SEO description.

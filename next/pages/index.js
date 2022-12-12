@@ -66,7 +66,7 @@ export default function Home({ data }) {
           )}
 
           <p className='enter-in-1 delay-200 level-subhead text-merlot'>
-            <Link href="/directors">View All Directors →</Link>
+            <Link href="/directors" className='link-with-arrow'>View All Directors</Link>
           </p>
         </div>
 

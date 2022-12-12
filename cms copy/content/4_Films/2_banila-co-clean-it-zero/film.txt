@@ -1,0 +1,41 @@
+Title: Banila Co - Clean It Zero
+
+----
+
+Featured-image: - rectangle-23.jpg
+
+----
+
+Hover-video: - guitar.mp4
+
+----
+
+Vimeo-id: 399671714
+
+----
+
+Video-poster: - rectangle-23.jpg
+
+----
+
+Video-title: 
+
+----
+
+Directors: Directors/victoria-rivera
+
+----
+
+Categories: Categories/commercial
+
+----
+
+Description: “I MADE A FILM ... NOW WHAT?”  blah blah blah lorem ipsum doelerdnasd lah blah blah lorem ipsum doelerdnasd lah blah blah lorem ipsum doelerdnasd lah blah blah lorem ipsum doelerdnasd lah blah blah lorem ipsum doelerdnasd.
+
+----
+
+Awards: 
+
+----
+
+Awards-image: - awards.png

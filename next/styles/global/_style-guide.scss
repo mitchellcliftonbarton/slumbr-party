@@ -115,6 +115,18 @@ body {
   }
 }
 
+.link-with-arrow {
+  &:after {
+    content: ' →';
+  }
+
+  &:hover {
+    &:after {
+      content: ' ↗';
+    }
+  }
+}
+
 @keyframes enterIn1 {
   from {
     opacity: 0;

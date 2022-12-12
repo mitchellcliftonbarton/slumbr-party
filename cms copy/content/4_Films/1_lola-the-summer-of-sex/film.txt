@@ -1,0 +1,45 @@
+Title: Lola the Summer of Sex
+
+----
+
+Featured-image: - rectangle-19.jpg
+
+----
+
+Hover-video: - buzzer.mp4
+
+----
+
+Vimeo-id: 245134138
+
+----
+
+Video-poster: - rectangle-19.jpg
+
+----
+
+Video-title: 
+
+----
+
+Directors: Directors/luka-wilson
+
+----
+
+Categories: Categories/commercial
+
+----
+
+Description: “I MADE A FILM ... NOW WHAT?”  blah blah blah lorem ipsum doelerdnasd lah blah blah lorem ipsum doelerdnasd lah blah blah lorem ipsum doelerdnasd lah blah blah lorem ipsum doelerdnasd lah blah blah lorem ipsum doelerdnasd .
+
+----
+
+Awards:
+
+- 
+  title: Award
+  link: ""
+
+----
+
+Awards-image: - awards.png

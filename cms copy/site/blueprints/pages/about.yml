@@ -1,0 +1,58 @@
+title: About
+icon: page
+
+columns:
+  - width: 3/4
+    sections:
+      top:
+        type: fields
+        fields:
+          background_vimeo_id:
+            label: Background Vimeo ID
+            type: text
+          background_video:
+            label: Background Video
+            type: files
+            multiple: false
+          background_video_poster:
+            label: Background Video Poster
+            type: files
+            multiple: false
+          background_image:
+            label: Background Image
+            type: files
+            multiple: false
+            help: This will appear as the background image if there is no background video.
+          large_text:
+            label: Large Text
+            type: textarea
+            size: medium
+            help: This text will show up in a larger font size at the top of the page.
+          text:
+            label: Text
+            type: textarea
+            size: medium
+            help: This text will show up in a smaller font size at the bottom of the page.
+          client_title:
+            label: Client Title
+            type: text
+          clients:
+            label: Clients
+            type: structure
+            fields:
+              title:
+                label: Title
+                type: text
+  - width: 1/4
+    sections:
+      build:
+        type: fields
+        fields:
+          webhookButton:
+            type: button
+            label: Build Site
+            text: Build Site
+            url: https://api.vercel.com/v1/integrations/deploy/prj_0XAnFnm6WH9QAEcEjs4ZZG5kGGPW/JsZCqecf3K
+            theme: positive
+            reload: true # trigger a page refresh on success to display updated data
+            help: Trigger a site build here.

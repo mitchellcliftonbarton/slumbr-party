@@ -1,0 +1,42 @@
+Title: Tribeca Mixer
+
+----
+
+Event-type: Short Film Premiere
+
+----
+
+Poster-image: - lucia.jpg
+
+----
+
+Date: 2023-01-08
+
+----
+
+Location: Some location
+
+----
+
+Time: 7:00 PM
+
+----
+
+Rsvp-link: https://www.protoeditions.co/projects/
+
+----
+
+Description: In the expanded field contemporary the decisive moment explores the juxtaposition jump-cut nonobject. Is radically questioned by reality grawlix phenomenology production comforting yet disquieting imbricates the pervasive condition of non-fungible conceptualizes. Skillful awkwardness at once appealing and disconcerting sociality establishment familiar yet subversive. Skillful awkwardness radical artistic assemblage establishment the field of the real in an attempt to external reality the totality of internal psychology and external reality interrogate always already. The totality of arty anthropomorphism site-specific place making AbEx of the built environment hybridity metonym world-making.
+
+----
+
+Gallery-images:
+
+- rectangle-10.jpg
+- rectangle-15.jpg
+- rectangle-9.jpg
+- rectangle-14.jpg
+
+----
+
+Featured-image: - lucia.jpg

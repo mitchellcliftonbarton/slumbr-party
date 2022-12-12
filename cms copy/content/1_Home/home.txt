@@ -1,0 +1,28 @@
+Reel-vimeo-id: 668319395
+
+----
+
+Reel-video: - untitled.mp4
+
+----
+
+Reel-video-poster: - about.jpg
+
+----
+
+Headline:
+
+Our directors are the coolest bitches around. 
+You should work with them.
+
+----
+
+Films:
+
+- Films/lola-the-summer-of-sex
+- Films/banila-co-clean-it-zero
+- Films/malpelo-an-expedition
+
+----
+
+Reel-poster-image: - about.jpg

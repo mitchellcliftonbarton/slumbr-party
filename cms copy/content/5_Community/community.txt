@@ -1,0 +1,17 @@
+Main-text: We are a community of filmmakers from all disciplines within the commercial and film industries.
+
+----
+
+Upcoming-event: Community/tribeca-mixer
+
+----
+
+No-upcoming-event-text: SLMBR PRTY COMMUNITY hosts events blah blah blah. Stay in the know.
+
+----
+
+No-upcoming-event-image: - no-community.jpg
+
+----
+
+Archive-description: COMMUNITY ARCHIVE blah blah blah lorem ipsum doelerdnasd lah blah blah lorem ipsum doelerdnasd lah blah blah lorem ipsum doelerdnasd lah blah blah lorem ipsum doelerdnasd lah blah blah lorem ipsum doelerdnasd.

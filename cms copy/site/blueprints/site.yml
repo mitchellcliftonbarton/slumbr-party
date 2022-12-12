@@ -1,0 +1,96 @@
+title: Site
+
+tabs:
+  content:
+    label: Content
+    columns:
+      - width: 3/4
+        sections:
+          listed:
+            label: Pages/Site Content
+            type: pages
+            status: listed
+      - width: 1/4
+        sections:
+          build:
+            type: fields
+            fields:
+              webhookButton2:
+                type: button
+                label: Build Site
+                text: Build Site
+                url: https://api.vercel.com/v1/integrations/deploy/prj_0XAnFnm6WH9QAEcEjs4ZZG5kGGPW/JsZCqecf3K
+                theme: positive
+                reload: true # trigger a page refresh on success to display updated data
+                help: Trigger a site build here.
+  sitewide_data:
+    label: Sitewide Data
+    columns:
+      - width: 3/4
+          sections:
+            sitewide: 
+              type: fields
+              fields:
+                footer_intro_text:
+                  type: textarea
+                  label: Intro Text (Footer)
+                footer_community_links:
+                  type: structure
+                  label: Community Links (Footer)
+                  fields:
+                    title:
+                      label: Title
+                      type: text
+                    link:
+                      label: Link
+                      type: url
+                contact_email:
+                  type: text
+                  label: Contact Email
+      - width: 1/4
+        sections:
+          build:
+            type: fields
+            fields:
+              webhookButton:
+                type: button
+                label: Build Site
+                text: Build Site
+                url: https://api.vercel.com/v1/integrations/deploy/prj_0XAnFnm6WH9QAEcEjs4ZZG5kGGPW/JsZCqecf3K
+                theme: positive
+                reload: true # trigger a page refresh on success to display updated data
+                help: Trigger a site build here.
+  seo:
+    label: SEO
+    columns:
+      - width: 3/4
+        sections:
+          meta_content:
+            type: fields
+            fields:
+              default_site_title:
+                label: Default Site Title
+                type: text
+                width: 1/2
+              default_og_image:
+                label: Default OG Image
+                type: files
+                multiple: false
+                width: 1/2
+              default_site_description:
+                label: Default Site Description
+                type: textarea
+                size: medium
+      - width: 1/4
+        sections:
+          build:
+            type: fields
+            fields:
+              webhookButton3:
+                type: button
+                label: Build Site
+                text: Build Site
+                url: https://api.vercel.com/v1/integrations/deploy/prj_0XAnFnm6WH9QAEcEjs4ZZG5kGGPW/JsZCqecf3K
+                theme: positive
+                reload: true # trigger a page refresh on success to display updated data
+                help: Trigger a site build here.
