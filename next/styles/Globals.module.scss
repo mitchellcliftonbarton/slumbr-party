@@ -84,6 +84,14 @@
       }
     }
 
+    .mobile-button {
+      svg {
+        path {
+          fill: theme('colors.parchment');
+        }
+      }
+    }
+
     &.hovered {
       background-color: theme('colors.parchment');
 
@@ -142,6 +150,14 @@
               fill: theme('colors.merlot');
             }
           }
+        }
+      }
+    }
+
+    .mobile-button {
+      svg {
+        path {
+          fill: theme('colors.merlot');
         }
       }
     }

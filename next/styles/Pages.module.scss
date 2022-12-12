@@ -181,7 +181,11 @@
 
 .play {
   svg {
-    width: 6.3rem;
+    width: 4.3rem;
+
+    @media screen and (min-width: theme("screens.lg")) {
+      width: 6.3rem;
+    }
   }
 }
 
@@ -210,7 +214,7 @@
   }
 }
 
-.community-slider {
+.event-slider .community-slider {
   padding-left: 1rem;
 
   @media screen and (min-width: theme("screens.lg")) {

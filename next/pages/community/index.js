@@ -88,7 +88,7 @@ export default function Community({ data }) {
               className="cursor-pointer closer absolute top-0 left-0 w-full h-full"
             ></div>
 
-            <div className="modal relative w-1/2 bg-merlot border-radius-def h-full z-10 p-5 grid grid-cols-6 gap-def">
+            <div className="modal relative w-full lg:w-1/2 bg-merlot border-radius-def h-full z-10 p-5 grid grid-cols-6 gap-def">
               <button
                 onClick={() => toggleModal()}
                 className={`${styles['modal-x']} absolute top-6 right-6 z-10`}
@@ -107,7 +107,7 @@ export default function Community({ data }) {
 
                         <h2 className="level-2 text-white mb-32">{data.upcomingEvent.title}</h2>
 
-                        <div className="image w-1/3 border-radius-def border-coral border p-def-mobile">
+                        <div className="image w-3/4 lg:w-1/3 border-radius-def border-coral border p-def-mobile">
                           <DefImage
                             src={data.upcomingEvent.posterImage.url}
                             alt={data.upcomingEvent.posterImage.alt}

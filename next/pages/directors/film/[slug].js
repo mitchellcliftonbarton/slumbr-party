@@ -103,7 +103,7 @@ export default function DirectorFilmDetail({ data, films }) {
                     className="absolute top-0 left-0 w-full h-full flex justify-center items-center"
                   >
                     <p className={`${styles.play} level-1 text-parchment flex items-center`}>
-                      <span className='pr-10'>Play</span>
+                      <span className='pr-5 lg:pr-10'>Play</span>
                       <Play />
                     </p>
                   </button>

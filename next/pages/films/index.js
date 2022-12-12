@@ -34,24 +34,24 @@ export default function Films({ data }) {
                 key={index}
               >
                 <div
-                  className="enter-in-1 col-span-5"
+                  className="enter-in-1 col-span-12 lg:col-span-5"
                   style={{
                     animationDelay: `${(index + 1) * 100}ms`
                   }}
                 >
                   <Link href={`/films/${film.slug}`}>
-                    <h2 className="level-3 text-merlot mb-12">{film.title}</h2>
+                    <h2 className="level-3 text-merlot lg:mb-12">{film.title}</h2>
                   </Link>
 
                   {film.description && (
                     <div 
-                      className="text-merlot level-body mb-12" 
+                      className="hidden lg:block text-merlot level-body mb-12" 
                       dangerouslySetInnerHTML={{ __html: film.description }}
                     ></div>
                   )}
 
                   {film.awards.length > 0 && (
-                    <div className="awards">
+                    <div className="hidden lg:block awards">
                       <h3 className="level-body text-merlot">Accolades</h3>
                       <ul className="grid grid-cols-4 gap-def">
                         {film.awards.map((award, index) => (
@@ -76,7 +76,7 @@ export default function Films({ data }) {
 
                 <Link
                   href={`/films/${film.slug}`}
-                  className="enter-in-1 col-span-7 inline-block"
+                  className="enter-in-1 col-span-12 lg:col-span-7 inline-block"
                   style={{
                     animationDelay: `${(index + 2) * 100}ms`
                   }}
@@ -105,6 +105,38 @@ export default function Films({ data }) {
                     )}
                   </div>
                 </Link>
+
+                <div className="col-span-12 lg:hidden">
+                  {film.description && (
+                    <div 
+                      className="text-merlot level-body mb-6 lg:mb-12" 
+                      dangerouslySetInnerHTML={{ __html: film.description }}
+                    ></div>
+                  )}
+
+                  {film.awards.length > 0 && (
+                    <div className="awards">
+                      <h3 className="level-body text-merlot">Accolades</h3>
+                      <ul className="grid grid-cols-4 gap-def">
+                        {film.awards.map((award, index) => (
+                          <li 
+                            className='col-span-2 text-merlot level-body' 
+                            key={index}
+                          >
+                            {award.link
+                              ? <Link 
+                                  href={award.link}
+                                  target="_blank" 
+                                  rel="noreferrer"
+                              >○ {award.title}</Link>
+                              : <p>○ {award.title}</p>
+                            }
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </div>
               </div>
             ))}
           </div>
