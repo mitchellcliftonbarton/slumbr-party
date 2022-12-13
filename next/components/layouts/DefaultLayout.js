@@ -40,6 +40,7 @@ const Layout = ({ children }) => {
   const [showCursor, setShowCursor] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const [contactModalOpen, setContactModalOpen] = useState(false)
+  const [cursorFill, setCursorFill] = useState('#6944FF')
 
   useEffect(() => {
     document.addEventListener('mousemove', e => {
@@ -81,6 +82,12 @@ const Layout = ({ children }) => {
     if (document !== undefined) {
       document.body.style.overflow = 'initial'
     }
+    
+    if (router.pathname === '/films/[slug]' || router.query.contact) {
+      setCursorFill('#FF4E00')
+    } else {
+      setCursorFill('#6944FF')
+    }
   }, [router.asPath])
 
   return (
@@ -118,7 +125,7 @@ const Layout = ({ children }) => {
           opacity: showCursor ? 1 : 0
         }}
       >
-        <Logo fill="#6944FF" />
+        <Logo fill={cursorFill} />
       </div>
     </AppWrapper>
   )

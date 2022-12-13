@@ -32,17 +32,17 @@ const LoadOverlay = () => {
   }
 
   if (state.showLoadOverlay) {
-    document.body.addEventListener('click', () => {
-      if (state.showLoadOverlay) {
-        toggleOff()
-      }
-    })
+    // document.body.addEventListener('click', () => {
+    //   if (state.showLoadOverlay) {
+    //     toggleOff()
+    //   }
+    // })
 
-    window.addEventListener('scroll', () => {
-      if (state.showLoadOverlay) {
-        toggleOff()
-      }
-    })
+    // window.addEventListener('scroll', () => {
+    //   if (state.showLoadOverlay) {
+    //     toggleOff()
+    //   }
+    // })
 
     setTimeout(() => {
       toggleOff()
