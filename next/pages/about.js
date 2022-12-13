@@ -27,7 +27,7 @@ export default function About({ data }) {
 
     if (window !== undefined && document !== undefined) {
       const height = document.documentElement.scrollHeight
-      const time = height / 50
+      const time = height / 90
 
       gsap.set(window, {
         scrollTo: {

@@ -52,6 +52,14 @@
           }
         }
       }
+
+      &:hover {
+        svg {
+          polygon {
+            fill: theme('colors.merlot');
+          }
+        }
+      }
     }
   }
 
@@ -78,6 +86,14 @@
           svg {
             polygon {
               fill: theme('colors.parchment');
+            }
+          }
+        }
+
+        &:hover {
+          svg {
+            polygon {
+              fill: theme('colors.merlot');
             }
           }
         }
