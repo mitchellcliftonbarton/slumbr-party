@@ -30,7 +30,7 @@ export default function Films({ data }) {
           <div className='film'>
             {data.films.map((film, index) => (
               <div 
-                className={`${styles['film-detail-item']} w-full grid grid-cols-12 gap-def py-def`} 
+                className={`${styles['film-detail-item']} w-full grid grid-cols-12 gap-4 lg:gap-def py-def`} 
                 key={index}
               >
                 <div

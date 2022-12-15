@@ -90,8 +90,13 @@
   }
 
   .plus {
-    opacity: 0;
+    opacity: 1;
     transition: opacity .3s;
+    z-index: 10;
+
+    @media screen and (min-width: theme("screens.lg")) {
+      opacity: 0;
+    }
 
     span:first-child {
       font-size: 8rem;
@@ -287,7 +292,11 @@
 }
 
 .contact-logo svg {
-  width: 7.6rem;
+  width: 4rem;
+
+  @media screen and (min-width: theme("screens.lg")) {
+    width: 7.6rem;
+  }
 }
 
 .contact-h1 {

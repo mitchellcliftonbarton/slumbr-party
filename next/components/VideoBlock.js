@@ -46,7 +46,7 @@ const VideoBlock = ({ film, title, classes, style, href, showTitleOnHover = fals
       className={`${styles['director-film']} ${hideImage ? styles['show-video'] : null} ${classes} relative`}
       style={style}
     >
-      <div className={`${styles['director-film-image']} relative mb-def-mobile-1/2 lg:mb-def`}>
+      <div className={`${styles['director-film-image']} relative mb-4 lg:mb-def`}>
         <div className='overflow-hidden absolute top-0 left-0 w-full h-full'>
           {film.hoverVideo && showVideo && (
             <div className={`${styles['hover-video']} absolute top-0 left-0 w-full h-full`}>
@@ -73,10 +73,10 @@ const VideoBlock = ({ film, title, classes, style, href, showTitleOnHover = fals
           </div>
 
           <div className={`${styles.plus} flex absolute top-0 left-0 w-full h-full justify-center items-center`}>
-            <span className='text-coral font-secondary'>+</span>
+            <span className='text-coral font-secondary hidden lg:inline-block'>+</span>
 
             {showTitleOnHover && (
-              <span className='text-white level-3 absolute bottom-def left-def'>{film.title}</span>
+              <span className='text-white level-3 absolute bottom-4 lg:bottom-def left-4 lg:left-def'>{film.title}</span>
             )}
           </div>
         </div>

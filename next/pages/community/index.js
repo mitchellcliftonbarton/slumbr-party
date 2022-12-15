@@ -88,7 +88,7 @@ export default function Community({ data }) {
               className="cursor-pointer closer absolute top-0 left-0 w-full h-full"
             ></div>
 
-            <div className="modal relative w-full lg:w-1/2 bg-merlot border-radius-def h-full z-10 px-5 py-4 grid grid-cols-6 gap-def">
+            <div className="modal relative w-full lg:w-1/2 bg-merlot border-radius-def h-full z-10 px-4 lg:px-5 py-4 grid grid-cols-6 gap-def">
               <button
                 onClick={() => toggleModal()}
                 className={`${styles['modal-x']} absolute top-6 right-6 z-10`}

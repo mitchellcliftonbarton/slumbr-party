@@ -79,9 +79,9 @@ export default function Home({ data }) {
             <VideoBlock
               film={film}
               title={title}
-              classes="col-span-12 lg:col-span-11 lg:col-start-2 mb-20"
+              classes="col-span-12 lg:col-span-11 lg:col-start-2 mb-4 lg:mb-20"
               key={index}
-              href={`/films/${film.slug}`}
+              href={`/directors/film/${film.slug}`}
             />
           )
         })}

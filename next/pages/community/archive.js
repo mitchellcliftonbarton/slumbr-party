@@ -31,10 +31,10 @@ export default function CommunityArchive({ data }) {
           <div className="events">
             {data.items.map((item, index) => (
               <div 
-                className={`${styles['event-detail-item']} w-full pb-def`} 
+                className={`${styles['event-detail-item']} w-full pb-4 lg:pb-def`} 
                 key={index}
               >
-                <div className={`${styles['event-border']} col-span-12 def-x mb-def`}>
+                <div className={`${styles['event-border']} col-span-12 def-x mb-4 lg:mb-def`}>
                   <div className='w-full'></div>
                 </div>
 

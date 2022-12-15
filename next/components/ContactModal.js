@@ -39,7 +39,7 @@ const ContactModal = ({ data, contactModalOpen, setContactModalOpen }) => {
               {data.contactPeopleItems.length > 0 && (
                 <div className="people">
                   {data.contactPeopleItems.map((item, index) => (
-                    <div className="item level-subhead text-merlot text-center mb-10" key={index}>
+                    <div className="item level-subhead text-merlot text-center mb-6 lg:mb-10" key={index}>
                       <h2 className='uppercase'>{item.name}</h2>
                       <p>{item.title}</p>
                       <Link href={`mailto:${item.email}`}>{item.email}</Link>
@@ -49,7 +49,7 @@ const ContactModal = ({ data, contactModalOpen, setContactModalOpen }) => {
               )}
 
               {data.contactPeopleItems.length > 0 && data.contactLocationItems.length > 0 && (
-                <div className={`${pageStyles['contact-diamond']} flex justify-center pt-6 pb-12`}>
+                <div className={`${pageStyles['contact-diamond']} flex justify-center pt-4 lg:pt-6 pb-8 lg:pb-12`}>
                   <Diamond />
                 </div>
               )}
@@ -57,7 +57,7 @@ const ContactModal = ({ data, contactModalOpen, setContactModalOpen }) => {
               {data.contactLocationItems.length > 0 && (
                 <div className="people">
                   {data.contactLocationItems.map((item, index) => (
-                    <div className="item level-subhead text-merlot text-center mb-10" key={index}>
+                    <div className="item level-subhead text-merlot text-center mb-6 lg:mb-10" key={index}>
                       <h2 className='uppercase'>{item.name}</h2>
                       <p>{item.title}</p>
                       <Link href={`mailto:${item.email}`}>{item.email}</Link>

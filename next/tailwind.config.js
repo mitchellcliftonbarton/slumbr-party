@@ -19,7 +19,7 @@ module.exports = {
     },
     fontSize: {
       'level-1': ['10rem', '1.1'],
-      'level-1-mobile': ['4.6rem', '1.21'],
+      'level-1-mobile': ['4.2rem', '1.21'],
       'level-2': ['4.6rem', '1.17'],
       'level-2-mobile': ['3rem', '1.26'],
       'level-3': ['3rem', '1.26'],
