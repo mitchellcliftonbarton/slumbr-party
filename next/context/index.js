@@ -12,6 +12,7 @@ export function AppWrapper({ children }) {
 
   const updateFns = {
     setShowLoadOverlay: (val) => {
+      console.log('set', val)
       sharedState.showLoadOverlay = val
     },
     setShowNav: (val) => {

@@ -215,6 +215,7 @@
 
 #footer {
   height: auto;
+  min-height: 100vh;
 
   @media screen and (min-width: theme("screens.lg")) {
     height: 100vh;
@@ -291,6 +292,7 @@
   opacity: 0;
   cursor: pointer;
   pointer-events: none;
+  transition: opacity .6s;
 
   svg {
     opacity: .9;

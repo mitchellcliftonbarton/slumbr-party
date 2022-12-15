@@ -42,6 +42,7 @@ columns:
             label: Director
             options: query
             query: site.find('Directors').children
+            required: true
           categories:
             type: multiselect
             label: Categories

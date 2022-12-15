@@ -85,7 +85,7 @@ export default function Directors({ data }) {
                     >
                       {data.directors[activeDirector].films.map((film, idx) => (
                         <div 
-                          className="film-image w-1/2 lg:w-1/6 mx-2 lg:mx-def-1/2" 
+                          className="film-image w-1/2 lg:w-1/6 mx-2 lg:mx-def-1/2 flex-0-0" 
                           key={idx}
                         >
                           <div
@@ -195,7 +195,7 @@ export async function getStaticProps() {
       }
     })
 
-    director.films = films
+    director.films = films.length < 6 ? films.concat(films).concat(films) : films
   })
 
   return {

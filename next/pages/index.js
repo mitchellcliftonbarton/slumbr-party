@@ -16,7 +16,6 @@ import LoadOverlay from '../components/LoadOverlay'
 import VideoBlock from '../components/VideoBlock'
 
 export default function Home({ data }) {
-  console.log(data)
   const [videoLoaded, setVideoLoaded] = useState(false)
   const video = useRef(null)
 
@@ -56,7 +55,9 @@ export default function Home({ data }) {
       )}
 
       <div className="directors bg-parchment def-x py-12 grid grid-cols-12 gap-def pb-40">
-        <h2 className={`${styles['directors-title']} enter-in-1 upright level-subhead text-merlot hidden lg:block`}>Directors</h2>
+        {data.directorsTitle && (
+          <h2 className={`${styles['directors-title']} enter-in-1 upright level-subhead text-merlot hidden lg:block`}>{data.directorsTitle}</h2>
+        )}
 
         <div className="col-span-12 lg:col-span-11 lg:col-start-2 mb-24 lg:mb-20">
           {data.directorHeadline && (
@@ -119,6 +120,7 @@ export async function getStaticProps() {
               url: true
             }
           },  
+          directorsTitle: "page.directors_title",
           directorHeadline: "page.headline.markdown",
           directorFilms: {
             query: "page.films.toPages",

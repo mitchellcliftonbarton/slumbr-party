@@ -44,7 +44,8 @@ const Layout = ({ children }) => {
 
   useEffect(() => {
     document.addEventListener('mousemove', e => {
-      if (!showCursor) {
+      if (!showCursor && router.pathname !== '/films/[slug]' && router.pathname !== '/directors/films/[slug]') {
+        console.log('setting on mousemove')
         setShowCursor(true)
       }
       setCursorX(e.clientX + 20)
@@ -52,7 +53,10 @@ const Layout = ({ children }) => {
     })
 
     document.addEventListener('mouseenter', e => {
-      setShowCursor(true)
+      if (!showCursor && router.pathname !== '/films/[slug]' && router.pathname !== '/directors/films/[slug]') {
+        console.log('set on mouseenter')
+        setShowCursor(true)
+      }
     })
 
     document.addEventListener('mouseleave', e => {
@@ -75,6 +79,14 @@ const Layout = ({ children }) => {
           document.body.style.overflow = 'initial'
         }
       }
+    }
+
+    if (router.pathname === '/films/[slug]' || router.pathname === '/directors/film/[slug]') {
+      console.log('on film page')
+      setShowCursor(false)
+    } else {
+      console.log('on other page')
+      if (!showCursor) setShowCursor(true)
     }
 
     // close mobile menu on route change

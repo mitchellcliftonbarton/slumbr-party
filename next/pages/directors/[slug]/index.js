@@ -22,15 +22,16 @@ export default function DirectorsDetail({ data, filmsData }) {
         <h1 className={`enter-in-1 text-merlot level-1`}>{data.title}</h1>
       </div>
 
-      <div className="pt-32 lg:pt-12 pb-40">
+      <div className="pt-32 lg:pt-4 pb-40">
         {filmsData.length > 0 && (
-          <div className='films grid grid-cols-12 gap-def mb-def'>
+          <div className='films grid grid-cols-12 gap-def'>
             {filmsData.map((film, index) => (
               <VideoBlock
                 film={film}
                 classes="fade-in col-span-12 lg:col-span-6 relative"
                 key={index}
                 href={`/directors/film/${film.slug}`}
+                showTitleOnHover
                 style={{
                   animationDelay: `${2000 + (100 * (index + 1))}ms`
                 }}
@@ -40,24 +41,28 @@ export default function DirectorsDetail({ data, filmsData }) {
         )}
 
         <div
-          className="fade-in info"
+          className={`${styles['director-info']} fade-in grid grid-cols-12 gap-def`}
           style={{
             animationDelay: `2500ms`
           }}
         >
-          {data.bio && (
-            <div 
-              className="w-full lg:w-5/12 level-body text-merlot mb-60" 
-              dangerouslySetInnerHTML={{ __html: data.bio }}
-            ></div>
-          )}
+          <div className="col-span-12 lg:col-span-6 relative">
+            <div className="relative lg:absolute top-0 left-0 w-full h-full flex flex-col justify-between items-start">
+              {data.bio && (
+                <div 
+                  className="w-full level-body text-merlot mb-60 lg:mb-0" 
+                  dangerouslySetInnerHTML={{ __html: data.bio }}
+                ></div>
+              )}
 
-          {data.instagramLink && data.instagramLinkTitle && (
-            <Link 
-              href={data.instagramLink} 
-              className="level-subhead text-merlot"
-            >{data.instagramLinkTitle}&nbsp;↗</Link>
-          )}
+              {data.instagramLink && data.instagramLinkTitle && (
+                <Link 
+                  href={data.instagramLink} 
+                  className="level-subhead text-merlot"
+                >{data.instagramLinkTitle}&nbsp;↗</Link>
+              )}
+            </div>
+          </div>
         </div>
       </div>
     </div>

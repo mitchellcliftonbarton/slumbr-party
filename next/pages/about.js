@@ -100,7 +100,7 @@ export default function About({ data }) {
       )}
 
       {showInfo && (
-        <div className="delay-100 info w-full lg:w-5/12 mb-60">
+        <div className={`${styles.info} delay-100 info w-full lg:w-5/12`}>
           {data.text && (
             <div 
               className="level-body rich-text" 

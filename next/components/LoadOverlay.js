@@ -3,59 +3,35 @@ import styles from './../styles/Globals.module.scss'
 
 import { useEffect, useState } from 'react'
 import Cookies from 'js-cookie'
-import { useAppState, useAppUpdate } from '../context'
+// import { useAppState, useAppUpdate } from '../context'
 
 const LoadOverlay = () => {
-  const state = useAppState()
-  const update = useAppUpdate()
+  // const state = useAppState()
+  // const update = useAppUpdate()
 
-  const [hasTransition, setHasTransition] = useState(false)
-  const [isLargeQuery, setIsLargeQuery] = useState(false)
+  const [showLoadOverlay, setShowLoadOverlay] = useState(false)
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      setIsLargeQuery(window.matchMedia( '(min-width: 992px)' ).matches)
-    }
-
     if (!Cookies.get('slumbr-party-splash')) {
-      update.setShowLoadOverlay(true)
+      // update.setShowLoadOverlay(true)
+      setShowLoadOverlay(true)
+
+      setTimeout(() => {
+        toggleOff()
+      }, 5000)
     }
   }, [])
 
   const toggleOff = () => {
-    setHasTransition(true)
-    update.setShowLoadOverlay(false)
-    update.setShowNav(true)
+    // update.setShowLoadOverlay(false)
+    setShowLoadOverlay(false)
+    // update.setShowNav(true)
 
-    console.log(state)
     Cookies.set('slumbr-party-splash', 'true', { expires: .5 })
   }
 
-  if (state.showLoadOverlay) {
-    // document.body.addEventListener('click', () => {
-    //   if (state.showLoadOverlay) {
-    //     toggleOff()
-    //   }
-    // })
-
-    // window.addEventListener('scroll', () => {
-    //   if (state.showLoadOverlay) {
-    //     toggleOff()
-    //   }
-    // })
-
-    setTimeout(() => {
-      toggleOff()
-    }, 4000)
-  }
-
   return (
-    <div
-      className={`${styles['load-overlay']} ${state.showLoadOverlay ? styles.open : null} absolute top-0 left-0 w-full h-full flex justify-center items-start`}
-      style={{
-        transition: hasTransition ? 'opacity .6s' : 'none'
-      }}
-    >
+    <div className={`${styles['load-overlay']} ${showLoadOverlay ? styles.open : null} absolute top-0 left-0 w-full h-full flex justify-center items-start`}>
       <svg 
         className='hidden lg:block'
         viewBox="0 0 1418 865" 
