@@ -9,7 +9,7 @@ const MainFooter = ({ data, directors }) => {
   return (
     <footer 
       id={styles.footer} 
-      className="def-padding bg-merlot flex flex-col justify-between"
+      className="main-footer def-padding bg-merlot flex flex-col justify-between"
     >
       <div className={`${styles.top} flex flex-wrap lg:flex-nowrap justify-between items-start`}>
         {data.footerIntroText && (

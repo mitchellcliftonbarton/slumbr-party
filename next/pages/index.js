@@ -18,12 +18,6 @@ import VideoBlock from '../components/VideoBlock'
 export default function Home({ data }) {
   const [videoLoaded, setVideoLoaded] = useState(false)
   const video = useRef(null)
-
-  useEffect(() => {
-    setTimeout(() => {
-      setVideoLoaded(true)
-    }, 100)
-  }, [])
   
   return (
     <div className={`${styles.home}`}>
@@ -47,6 +41,11 @@ export default function Home({ data }) {
               preload="true"
               playsInline
               className='object-cover w-full h-full'
+              onLoadedData={() => {
+                setTimeout(() => {
+                  setVideoLoaded(true)
+                }, 200)
+              }}
             ></video>
           </div>
 

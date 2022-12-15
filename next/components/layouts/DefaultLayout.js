@@ -45,7 +45,7 @@ const Layout = ({ children }) => {
   useEffect(() => {
     document.addEventListener('mousemove', e => {
       if (!showCursor && router.pathname !== '/films/[slug]' && router.pathname !== '/directors/film/[slug]') {
-        console.log('setting on mousemove')
+        // console.log('setting on mousemove')
         setShowCursor(true)
       }
       setCursorX(e.clientX + 20)

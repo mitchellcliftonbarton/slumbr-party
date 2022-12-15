@@ -4,7 +4,7 @@ import { ScrollToPlugin } from 'gsap/dist/ScrollToPlugin'
 gsap.registerPlugin(ScrollToPlugin)
 
 // React
-import { useState, useRef, useEffect, useLayoutEffect } from 'react'
+import { useState, useRef, useEffect } from 'react'
 
 // Components
 import DefaultLayout from '../components/layouts/DefaultLayout'
@@ -19,16 +19,10 @@ export default function About({ data }) {
   const [videoLoaded, setVideoLoaded] = useState(false)
   const video = useRef(null)
   const aboutContainer = useRef(null)
+  const aboutText = useRef(null)
 
   useEffect(() => {
-    setTimeout(() => {
-      setVideoLoaded(true)
-    }, 100)
-
     if (window !== undefined && document !== undefined) {
-      const height = document.documentElement.scrollHeight
-      const time = height / 90
-
       gsap.set(window, {
         scrollTo: {
           y: 0
@@ -36,11 +30,12 @@ export default function About({ data }) {
       })
 
       gsap.to(window, {
-        duration: time,
+        duration: 10,
         ease: 'none',
         scrollTo: {
-          y: 'max',
-          autoKill: true
+          y: aboutText.current,
+          autoKill: true,
+          offsetY: 100
         }
       })
     }
@@ -70,6 +65,11 @@ export default function About({ data }) {
                   preload="true"
                   playsInline
                   className='object-cover w-full h-full'
+                  onLoadedData={() => {
+                    setTimeout(() => {
+                      setVideoLoaded(true)
+                    }, 100)
+                  }}
                 ></video>
               </div>
             </div>
@@ -100,7 +100,10 @@ export default function About({ data }) {
       )}
 
       {showInfo && (
-        <div className={`${styles.info} delay-100 info w-full lg:w-5/12`}>
+        <div 
+          ref={aboutText} 
+          className={`${styles.info} delay-100 info w-full lg:w-5/12`}
+        >
           {data.text && (
             <div 
               className="level-body rich-text" 
