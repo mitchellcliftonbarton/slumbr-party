@@ -67,17 +67,17 @@ export default function DirectorFilmDetail({ data, films }) {
   const titleString = `${data.director ? `${data.director.title.toUpperCase()} ` : ''}${data.title}${data.videoTitle ? data.videoTitle : ''}`
 
   return (
-    <div className={`push-nav bg-merlot`}>
+    <div className={`push-nav bg-merlot min-h-screen`}>
       <Head>
         <title>SLUMBR PARTY | {data.title}</title>
         <meta name="description" content="Slumbr Party" />
       </Head>
 
-      <div className="pt-32 lg:pt-12 pb-60">
+      <div className="pt-40 lg:pt-32 lg:pt-12 pb-60">
         {data.vimeoId && (
-          <div className='def-x mb-32'>
+          <div className='def-x mb-60 lg:mb-32'>
             <div
-              className={`${styles['main-video']} enter-in-1 relative mb-def`}
+              className={`${styles['main-video']} enter-in-1 relative mb-4 lg:mb-def`}
               style={{
                 paddingBottom: '56.25%'
               }}
@@ -116,7 +116,7 @@ export default function DirectorFilmDetail({ data, films }) {
         )}
 
         {films.length > 0 && (
-          <div className="more-films fade-in delay-100">
+          <div className="more-films fade-in delay-100 mb-32 lg:mb-48">
             <h2 className='level-3 text-parchment text-left def-x mb-8'>More Films{data.director ? ` by ${data.director.title}` : ''}</h2>
 
             <div 
@@ -127,7 +127,7 @@ export default function DirectorFilmDetail({ data, films }) {
             >
               {films.map((film, index) => (
                 <div 
-                  className="item w-3/4 lg:w-1/4 flex-0-0 whitespace-nowrap px-def-1/2" 
+                  className="item w-3/4 lg:w-1/4 flex-0-0 whitespace-nowrap px-2 lg:px-def-1/2" 
                   key={index}
                 >
                   <Link 
@@ -135,7 +135,7 @@ export default function DirectorFilmDetail({ data, films }) {
                     className="w-full" 
                   >
                     <div
-                      className="inner relative overflow-hidden border-radius-def mb-def"
+                      className="inner relative overflow-hidden border-radius-def mb-4 lg:mb-def"
                       style={{
                         paddingBottom: '56.25%',
                         backgroundColor: 'rgba(255, 255, 255, .1)'
@@ -152,13 +152,17 @@ export default function DirectorFilmDetail({ data, films }) {
                       </div>
                     </div>
 
-                    <h3 className='level-subhead text-merlot'>{film.title}</h3>
+                    <h3 className='level-subhead text-parchment'>{film.title}</h3>
                   </Link>
                 </div>
               ))}
             </div>
           </div>
         )}
+
+        <div className="def-x">
+          <Link href="/directors" className='level-subhead text-parchment'>← Back to Directors</Link>
+        </div>
       </div>
     </div>
   )

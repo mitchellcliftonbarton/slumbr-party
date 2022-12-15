@@ -60,17 +60,17 @@ export default function FilmDetail({ data, films }) {
   }, [marqueePaused])
 
   return (
-    <div className={`push-nav bg-periwinkle`}>
+    <div className={`push-nav bg-periwinkle min-h-screen`}>
       <Head>
         <title>SLUMBR PARTY | {data.title}</title>
         <meta name="description" content="Slumbr Party" />
       </Head>
 
-      <div className="pt-32 lg:pt-12 pb-60">
+      <div className="pt-40 lg:pt-32 lg:pt-12 pb-60">
         {data.vimeoId && (
-          <div className='def-x mb-32'>
+          <div className='def-x mb-60 lg:mb-32'>
             <div
-              className={`${styles['main-video']} enter-in-1 relative mb-def`}
+              className={`${styles['main-video']} enter-in-1 relative mb-4 lg:mb-def`}
               style={{
                 paddingBottom: '56.25%'
               }}
@@ -109,7 +109,7 @@ export default function FilmDetail({ data, films }) {
         )}
 
         <div className="more-films fade-in delay-100">
-          <h2 className='level-3 text-merlot text-left def-x mb-8'>More Films</h2>
+          <h2 className='level-subhead lg:level-3 text-merlot text-left def-x mb-4 lg:mb-8'>More Films</h2>
 
           <div 
             ref={marquee}
@@ -119,7 +119,7 @@ export default function FilmDetail({ data, films }) {
           >
             {films.map((film, index) => (
               <div 
-                className="item w-3/4 lg:w-1/4 flex-0-0 whitespace-nowrap px-def-1/2" 
+                className="item w-3/4 lg:w-1/4 flex-0-0 whitespace-nowrap px-2 lg:px-def-1/2" 
                 key={index}
               >
                 <Link 
@@ -127,7 +127,7 @@ export default function FilmDetail({ data, films }) {
                   className="w-full" 
                 >
                   <div
-                    className="inner relative overflow-hidden border-radius-def mb-def"
+                    className="inner relative overflow-hidden border-radius-def mb-4 lg:mb-def"
                     style={{
                       paddingBottom: '56.25%',
                       backgroundColor: 'rgba(255, 255, 255, .1)'
@@ -215,6 +215,12 @@ export async function getStaticProps(context) {
               width: true,
               height: true,
               alt: true,
+            }
+          },
+          director: {
+            query: "page.director.toPage",
+            select: {
+              title: true
             }
           },
           videoPoster: {
