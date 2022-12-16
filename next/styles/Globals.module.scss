@@ -2,13 +2,6 @@
   height: var(--nav-height);
   z-index: 500;
   transition: background-color .6s, opacity .3s;
-  // opacity: 0;
-  // pointer-events: none;
-
-  // &.show {
-  //   opacity: 1;
-  //   pointer-events: auto;
-  // }
 
   .home-link {
     svg {
@@ -63,7 +56,8 @@
     }
   }
 
-  &.default {
+  &.transparent-parchment,
+  &.merlot {
     .home-link {
       svg {
         path {
@@ -107,7 +101,9 @@
         }
       }
     }
+  }
 
+  &.transparent-parchment {
     &.hovered {
       background-color: theme('colors.parchment');
 
@@ -142,6 +138,14 @@
   }
 
   &.merlot {
+    &.hovered {
+      background-color: theme('colors.merlot');
+    }
+  }
+
+  &.transparent-merlot,
+  &.coral,
+  &.periwinkle {
     .home-link {
       svg {
         path {
@@ -177,9 +181,23 @@
         }
       }
     }
+  }
 
+  &.transparent-merlot {
     &.hovered {
       background-color: theme('colors.parchment');
+    }
+  }
+
+  &.coral {
+    &.hovered {
+      background-color: theme('colors.coral');
+    }
+  }
+
+  &.periwinkle {
+    &.hovered {
+      background-color: theme('colors.periwinkle');
     }
   }
 

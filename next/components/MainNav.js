@@ -9,16 +9,27 @@ import styles from './../styles/Globals.module.scss'
 // React
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
+import { useAppUpdate, useAppState } from '../context'
 
-const MainNav = ({links, menuOpen, setMenuOpen, setContactModalOpen}) => {
+const MainNav = ({links, setMenuOpen}) => {
   const router = useRouter()
   const [hovered, setHovered] = useState(false)
+  const state = useAppState()
+  const update = useAppUpdate()
 
-  let navClass = styles.merlot
-
-  if (router.pathname === '/about' || router.pathname === '/directors/film/[slug]') {
-    navClass = styles.default
-  }
+  useEffect(() => {
+    if (router.pathname === '/about' || router.pathname === '/') {
+      update.setNavClass('transparent-parchment')
+    } else if (router.pathname === '/directors/film/[slug]') {
+      update.setNavClass('merlot')
+    } else if (router.pathname === '/films/[slug]') {
+      update.setNavClass('periwinkle')
+    } else if (router.pathname === '/community') {
+      update.setNavClass('coral')
+    } else {
+      update.setNavClass('transparent-merlot')
+    }
+  }, [router.asPath])
 
   const menuOn = () => {
     setMenuOpen(true)
@@ -36,7 +47,7 @@ const MainNav = ({links, menuOpen, setMenuOpen, setContactModalOpen}) => {
       id={styles['main-nav']} 
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className={`${navClass} ${hovered ? styles.hovered : null} fixed top-0 left-0 w-full flex justify-between items-center def-x`}
+      className={`${styles[state.navClass]} ${hovered ? styles.hovered : null} fixed top-0 left-0 w-full flex justify-between items-center def-x`}
     >
       <Link 
         href="/" 

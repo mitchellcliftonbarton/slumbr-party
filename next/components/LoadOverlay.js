@@ -3,17 +3,12 @@ import styles from './../styles/Globals.module.scss'
 
 import { useEffect, useState } from 'react'
 import Cookies from 'js-cookie'
-// import { useAppState, useAppUpdate } from '../context'
 
 const LoadOverlay = () => {
-  // const state = useAppState()
-  // const update = useAppUpdate()
-
   const [showLoadOverlay, setShowLoadOverlay] = useState(false)
 
   useEffect(() => {
     if (!Cookies.get('slumbr-party-splash')) {
-      // update.setShowLoadOverlay(true)
       setShowLoadOverlay(true)
 
       setTimeout(() => {
@@ -23,9 +18,7 @@ const LoadOverlay = () => {
   }, [])
 
   const toggleOff = () => {
-    // update.setShowLoadOverlay(false)
     setShowLoadOverlay(false)
-    // update.setShowNav(true)
 
     Cookies.set('slumbr-party-splash', 'true', { expires: .5 })
   }

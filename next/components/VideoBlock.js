@@ -9,19 +9,17 @@ const VideoBlock = ({ film, title, classes, style, href, showTitleOnHover = fals
   const [showVideo, setShowVideo] = useState(false)
   const [hideImage, setHideImage] = useState(false)
   const hoverVideo = useRef(null)
-  let showVideoTimeout = null
 
   const handleMouseEnter = () => {
     console.log('entered')
-    // clearTimeout(showVideoTimeout)
 
     if (film.hoverVideo) {
       if (!showVideo) {
+        hoverVideo.current.currentTime = 0
         setShowVideo(true)
         setHideImage(true)
       } else {
         console.log('already true')
-        clearTimeout(showVideoTimeout)
         setShowVideo(true)
         setHideImage(true)
       }
@@ -31,8 +29,7 @@ const VideoBlock = ({ film, title, classes, style, href, showTitleOnHover = fals
   const handleMouseLeave = () => {
     if (film.hoverVideo) {
       setHideImage(false)
-      // setShowVideo(false)
-      showVideoTimeout = setTimeout(() => {
+      setTimeout(() => {
         setShowVideo(false)
       }, 400)
     }
@@ -48,7 +45,7 @@ const VideoBlock = ({ film, title, classes, style, href, showTitleOnHover = fals
     >
       <div className={`${styles['director-film-image']} relative mb-4 lg:mb-def`}>
         <div className='overflow-hidden absolute top-0 left-0 w-full h-full'>
-          {film.hoverVideo && showVideo && (
+          {film.hoverVideo && film.hoverVideo.url && (
             <div className={`${styles['hover-video']} absolute top-0 left-0 w-full h-full`}>
               <video
                 ref={hoverVideo}
@@ -58,6 +55,7 @@ const VideoBlock = ({ film, title, classes, style, href, showTitleOnHover = fals
                 playsInline
                 muted
                 loop
+                preload='true'
               ></video>
             </div>
           )}

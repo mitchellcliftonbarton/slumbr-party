@@ -1,22 +1,21 @@
-import { createContext, useContext } from 'react'
+import { createContext, useContext, useState } from 'react'
 
 // GLOBAL STATE
 const AppStateContext = createContext()
 const AppUpdateContext = createContext()
 
 export function AppWrapper({ children }) {
-  const sharedState = {
-    showLoadOverlay: false,
-    showNav: false
-  }
+  const [sharedState, setSharedState] = useState({
+    navClass: 'transparent-parchment'
+  })
 
   const updateFns = {
-    setShowLoadOverlay: (val) => {
-      console.log('set', val)
-      sharedState.showLoadOverlay = val
-    },
-    setShowNav: (val) => {
-      sharedState.showNav = val
+    setNavClass: (val) => {
+      const newObj = {
+        navClass: val
+      }
+
+      setSharedState(newObj)
     }
   }
 

@@ -86,7 +86,7 @@
     z-index: 1;
     opacity: 1;
     transition: opacity .3s;
-    transition-delay: 0s;
+    transition-delay: .1s;
   }
 
   .plus {
@@ -106,7 +106,7 @@
   &.show-video {
     .director-film-image-inner {
       opacity: 0;
-      transition-delay: 200ms;
+      // transition-delay: 200ms;
     }
   }
 

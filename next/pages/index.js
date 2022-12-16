@@ -1,5 +1,8 @@
 import Head from 'next/head'
-import { useAppState, useAppUpdate } from '../context'
+import { useAppUpdate } from '../context'
+import { gsap } from 'gsap/dist/gsap'
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
+gsap.registerPlugin(ScrollTrigger)
 
 // Components
 import DefaultLayout from '../components/layouts/DefaultLayout'
@@ -18,6 +21,22 @@ import VideoBlock from '../components/VideoBlock'
 export default function Home({ data }) {
   const [videoLoaded, setVideoLoaded] = useState(false)
   const video = useRef(null)
+  const directorsSection = useRef(null)
+  const update = useAppUpdate()
+
+  useEffect(() => {
+    ScrollTrigger.create({
+      trigger: directorsSection.current,
+      start: "top top",
+      end: "top top",
+      onEnter: () => {
+        update.setNavClass('transparent-merlot')
+      },
+      onLeaveBack: () => {
+        update.setNavClass('transparent-parchment')
+      }
+    })
+  }, [])
   
   return (
     <div className={`${styles.home}`}>
@@ -26,7 +45,7 @@ export default function Home({ data }) {
         <meta name="description" content="Slumbr Party" />
       </Head>
 
-      <h1 className="wcag-hidden">Slumbr Party | Home</h1>
+      <h1 className="wcag-hidden">Home</h1>
 
       {data.reelVideo && data.reelVideoPoster && (
         <div className={`${styles.hero} ${videoLoaded ? styles.loaded : null}`}>
@@ -53,7 +72,10 @@ export default function Home({ data }) {
         </div>
       )}
 
-      <div className="directors bg-parchment def-x py-12 grid grid-cols-12 gap-def pb-40">
+      <div 
+        ref={directorsSection} 
+        className="directors bg-parchment def-x py-12 grid grid-cols-12 gap-def pb-40"
+      >
         {data.directorsTitle && (
           <h2 className={`${styles['directors-title']} enter-in-1 upright level-subhead text-merlot hidden lg:block`}>{data.directorsTitle}</h2>
         )}
