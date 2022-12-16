@@ -35,7 +35,7 @@ export default function Directors({ data }) {
         <div className="def-x">
           {data.introText && data.introText !== '' && (
             <div 
-              className="enter-in-1 level-body text-merlot w-full lg:w-5/12" 
+              className="enter-in-1 level-body text-merlot w-full lg:w-5/12 lg:hidden" 
               dangerouslySetInnerHTML={{ __html: data.introText }}
             ></div>
           )}
@@ -59,8 +59,17 @@ export default function Directors({ data }) {
           )}
         </div>
 
+        <div className="fixed top-0 left-0 w-full h-full pt-32 pointer-events-none hidden lg:block">
+          {data.introText && data.introText !== '' && (
+            <div 
+              className="enter-in-1 level-body text-merlot w-full lg:w-5/12 def-x pointer-events-auto" 
+              dangerouslySetInnerHTML={{ __html: data.introText }}
+            ></div>
+          )}
+        </div>
+
         {data.directors.length > 0 && (
-          <div className={`${styles['films-marquee']} relative py-def-mobile lg:py-def`}>
+          <div className={`${styles['films-marquee']} relative py-def-mobile lg:py-def fixed bottom-0 left-0 w-full`}>
             <div className='relative'>
               <div className="spacer w-1/2 lg:w-1/6 pointer-events-none opacity-0">
                 <div
