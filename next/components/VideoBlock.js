@@ -11,15 +11,12 @@ const VideoBlock = ({ film, title, classes, style, href, showTitleOnHover = fals
   const hoverVideo = useRef(null)
 
   const handleMouseEnter = () => {
-    console.log('entered')
-
     if (film.hoverVideo) {
       if (!showVideo) {
         hoverVideo.current.currentTime = 0
         setShowVideo(true)
         setHideImage(true)
       } else {
-        console.log('already true')
         setShowVideo(true)
         setHideImage(true)
       }

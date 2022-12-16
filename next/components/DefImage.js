@@ -13,8 +13,7 @@ const DefImage = ({src, alt, style, width, height, className}) => {
       alt={alt}
       style={style}
       className={`${styles['def-image']} ${loaded ? styles.loaded : false} ${className}`}
-      onLoadingComplete={img => {
-        // console.log('image loaded', img)
+      onLoadingComplete={() => {
         setLoaded(true)
       }}
       width={width}

@@ -3,7 +3,6 @@ import Vimeo from '@u-wave/react-vimeo'
 
 // Components
 import DefaultLayout from '../../components/layouts/DefaultLayout'
-import Link from 'next/link'
 import DefImage from '../../components/DefImage'
 import { Play } from '../../components/icons/Icons'
 import FilmSlider from '../../components/FilmSlider'

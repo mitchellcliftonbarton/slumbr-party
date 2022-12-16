@@ -45,7 +45,6 @@ const Layout = ({ children }) => {
   useEffect(() => {
     document.addEventListener('mousemove', e => {
       if (!showCursor && router.pathname !== '/films/[slug]' && router.pathname !== '/directors/film/[slug]') {
-        // console.log('setting on mousemove')
         setShowCursor(true)
       }
       setCursorX(e.clientX + 20)
@@ -54,7 +53,6 @@ const Layout = ({ children }) => {
 
     document.addEventListener('mouseenter', e => {
       if (!showCursor && router.pathname !== '/films/[slug]' && router.pathname !== '/directors/film/[slug]') {
-        console.log('set on mouseenter')
         setShowCursor(true)
       }
     })
@@ -82,10 +80,8 @@ const Layout = ({ children }) => {
     }
 
     if (router.pathname === '/films/[slug]' || router.pathname === '/directors/film/[slug]') {
-      console.log('on film page')
       setShowCursor(false)
     } else {
-      console.log('on other page')
       if (!showCursor) setShowCursor(true)
     }
 
