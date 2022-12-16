@@ -11,26 +11,31 @@ columns:
             label: Reel Video
             type: files
             multiple: false
+            help: This video will show up in the home page hero section.
           reel_video_poster:
             label: Reel Video Poster
             type: files
             multiple: false
+            help: This image will show up as a backup to the reel video if it doesnt load. Ideally should be the first frame of the reel video.
       directors:
         type: fields
         fields:
           directors_title:
             label: Directors Title
             type: text
+            help: This text appears vertically in the directors section.
           headline:
             label: Directors Section Headline
             type: textarea
             size: medium
+            help: The big text at the top of the directors section.
           films:
             label: Directors Section Films
             type: pages
             multiple: true
             query: site.find('Films')
             subpages: false
+            help: Film items in the directors section.
   - width: 1/4
     sections:
       build:

@@ -20,6 +20,7 @@ columns:
             label: Bio
             type: textarea
             size: medium
+            help: Bio text for the director.
           instagram_link_title:
             label: Instagram Link Title
             type: text
@@ -27,6 +28,7 @@ columns:
           instagram_link:
             label: Instagram Link
             type: url
+            help: The actual instagram url — i.e. "instagram.com/luukahh"
   - width: 1/4
     sections:
       build:

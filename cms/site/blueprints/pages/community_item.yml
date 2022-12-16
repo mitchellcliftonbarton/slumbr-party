@@ -19,15 +19,19 @@ columns:
           date:
             type: date
             label: Date
+            help: Date for the event.
           location:
             type: text
             label: Location
+            help: i.e. "Staples Center"
           time:
             type: text
             label: Time
+            help: Event time — i.e. "7:00 PM"
           rsvp_link:
             type: url
             label: RSVP Link
+            help: A url for an rsvp link.
           description:
             type: textarea
             label: Description
@@ -35,6 +39,7 @@ columns:
             type: files
             label: Gallery Images
             multiple: true
+            help: These image will show up on the community archive page in the items slider.
   - width: 1/4
     sections:
       build:

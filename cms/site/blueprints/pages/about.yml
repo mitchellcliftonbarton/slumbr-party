@@ -7,17 +7,16 @@ columns:
       top:
         type: fields
         fields:
-          background_vimeo_id:
-            label: Background Vimeo ID
-            type: text
           background_video:
             label: Background Video
             type: files
             multiple: false
+            help: This video will show up as the background video.
           background_video_poster:
             label: Background Video Poster
             type: files
             multiple: false
+            help: This image will show up as a backup to the background video if it doesnt load. Ideally should be the first frame of the background video.
           background_image:
             label: Background Image
             type: files

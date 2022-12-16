@@ -29,10 +29,12 @@ columns:
           vimeo_id:
             type: text
             label: Vimeo ID
+            help: The vimeo ID for this particular film. The vimeo video needs to be public for it to work.
           video_poster:
             type: files
             label: Video Poster
             multiple: false
+            help: The image that appears over the vimeo player before it has been played.
           video_title:
             type: text
             label: Video Title
@@ -43,15 +45,12 @@ columns:
             options: query
             query: site.find('Directors').children
             required: true
-          categories:
-            type: multiselect
-            label: Categories
-            options: query
-            query: site.find('Categories').children
+            help: The director for this film.
           description:
             type: textarea
             label: Description
             size: medium
+            help: Film description
           awards:
             type: structure
             label: Awards

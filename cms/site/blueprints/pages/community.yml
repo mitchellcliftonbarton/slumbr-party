@@ -26,6 +26,7 @@ columns:
             type: select
             options: query
             query: page.children.published
+            help: Choose an event from the available community items.
           no_upcoming_event_text:
             type: textarea
             label: No Upcoming Event Text
