@@ -1,13 +1,11 @@
 import Head from 'next/head'
-import { Swiper, SwiperSlide } from 'swiper/react'
 
 // Components
 import DefaultLayout from '../../components/layouts/DefaultLayout'
-import DefImage from '../../components/DefImage'
+import ArchiveSlider from '../../components/ArchiveSlider'
 
 // Styles
 import styles from './../../styles/Pages.module.scss'
-import 'swiper/css'
 
 export default function CommunityArchive({ data }) {
   return (
@@ -55,34 +53,7 @@ export default function CommunityArchive({ data }) {
                     )}
                   </div>
 
-                  <div
-                    className={`${styles['event-slider']} enter-in-1 col-span-12 lg:col-span-7 h-full`}
-                    style={{
-                      animationDelay: `${(index + 2) * 100}ms`
-                    }}
-                  >
-                    <Swiper
-                      className={`${styles['community-slider']} h-full`}
-                      spaceBetween={10}
-                      slidesPerView={"auto"}
-                      loop
-                      slideToClickedSlide
-                    >
-                      {item.galleryImages.map((image, index) => (
-                        <SwiperSlide
-                          key={index}
-                          className={styles['community-slide']}
-                        >
-                          <DefImage
-                            src={image.url}
-                            alt={image.alt}
-                            width={image.width}
-                            height={image.height}
-                          />
-                        </SwiperSlide>
-                      ))}
-                    </Swiper>
-                  </div>
+                  <ArchiveSlider item={item} index={index} />
                 </div>
               </div>
             ))}
