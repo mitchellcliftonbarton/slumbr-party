@@ -121,8 +121,10 @@ body {
   }
 
   &:hover {
-    &:after {
-      content: ' ↗';
+    @media screen and (min-width: theme("screens.lg")) {
+      &:after {
+        content: ' ↗';
+      }
     }
   }
 }

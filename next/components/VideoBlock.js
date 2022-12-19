@@ -41,7 +41,7 @@ const VideoBlock = ({ film, title, classes, style, href, showTitleOnHover = fals
       style={style}
     >
       <div className={`${styles['director-film-image']} relative mb-4 lg:mb-def`}>
-        <div className='overflow-hidden absolute top-0 left-0 w-full h-full'>
+        <div className='overflow-hidden absolute top-0 left-0 w-full h-full z-10'>
           {film.hoverVideo && film.hoverVideo.url && (
             <div className={`${styles['hover-video']} absolute top-0 left-0 w-full h-full`}>
               <video

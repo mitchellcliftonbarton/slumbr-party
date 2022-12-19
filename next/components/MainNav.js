@@ -16,6 +16,13 @@ const MainNav = ({links, setMenuOpen}) => {
   const [hovered, setHovered] = useState(false)
   const state = useAppState()
   const update = useAppUpdate()
+  const [isLargeQuery, setIsLargeQuery] = useState(false)
+
+  useEffect(() => {
+    if (window !== undefined) {
+      setIsLargeQuery(window.matchMedia("(min-width: 992px)").matches)
+    }
+  }, [])
 
   useEffect(() => {
     if (router.pathname === '/about' || router.pathname === '/') {
@@ -42,11 +49,23 @@ const MainNav = ({links, setMenuOpen}) => {
     setHovered(false)
   }, [router.asPath])
 
+  const handleMouseEnter = () => {
+    if (isLargeQuery) {
+      setHovered(true)
+    }
+  }
+
+  const handleMouseLeave = () => {
+    if (isLargeQuery) {
+      setHovered(false)
+    }
+  }
+
   return (
     <header 
       id={styles['main-nav']} 
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
+      onMouseEnter={() => handleMouseEnter}
+      onMouseLeave={() => handleMouseLeave()}
       className={`${styles[state.navClass]} ${hovered ? styles.hovered : null} fixed top-0 left-0 w-full flex justify-between items-center def-x`}
     >
       <Link 

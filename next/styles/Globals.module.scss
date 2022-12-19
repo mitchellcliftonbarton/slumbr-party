@@ -47,9 +47,11 @@
       }
 
       &:hover {
-        svg {
-          polygon {
-            fill: theme('colors.merlot');
+        @media screen and (min-width: theme("screens.lg")) {
+          svg {
+            polygon {
+              fill: theme('colors.merlot');
+            }
           }
         }
       }
@@ -85,9 +87,11 @@
         }
 
         &:hover {
-          svg {
-            polygon {
-              fill: theme('colors.merlot');
+          @media screen and (min-width: theme("screens.lg")) {
+            svg {
+              polygon {
+                fill: theme('colors.merlot');
+              }
             }
           }
         }
@@ -277,8 +281,10 @@
     }
 
     &:hover {
-      svg polygon {
-        fill: theme('colors.parchment');
+      @media screen and (min-width: theme("screens.lg")) {
+        svg polygon {
+          fill: theme('colors.parchment');
+        }
       }
     }
   }
