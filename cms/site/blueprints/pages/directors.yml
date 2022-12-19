@@ -30,7 +30,7 @@ columns:
             type: button
             label: Build Site
             text: Build Site
-            url: https://api.vercel.com/v1/integrations/deploy/prj_0XAnFnm6WH9QAEcEjs4ZZG5kGGPW/JsZCqecf3K
+            url: https://api.vercel.com/v1/integrations/deploy/prj_biq6fRMeHMqdYop2zy5wA6x7s3Md/lwdGrss5Dr
             theme: positive
             reload: true # trigger a page refresh on success to display updated data
             help: Trigger a site build here.
