@@ -33,6 +33,11 @@ const links = [
 ]
 
 const Layout = ({ children }) => {
+  console.log(
+    "%c \nDevelopment by Cold Rice \n \ncold-rice.info \n \n",
+    "color: grey"
+  );
+  
   const router = useRouter()
 
   const [cursorX, setCursorX] = useState(0)

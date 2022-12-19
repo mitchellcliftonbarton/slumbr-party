@@ -4,11 +4,6 @@ import '../styles/index.scss'
 function MyApp({ Component, pageProps, footerData, directorsData, contactData }) {
   const getLayout = Component.getLayout || ((page) => page)
 
-  console.log(
-    "%c \nDevelopment by Cold Rice \n \ncold-rice.info \n \n",
-    "color: grey"
-  );
-
   return getLayout(
     <Component 
       {...pageProps} 
