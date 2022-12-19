@@ -33,13 +33,6 @@ export default function Directors({ data }) {
 
       <div className="pt-32 min-h-screen">
         <div className="def-x">
-          {data.introText && data.introText !== '' && (
-            <div 
-              className="enter-in-1 level-body text-merlot w-full lg:w-5/12 lg:hidden" 
-              dangerouslySetInnerHTML={{ __html: data.introText }}
-            ></div>
-          )}
-
           {data.directors.length > 0 && (
             <div className='enter-in-1 delay-100 directors py-48 text-center px-def-mobile lg:px-20'>
               <div
@@ -56,15 +49,6 @@ export default function Directors({ data }) {
                 ))}
               </div>
             </div>
-          )}
-        </div>
-
-        <div className="fixed top-0 left-0 w-full h-full pt-32 pointer-events-none hidden lg:block">
-          {data.introText && data.introText !== '' && (
-            <div 
-              className="enter-in-1 level-body text-merlot w-full lg:w-5/12 def-x pointer-events-auto" 
-              dangerouslySetInnerHTML={{ __html: data.introText }}
-            ></div>
           )}
         </div>
 
