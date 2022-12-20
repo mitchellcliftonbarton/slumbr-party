@@ -17,9 +17,11 @@ import styles from './../styles/Pages.module.scss'
 // Components
 import LoadOverlay from '../components/LoadOverlay'
 import VideoBlock from '../components/VideoBlock'
+import { Play } from '../components/icons/Icons'
 
 export default function Home({ data }) {
   const [videoLoaded, setVideoLoaded] = useState(false)
+  const [showPlay, setShowPlay] = useState(false)
   const video = useRef(null)
   const directorsSection = useRef(null)
   const update = useAppUpdate()
@@ -37,6 +39,38 @@ export default function Home({ data }) {
       }
     })
   }, [])
+
+  useEffect(() => {
+    video.current.currentTime = 0
+    const playPromise = video.current.play()
+
+    if (playPromise !== undefined) {
+      playPromise
+        .then(() => {
+          console.log('autoplay worked')
+        })
+        .catch((error) => {
+          if (error.name === 'NotAllowedError') {
+            console.log('autoplay not allowed')
+            video.current.pause()
+
+            setShowPlay(true)
+          } else {
+            console.log('autoplay not working for another reason')
+            video.current.pause()
+
+            setShowPlay(true)
+          }
+        })
+    }
+  }, [video])
+
+  const handlePlay = () => {
+    if (video) {
+      video.current.play()
+      setShowPlay(false)
+    }
+  }
   
   return (
     <div className={`${styles.home}`}>
@@ -56,8 +90,7 @@ export default function Home({ data }) {
               ref={video}
               src={data.reelVideo.url} 
               poster={data.reelVideoPoster.url}
-              muted 
-              autoPlay 
+              muted
               loop 
               preload="true"
               playsInline
@@ -68,6 +101,15 @@ export default function Home({ data }) {
                 }, 200)
               }}
             ></video>
+
+            {showPlay && (
+              <div
+                onClick={handlePlay}
+                className={`${styles['play-button']} absolute top-0 left-0 w-full h-full flex justify-center items-center`}
+              >
+                <Play />
+              </div>
+            )}
           </div>
         </div>
       )}

@@ -17,6 +17,7 @@ export default function About({ data }) {
   const showInfo = data.text || data.clientTitle || data.clients.length > 0
 
   const [videoLoaded, setVideoLoaded] = useState(false)
+  const [hideVid, setHideVid] = useState(false)
   const video = useRef(null)
   const aboutContainer = useRef(null)
   const aboutText = useRef(null)
@@ -40,9 +41,34 @@ export default function About({ data }) {
       })
     }
   }, [])
+
+  useEffect(() => {
+    video.current.currentTime = 0
+    const playPromise = video.current.play()
+
+    if (playPromise !== undefined) {
+      playPromise
+        .then(() => {
+          console.log('autoplay worked')
+        })
+        .catch((error) => {
+          if (error.name === 'NotAllowedError') {
+            console.log('autoplay not allowed')
+            video.current.pause()
+
+            setHideVid(true)
+          } else {
+            console.log('autoplay not working for another reason')
+            video.current.pause()
+
+            setHideVid(true)
+          }
+        })
+    }
+  }, [video])
   
   return (
-    <div ref={aboutContainer} className='push-nav def-x relative'>
+    <div ref={aboutContainer} className={`${styles.about} ${hideVid ? styles['hide-vid'] : ''} push-nav def-x relative`}>
       <Head>
         <title>SLMBR PARTY | About</title>
         <meta name="description" content="Slmbr Party" />
@@ -59,11 +85,11 @@ export default function About({ data }) {
                   ref={video}
                   src={data.backgroundVideo.url} 
                   poster={data.backgroundVideoPoster.url}
-                  muted 
-                  autoPlay 
+                  muted
                   loop 
                   preload="true"
                   playsInline
+                  controls="false"
                   className='object-cover w-full h-full'
                   onLoadedData={() => {
                     setTimeout(() => {

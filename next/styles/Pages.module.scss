@@ -18,6 +18,16 @@
         opacity: 1;
       }
     }
+
+    .play-button {
+      svg {
+        width: 3rem;
+
+        @media screen and (min-width: theme("screens.lg")) {
+          width: 6.3rem;
+        }
+      }
+    }
   }
 }
 
@@ -227,18 +237,36 @@
   }
 }
 
-.bg-vid {
-  z-index: -1;
-  opacity: 0;
-  transition: opacity 1s;
+.about {
+  .bg-vid {
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 1s;
 
-  &.loaded {
-    opacity: 1;
+    &.loaded {
+      opacity: 1;
+    }
+
+    .play-button {
+      svg {
+        width: 3rem;
+
+        @media screen and (min-width: theme("screens.lg")) {
+          width: 6.3rem;
+        }
+      }
+    }
   }
-}
 
-.bg-image {
-  z-index: -1;
+  .bg-image {
+    z-index: -1;
+  }
+
+  &.hide-vid {
+    .bg-vid {
+      display: none;
+    }
+  }
 }
 
 .main-video {
