@@ -44,7 +44,7 @@ export default function Community({ data }) {
       <div className="min-h-screen push-nav def-x">
         {data.mainText && (
           <div 
-            className="enter-in-1 level-1 text-merlot text-center pt-32 pb-40" 
+            className="enter-in-1 level-1 text-merlot text-center pt-32 pb-40 rich-text" 
             dangerouslySetInnerHTML={{ __html: data.mainText }}
           ></div>
         )}

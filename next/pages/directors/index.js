@@ -43,7 +43,7 @@ export default function Directors({ data }) {
                   <Link
                     key={index}
                     href={`/directors/${director.slug}`}
-                    className="level-1 text-merlot lg:hover:italic"
+                    className="level-1 text-merlot hover:italic"
                     onMouseEnter={() => handleMouseEnter(index)}
                   >{director.title}</Link>
                 ))}

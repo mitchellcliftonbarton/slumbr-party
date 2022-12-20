@@ -22,12 +22,13 @@ import { Play } from '../components/icons/Icons'
 export default function Home({ data }) {
   const [videoLoaded, setVideoLoaded] = useState(false)
   const [showPlay, setShowPlay] = useState(false)
+  const comp = useRef(null)
   const video = useRef(null)
   const directorsSection = useRef(null)
   const update = useAppUpdate()
 
   useEffect(() => {
-    ScrollTrigger.create({
+    const trigger = ScrollTrigger.create({
       trigger: directorsSection.current,
       start: "top top",
       end: "top top",
@@ -38,6 +39,8 @@ export default function Home({ data }) {
         update.setNavClass('transparent-parchment')
       }
     })
+
+    return () => trigger.kill()
   }, [])
 
   useEffect(() => {
@@ -73,7 +76,10 @@ export default function Home({ data }) {
   }
   
   return (
-    <div className={`${styles.home}`}>
+    <div 
+      ref={comp} 
+      className={`${styles.home}`}
+    >
       <Head>
         <title>SLMBR PARTY | Home</title>
         <meta name="description" content="Slmbr Party" />
@@ -125,7 +131,7 @@ export default function Home({ data }) {
         <div className="col-span-12 lg:col-span-11 lg:col-start-2 mb-24 lg:mb-20">
           {data.directorHeadline && (
             <div 
-              className="enter-in-1 delay-100 level-2 text-merlot mb-12 lg:mb-16" 
+              className="enter-in-1 delay-100 level-2 text-merlot mb-12 lg:mb-16 rich-text" 
               dangerouslySetInnerHTML={{ __html: data.directorHeadline }}
             ></div>
           )}

@@ -29,6 +29,12 @@
     @media screen and (min-width: theme("screens.lg")) {
       @apply text-level-1;
     }
+
+    &.rich-text {
+      p:not(:last-child) {
+        margin-bottom: 3rem;
+      }
+    }
   }
 
   .level-2 {
@@ -36,6 +42,12 @@
 
     @media screen and (min-width: theme("screens.lg")) {
       @apply text-level-2;
+    }
+
+    &.rich-text {
+      p:not(:last-child) {
+        margin-bottom: 2rem;
+      }
     }
   }
 
@@ -45,6 +57,12 @@
 
     @media screen and (min-width: theme("screens.lg")) {
       @apply text-level-3;
+    }
+
+    &.rich-text {
+      p:not(:last-child) {
+        margin-bottom: 3rem;
+      }
     }
   }
 
@@ -56,7 +74,7 @@
     }
 
     &.rich-text {
-      p {
+      p:not(:last-child) {
         margin-bottom: 1.8rem;
       }
     }

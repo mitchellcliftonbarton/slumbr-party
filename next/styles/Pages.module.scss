@@ -139,6 +139,7 @@
   position: sticky;
   bottom: 0px;
   left: 0px;
+  pointer-events: none;
 
   @media screen and (min-width: theme("screens.lg")) {
     position: fixed;
@@ -153,6 +154,7 @@
 
 .event-slider {
   height: 260px;
+  max-height: 400px;
 
   @media screen and (min-width: theme("screens.lg")) {
     height: auto;

@@ -89,7 +89,6 @@ export default function About({ data }) {
                   loop 
                   preload="true"
                   playsInline
-                  controls="false"
                   className='object-cover w-full h-full'
                   onLoadedData={() => {
                     setTimeout(() => {
@@ -117,7 +116,7 @@ export default function About({ data }) {
       
       {data.largeText && (
         <div 
-          className="fade-in large-text level-1 text-center w-full lg:w-3/4 mx-auto pb-60" 
+          className="fade-in large-text level-1 text-center w-full lg:w-3/4 mx-auto pb-60 rich-text" 
           dangerouslySetInnerHTML={{ __html: data.largeText }}
           style={{
             paddingTop: '60vh'

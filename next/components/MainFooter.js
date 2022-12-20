@@ -14,7 +14,7 @@ const MainFooter = ({ data, directors }) => {
       <div className={`${styles.top} flex flex-wrap lg:flex-nowrap justify-between items-start`}>
         {data.footerIntroText && (
           <div 
-            className="w-full lg:w-1/2 level-3 mb-40 lg:mb-0" 
+            className="w-full lg:w-1/2 level-3 mb-40 lg:mb-0 rich-text" 
             dangerouslySetInnerHTML={{ __html: data.footerIntroText }}
           ></div>
         )}

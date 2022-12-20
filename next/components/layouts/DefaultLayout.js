@@ -53,13 +53,14 @@ const Layout = ({ children }) => {
       setCursorY(e.clientY + 40)
     })
 
-    document.addEventListener('mouseenter', e => {
+    document.addEventListener('mouseenter', () => {
       if (!showCursor && router.pathname !== '/films/[slug]' && router.pathname !== '/directors/film/[slug]') {
+        // console.log('show cursor here')
         setShowCursor(true)
       }
     })
 
-    document.addEventListener('mouseleave', e => {
+    document.addEventListener('mouseleave', () => {
       setShowCursor(false)
     })
   }, [])
@@ -82,7 +83,8 @@ const Layout = ({ children }) => {
     }
 
     if (router.pathname === '/films/[slug]' || router.pathname === '/directors/film/[slug]') {
-      setShowCursor(false)
+      console.log('on film page')
+      if (showCursor) setShowCursor(false)
     } else {
       if (!showCursor) setShowCursor(true)
     }

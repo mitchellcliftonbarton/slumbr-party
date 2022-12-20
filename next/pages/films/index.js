@@ -22,7 +22,7 @@ export default function Films({ data }) {
       <div className="pt-32 pb-def">
         {data.introText && data.introText !== '' && (
           <div 
-            className="enter-in-1 level-body text-merlot w-full lg:w-5/12 pb-def" 
+            className="enter-in-1 level-body text-merlot w-full lg:w-5/12 pb-def rich-text" 
             dangerouslySetInnerHTML={{ __html: data.introText }}
           ></div>
         )}
