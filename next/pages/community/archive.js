@@ -20,7 +20,7 @@ export default function CommunityArchive({ data }) {
       <div className="pt-32 pb-def">
         {data.archiveDescription && data.archiveDescription !== '' && (
           <div 
-            className="enter-in-1 level-body text-merlot w-full lg:w-5/12 mb-32 def-x" 
+            className="enter-in-1 level-body text-merlot w-full lg:w-5/12 mb-32 def-x rich-text" 
             dangerouslySetInnerHTML={{ __html: data.archiveDescription }}
           ></div>
         )}
@@ -47,7 +47,7 @@ export default function CommunityArchive({ data }) {
 
                     {item.description && (
                       <div 
-                        className="text-merlot level-body mb-12" 
+                        className="text-merlot level-body mb-12 rich-text" 
                         dangerouslySetInnerHTML={{ __html: item.description }}
                       ></div>
                     )}
