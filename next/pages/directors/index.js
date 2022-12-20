@@ -12,7 +12,7 @@ import Link from 'next/link'
 import DefImage from '../../components/DefImage'
 
 export default function Directors({ data }) {
-  const [activeDirector, setActiveDirector] = useState(false)
+  const [activeDirector, setActiveDirector] = useState(1)
 
   const handleMouseEnter = (index) => {
     setActiveDirector(index)
@@ -78,23 +78,25 @@ export default function Directors({ data }) {
                     >
                       {data.directors[activeDirector].films.map((film, idx) => (
                         <div 
-                          className="film-image w-1/2 lg:w-1/6 mx-2 lg:mx-def-1/2 flex-0-0" 
+                          className="film-image w-1/2 lg:w-1/6 flex-0-0" 
                           key={idx}
                         >
-                          <div
-                            className='relative overflow-hidden border-radius-def'
-                            style={{
-                              paddingBottom: '56.25%'
-                            }}
-                          >
-                            <div className="absolute top-0 left-0 w-full h-full">
-                              <DefImage
-                                src={film.image.url}
-                                alt={film.image.alt}
-                                className="object-cover w-full h-full"
-                                width={film.image.width}
-                                height={film.image.height}
-                              />
+                          <div className='px-2 lg:px-def-1/2'>
+                            <div
+                              className='relative overflow-hidden border-radius-def'
+                              style={{
+                                paddingBottom: '56.25%'
+                              }}
+                            >
+                              <div className="absolute top-0 left-0 w-full h-full">
+                                <DefImage
+                                  src={film.image.url}
+                                  alt={film.image.alt}
+                                  className="object-cover w-full h-full"
+                                  width={film.image.width}
+                                  height={film.image.height}
+                                />
+                              </div>
                             </div>
                           </div>
                         </div>
