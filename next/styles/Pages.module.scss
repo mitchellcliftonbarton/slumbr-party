@@ -440,3 +440,11 @@
     }
   }
 }
+
+.no-event-image {
+  max-height: 50%;
+
+  @media screen and (min-width: theme("screens.lg")) {
+    max-height: 75%;
+  }
+}

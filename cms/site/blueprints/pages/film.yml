@@ -39,16 +39,22 @@ columns:
             type: text
             label: Video Title
             help: i.e. "Watch trailer"
-          is_narrative:
-            type: toggle
-            label: Is Narrative?
-            help: Select true if this is a narrative film. Narrative films should not have a director.
+          film_type:
+            type: select
+            label: Film Type
+            options:
+              narrative: Narrative
+              commercial: Commercial
+            default: narrative
+            help: Choose the type of film this is. Narrative films will appear on the films page, commercials will appear on director pages.
           director:
             type: select
             label: Director
             options: query
+            when:
+              film_type: commercial
             query: site.find('Directors').children
-            help: The director for this film.
+            help: The director for this film. Required if film type is commercial.
           description:
             type: textarea
             label: Description

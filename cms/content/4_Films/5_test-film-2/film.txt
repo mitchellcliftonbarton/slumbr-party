@@ -6,6 +6,10 @@ Featured-image: - rectangle-18.jpg
 
 ----
 
+Hover-video: 
+
+----
+
 Vimeo-id: 
 
 ----
@@ -18,11 +22,11 @@ Video-title:
 
 ----
 
-Directors: Directors/luka-wilson, Directors/rachel-kein
+Film-type: narrative
 
 ----
 
-Categories: 
+Director: 
 
 ----
 
@@ -35,3 +39,11 @@ Awards:
 ----
 
 Awards-image: 
+
+----
+
+Directors: Directors/luka-wilson, Directors/rachel-kein
+
+----
+
+Categories: 

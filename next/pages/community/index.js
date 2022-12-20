@@ -88,7 +88,7 @@ export default function Community({ data }) {
               className="cursor-pointer closer absolute top-0 left-0 w-full h-full"
             ></div>
 
-            <div className="modal relative w-full lg:w-1/2 bg-merlot border-radius-def h-full z-10 px-4 lg:px-5 py-4 grid grid-cols-6 gap-def">
+            <div className="modal relative w-full lg:w-1/2 max-w-6xl bg-merlot border-radius-def h-full z-10 px-4 lg:px-5 py-4 grid grid-cols-6 gap-def">
               <button
                 onClick={() => toggleModal()}
                 className={`${styles['modal-x']} absolute top-6 right-6 z-10`}
@@ -151,13 +151,13 @@ export default function Community({ data }) {
                         <Logo className="w-full" fill="#FFF" />
                       </div>
 
-                      <div className="col-span-5 flex flex-col">
+                      <div className="col-span-5 flex flex-col justify-between">
                         <div 
-                          className="level-3 text-white lg:pr-16 pb-16 flex-0-0" 
+                          className="level-3 text-white pr-12 lg:pr-16 pb-16 flex-0-0" 
                           dangerouslySetInnerHTML={{ __html: data.noUpcomingEventText }}
                         ></div>
 
-                        <div className="image w-full h-full overflow-hidden border-radius-def flex-1 relative">
+                        <div className={`${styles['no-event-image']} w-full h-full overflow-hidden border-radius-def flex-1 relative`}>
                           <div className="absolute top-0 left-0 w-full h-full">
                             <DefImage
                               src={data.noUpcomingEventImage.url}

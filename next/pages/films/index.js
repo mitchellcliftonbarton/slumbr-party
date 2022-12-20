@@ -9,6 +9,7 @@ import DefImage from '../../components/DefImage'
 import Link from 'next/link'
 
 export default function Films({ data }) {
+  console.log(data)
   return (
     <div className={`push-nav def-x bg-parchment`}>
       <Head>
@@ -26,7 +27,7 @@ export default function Films({ data }) {
           ></div>
         )}
 
-        {data.films.length > 0 && (
+        {data.films && data.films.length > 0 && (
           <div className='film'>
             {data.films.map((film, index) => (
               <div 
@@ -165,10 +166,11 @@ export async function getStaticProps() {
         select: {
           introText: "page.intro_text.markdown",
           films: {
-            query: "page.children",
+            query: "page.children.filterBy('film_type', 'narrative')",
             select: {
               title: true,
               slug: true,
+              type: "page.film_type",
               image: {
                 query: "page.featured_image.toFiles.first",
                 select: {

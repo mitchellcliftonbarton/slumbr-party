@@ -151,7 +151,7 @@ export async function getStaticProps() {
         Authorization: `Basic ${process.env.AUTH}`,
       },
       body: JSON.stringify({
-        query: `page('Films').children`,
+        query: `page('Films').children.filterBy('film_type', 'commercial')`,
         select: {
           title: true,
           slug: true,
@@ -188,7 +188,13 @@ export async function getStaticProps() {
       }
     })
 
-    director.films = films.length < 6 ? films.concat(films).concat(films) : films
+    if (films.length < 6 && films.length > 2) {
+      director.films = films.concat(films).concat(films)
+    } else if (films.length < 3) {
+      director.films = films.concat(films).concat(films).concat(films).concat(films).concat(films).concat(films)
+    } else {
+      director.films = films
+    }
   })
 
   return {

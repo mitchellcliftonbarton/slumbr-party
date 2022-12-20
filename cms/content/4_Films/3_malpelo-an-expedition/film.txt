@@ -22,11 +22,11 @@ Video-title: Watch trailer
 
 ----
 
-Director: Directors/luka-wilson
+Film-type: commercial
 
 ----
 
-Categories: Categories/commercial
+Director: Directors/luka-wilson
 
 ----
 
@@ -46,6 +46,10 @@ Awards:
 ----
 
 Awards-image: 
+
+----
+
+Categories: Categories/commercial
 
 ----
 

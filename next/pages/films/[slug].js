@@ -178,7 +178,7 @@ export async function getStaticProps(context) {
         Authorization: `Basic ${process.env.AUTH}`,
       },
       body: JSON.stringify({
-        query: "page('Films').children",
+        query: "page('Films').children.filterBy('film_type', 'narrative')",
         select: {
           title: true,
           slug: true,

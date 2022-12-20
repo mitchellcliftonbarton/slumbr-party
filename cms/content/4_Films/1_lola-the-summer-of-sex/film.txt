@@ -22,7 +22,7 @@ Video-title:
 
 ----
 
-Is-narrative: true
+Film-type: narrative
 
 ----
 
@@ -43,6 +43,10 @@ Awards:
 ----
 
 Awards-image: - awards.png
+
+----
+
+Is-narrative: true
 
 ----
 

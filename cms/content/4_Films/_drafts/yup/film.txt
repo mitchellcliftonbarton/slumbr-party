@@ -1,0 +1,29 @@
+Title: yup
+
+----
+
+Featured-image: 
+
+----
+
+Hover-video: 
+
+----
+
+Video-poster: 
+
+----
+
+Film-type: narrative
+
+----
+
+Description: 
+
+----
+
+Awards: 
+
+----
+
+Awards-image: 

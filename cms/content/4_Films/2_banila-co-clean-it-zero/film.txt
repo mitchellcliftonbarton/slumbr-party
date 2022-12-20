@@ -22,11 +22,11 @@ Video-title:
 
 ----
 
-Director: Directors/savannah-o-leary
+Film-type: commercial
 
 ----
 
-Categories: Categories/commercial
+Director: Directors/savannah-o-leary
 
 ----
 
@@ -39,6 +39,10 @@ Awards:
 ----
 
 Awards-image: - awards.png
+
+----
+
+Categories: Categories/commercial
 
 ----
 
