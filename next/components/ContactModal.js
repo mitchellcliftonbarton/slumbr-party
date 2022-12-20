@@ -35,7 +35,7 @@ const ContactModal = ({ data, contactModalOpen, setContactModalOpen }) => {
               <h1 className={`${styles['contact-modal-title']} level-subhead text-merlot upright pb-def`}>Contact</h1>
             </div>
 
-            <div className="col-span-4 py-40 lg:py-60">
+            <div className="col-span-4 py-40 lg:py-48">
               {data.contactPeopleItems.length > 0 && (
                 <div className="people">
                   {data.contactPeopleItems.map((item, index) => (

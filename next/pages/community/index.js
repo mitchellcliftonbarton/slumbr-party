@@ -81,7 +81,7 @@ export default function Community({ data }) {
               duration: 1,
               ease: defaultCurve
             }}
-            className={`${styles['modal-container']} fixed top-0 left-0 w-full h-full flex justify-center items-center p-def`}
+            className={`${styles['modal-container']} fixed top-0 left-0 w-full h-full flex justify-center items-center p-4 lg:p-def`}
           >
             <div
               onClick={() => toggleModal()}
