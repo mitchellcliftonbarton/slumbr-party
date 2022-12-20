@@ -9,10 +9,12 @@ import VideoBlock from '../../../components/VideoBlock'
 import styles from './../../../styles/Pages.module.scss'
 
 export default function DirectorsDetail({ data, filmsData }) {
+  const pageTitle = `SLMBR PARTY | ${data.title}`
+
   return (
     <div className={`${styles['director-detail']} push-nav def-x bg-parchment`}>
       <Head>
-        <title>SLMBR PARTY | {data.title}</title>
+        <title>{pageTitle}</title>
         <meta name="description" content="Slmbr Party" />
       </Head>
 

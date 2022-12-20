@@ -14,6 +14,7 @@ import styles from './../../styles/Pages.module.scss'
 import { useEffect, useRef, useState } from 'react'
 
 export default function FilmDetail({ data, films }) {
+  const pageTitle = `SLMBR PARTY | ${data.title}`
   const video = useRef(null)
   const [videoStarted, setVideoStarted] = useState(false)
   const playVideo = () => {
@@ -32,7 +33,7 @@ export default function FilmDetail({ data, films }) {
   return (
     <div className={`push-nav bg-periwinkle min-h-screen`}>
       <Head>
-        <title>SLMBR PARTY | {data.title}</title>
+        <title>{pageTitle}</title>
         <meta name="description" content="Slmbr Party" />
       </Head>
 
@@ -81,6 +82,7 @@ export default function FilmDetail({ data, films }) {
         <FilmSlider
           title="More Films"
           films={films}
+          prefix="/films/"
         />
       </div>
     </div>

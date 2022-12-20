@@ -5,7 +5,7 @@ import 'swiper/css'
 import { useRef, useCallback } from "react"
 import styles from './../styles/Pages.module.scss'
 
-const FilmSlider = ({ title, films, textColor = 'merlot' }) => {
+const FilmSlider = ({ title, films, textColor = 'merlot', prefix }) => {
   const swiperRef = useRef(null)
 
   const handlePrev = useCallback(() => {
@@ -55,7 +55,7 @@ const FilmSlider = ({ title, films, textColor = 'merlot' }) => {
           {films.map((film, index) => (
             <SwiperSlide key={index}>
               <Link 
-                href={`/films/${film.slug}`}
+                href={`${prefix}${film.slug}`}
                 className={`${styles['slide-link']} w-full`} 
               >
                 <div
