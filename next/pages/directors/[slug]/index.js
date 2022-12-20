@@ -58,8 +58,8 @@ export default function DirectorsDetail({ data, filmsData }) {
               {data.instagramLink && data.instagramLinkTitle && (
                 <Link 
                   href={data.instagramLink} 
-                  className="level-subhead text-merlot"
-                >{data.instagramLinkTitle}&nbsp;↗</Link>
+                  className="level-subhead text-merlot link-with-arrow"
+                >{data.instagramLinkTitle}</Link>
               )}
             </div>
           </div>

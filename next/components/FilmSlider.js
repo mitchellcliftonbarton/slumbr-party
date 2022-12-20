@@ -42,12 +42,13 @@ const FilmSlider = ({ title, films, textColor = 'merlot' }) => {
           ref={swiperRef}
           className={styles['film-swiper']}
           slidesPerView={1.3}
-          spaceBetween={20}
+          spaceBetween={10}
           centeredSlides={true}
           loop
           breakpoints={{
             1280: {
-              slidesPerView: 4
+              slidesPerView: 4,
+              spaceBetween: 20,
             }
           }}
         >
