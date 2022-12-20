@@ -12,8 +12,8 @@ export default function DirectorsDetail({ data, filmsData }) {
   return (
     <div className={`${styles['director-detail']} push-nav def-x bg-parchment`}>
       <Head>
-        <title>SLUMBR PARTY | {data.title}</title>
-        <meta name="description" content="Slumbr Party" />
+        <title>SLMBR PARTY | {data.title}</title>
+        <meta name="description" content="Slmbr Party" />
       </Head>
 
       <div
@@ -22,9 +22,9 @@ export default function DirectorsDetail({ data, filmsData }) {
         <h1 className={`enter-in-1 text-merlot level-1`}>{data.title}</h1>
       </div>
 
-      <div className="pt-20 lg:pt-4 pb-40">
+      <div className="pt-20 lg:pt-4 pb-4 lg:pb-def">
         {filmsData.length > 0 && (
-          <div className='films grid grid-cols-12 gap-4 lg:gap-def'>
+          <div className='films grid grid-cols-12 gap-4 lg:gap-def mb-4 lg:mb-0'>
             {filmsData.map((film, index) => (
               <VideoBlock
                 film={film}
@@ -50,7 +50,7 @@ export default function DirectorsDetail({ data, filmsData }) {
             <div className="relative lg:absolute top-0 left-0 w-full h-full flex flex-col justify-between items-start">
               {data.bio && (
                 <div 
-                  className="w-full level-body text-merlot mb-60 lg:mb-0" 
+                  className="w-full level-body text-merlot mb-60 lg:mb-0 rich-text" 
                   dangerouslySetInnerHTML={{ __html: data.bio }}
                 ></div>
               )}

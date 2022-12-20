@@ -12,7 +12,7 @@ import FilmSlider from '../../../components/FilmSlider'
 import styles from './../../../styles/Pages.module.scss'
 
 // React
-import { useRef, useState } from 'react'
+import { useRef, useState, useEffect } from 'react'
 
 export default function DirectorFilmDetail({ data, films }) {
   const video = useRef(null)
@@ -25,14 +25,22 @@ export default function DirectorFilmDetail({ data, films }) {
 
   const titleString = `${data.director ? `${data.director.title.toUpperCase()} ` : ''}${data.title}${data.videoTitle ? data.videoTitle : ''}`
 
+  const [poster, setPoster] = useState(data.featuredImage)
+
+  useEffect(() => {
+    if (data.videoPoster) {
+      setPoster(data.videoPoster)
+    }
+  }, [])
+
   return (
     <div className={`push-nav bg-merlot min-h-screen`}>
       <Head>
-        <title>SLUMBR PARTY | {data.title}</title>
-        <meta name="description" content="Slumbr Party" />
+        <title>SLMBR PARTY | {data.title}</title>
+        <meta name="description" content="Slmbr Party" />
       </Head>
 
-      <div className="pt-40 lg:pt-32 lg:pt-12 pb-60">
+      <div className="pt-40 lg:pt-32 lg:pt-12 pb-4 lg:pb-def">
         {data.vimeoId && (
           <div className='def-x mb-60 lg:mb-32'>
             <div
@@ -47,14 +55,14 @@ export default function DirectorFilmDetail({ data, films }) {
                 className='w-full h-full absolute top-0 left-0'
               />
 
-              {data.videoPoster && (
+              {poster && (
                 <div className={`${styles['video-poster']} ${videoStarted ? styles.started : null} featured-image absolute top-0 left-0 w-full h-full`}>
                   <DefImage
-                    src={data.videoPoster.url}
-                    alt={data.videoPoster.alt}
+                    src={poster.url}
+                    alt={poster.alt}
                     className="object-cover w-full h-full"
-                    width={data.videoPoster.width}
-                    height={data.videoPoster.height}
+                    width={poster.width}
+                    height={poster.height}
                   />
 
                   <button 
@@ -80,7 +88,7 @@ export default function DirectorFilmDetail({ data, films }) {
           textColor="parchment"
         />
 
-        <div className="def-x">
+        <div className="def-x mt-24">
           <Link href="/directors" className='level-subhead text-parchment'>← Back to Directors</Link>
         </div>
       </div>
@@ -142,7 +150,7 @@ export async function getStaticProps(context) {
           vimeoId: "page.vimeo_id",
           videoTitle: "page.video_title",
           featuredImage: {
-            query: "page.featured_image.toFiles",
+            query: "page.featured_image.toFiles.first",
             select: {
               url: true,
               width: true,

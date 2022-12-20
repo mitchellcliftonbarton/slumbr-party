@@ -40,7 +40,7 @@ const VideoBlock = ({ film, title, classes, style, href, showTitleOnHover = fals
       className={`${styles['director-film']} ${hideImage ? styles['show-video'] : null} ${classes} relative`}
       style={style}
     >
-      <div className={`${styles['director-film-image']} relative mb-4 lg:mb-def`}>
+      <div className={`${styles['director-film-image']} relative lg:mb-def`}>
         <div className='overflow-hidden absolute top-0 left-0 w-full h-full z-10'>
           {film.hoverVideo && film.hoverVideo.url && (
             <div className={`${styles['hover-video']} absolute top-0 left-0 w-full h-full`}>
@@ -78,7 +78,7 @@ const VideoBlock = ({ film, title, classes, style, href, showTitleOnHover = fals
       </div>
 
       {title && (
-        <h3 className='level-subhead text-merlot'>{title}</h3>
+        <h3 className='level-subhead text-merlot mt-4'>{title}</h3>
       )}
     </Link>
   )

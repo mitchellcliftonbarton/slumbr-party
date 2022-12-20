@@ -41,11 +41,13 @@ export default function Home({ data }) {
   return (
     <div className={`${styles.home}`}>
       <Head>
-        <title>SLUMBR PARTY | Home</title>
-        <meta name="description" content="Slumbr Party" />
+        <title>SLMBR PARTY | Home</title>
+        <meta name="description" content="Slmbr Party" />
       </Head>
 
       <h1 className="wcag-hidden">Home</h1>
+
+      <LoadOverlay/>
 
       {data.reelVideo && data.reelVideoPoster && (
         <div className={`${styles.hero} ${videoLoaded ? styles.loaded : null}`}>
@@ -67,8 +69,6 @@ export default function Home({ data }) {
               }}
             ></video>
           </div>
-
-          <LoadOverlay/>
         </div>
       )}
 

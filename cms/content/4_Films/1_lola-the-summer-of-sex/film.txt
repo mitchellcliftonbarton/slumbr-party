@@ -22,11 +22,11 @@ Video-title:
 
 ----
 
-Director: Directors/luka-wilson
+Is-narrative: true
 
 ----
 
-Categories: Categories/commercial
+Director: Directors/luka-wilson
 
 ----
 
@@ -43,6 +43,10 @@ Awards:
 ----
 
 Awards-image: - awards.png
+
+----
+
+Categories: Categories/commercial
 
 ----
 

@@ -1,3 +1,5 @@
+import Cookies from 'js-cookie'
+
 // React
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
@@ -33,11 +35,6 @@ const links = [
 ]
 
 const Layout = ({ children }) => {
-  console.log(
-    "%c \nDevelopment by Cold Rice \n \ncold-rice.info \n \n",
-    "color: grey"
-  );
-  
   const router = useRouter()
 
   const [cursorX, setCursorX] = useState(0)
@@ -52,8 +49,8 @@ const Layout = ({ children }) => {
       if (!showCursor && router.pathname !== '/films/[slug]' && router.pathname !== '/directors/film/[slug]') {
         setShowCursor(true)
       }
-      setCursorX(e.clientX + 20)
-      setCursorY(e.clientY + 20)
+      setCursorX(e.clientX + 40)
+      setCursorY(e.clientY + 40)
     })
 
     document.addEventListener('mouseenter', e => {
@@ -92,8 +89,10 @@ const Layout = ({ children }) => {
 
     // close mobile menu on route change
     setMenuOpen(false)
-    if (document !== undefined) {
-      document.body.style.overflow = 'initial'
+    if (Cookies.get('slumbr-party-splash') && router.pathname !== '/') {
+      if (document !== undefined) {
+        document.body.style.overflow = 'initial'
+      }
     }
     
     if (router.pathname === '/films/[slug]' || router.query.contact) {

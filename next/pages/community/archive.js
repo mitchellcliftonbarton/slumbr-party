@@ -11,8 +11,8 @@ export default function CommunityArchive({ data }) {
   return (
     <div className={`push-nav bg-parchment`}>
       <Head>
-        <title>SLUMBR PARTY | Community Archive</title>
-        <meta name="description" content="Slumbr Party" />
+        <title>SLMBR PARTY | Community Archive</title>
+        <meta name="description" content="Slmbr Party" />
       </Head>
 
       <h1 className='wcag-hidden'>Community Archive</h1>

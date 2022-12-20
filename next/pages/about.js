@@ -44,8 +44,8 @@ export default function About({ data }) {
   return (
     <div ref={aboutContainer} className='push-nav def-x relative'>
       <Head>
-        <title>SLUMBR PARTY | About</title>
-        <meta name="description" content="Slumbr Party" />
+        <title>SLMBR PARTY | About</title>
+        <meta name="description" content="Slmbr Party" />
       </Head>
 
       <h1 className="wcag-hidden">About</h1>

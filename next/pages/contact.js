@@ -12,8 +12,8 @@ export default function Contact({ data }) {
   return (
     <div className={`${styles.contact} push-nav def-x bg-periwinkle min-h-screen relative`}>
       <Head>
-        <title>SLUMBR PARTY | Contact</title>
-        <meta name="description" content="Slumbr Party" />
+        <title>SLMBR PARTY | Contact</title>
+        <meta name="description" content="Slmbr Party" />
       </Head>
 
       <div className="relative py-40 grid grid-cols-6 gap-def">

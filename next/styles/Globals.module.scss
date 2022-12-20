@@ -320,19 +320,16 @@
   transition: opacity .6s;
 
   svg {
-    opacity: .9;
-  }
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    width: 15rem;
 
-  svg:first-child {
-    width: calc(100% - 20px);
-    position: relative;
-    top: 10px;
-  }
-
-  svg:nth-child(2) {
-    width: calc(100% - 20px);
-    position: relative;
-    top: 10px;
+    @media screen and (min-width: theme("screens.lg")) {
+      width: 25rem;
+      bottom: 20px;
+      left: 20px;
+    }
   }
 
   &.open {

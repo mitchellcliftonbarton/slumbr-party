@@ -39,12 +39,15 @@ columns:
             type: text
             label: Video Title
             help: i.e. "Watch trailer"
+          is_narrative:
+            type: toggle
+            label: Is Narrative?
+            help: Select true if this is a narrative film. Narrative films should not have a director.
           director:
             type: select
             label: Director
             options: query
             query: site.find('Directors').children
-            required: true
             help: The director for this film.
           description:
             type: textarea

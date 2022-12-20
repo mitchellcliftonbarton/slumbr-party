@@ -35,8 +35,8 @@ export default function Community({ data }) {
   return (
     <div className={`${styles.community} bg-coral`}>
       <Head>
-        <title>SLUMBR PARTY | Community</title>
-        <meta name="description" content="Slumbr Party" />
+        <title>SLMBR PARTY | Community</title>
+        <meta name="description" content="Slmbr Party" />
       </Head>
 
       <h1 className="wcag-hidden">Community</h1>
@@ -99,7 +99,7 @@ export default function Community({ data }) {
               {(() => {
                 if (data.upcomingEvent) {
                   return (
-                    <div className="col-span-6 h-full flex flex-col justify-between items-center text-center def-x relative">
+                    <div className="col-span-6 h-full flex flex-col justify-between items-center text-center def-x relative overflow-y-auto">
                       <p className="absolute top-3 left-0 upright text-parchment level-subhead">Upcoming Event</p>
 
                       <div className="top flex flex-col items-center w-full">
@@ -107,13 +107,13 @@ export default function Community({ data }) {
 
                         <h2 className="level-2 text-white mb-32">{data.upcomingEvent.title}</h2>
 
-                        <div className="image w-3/4 lg:w-1/3 border-radius-def border-coral border p-def-mobile">
+                        <div className="image w-3/4 lg:w-1/3 border-radius-def border-coral border p-def-mobile mb-20">
                           <DefImage
                             src={data.upcomingEvent.posterImage.url}
                             alt={data.upcomingEvent.posterImage.alt}
                             width={data.upcomingEvent.posterImage.width}
                             height={data.upcomingEvent.posterImage.height}
-                            className="border-radius-def overflow-hidden"
+                            className="border-radius-def overflow-hidden w-full"
                           />
                         </div>
                       </div>
