@@ -25,6 +25,8 @@ const MainNav = ({links, setMenuOpen}) => {
   }, [])
 
   useEffect(() => {
+    setHovered(false)
+
     if (router.pathname === '/about' || router.pathname === '/') {
       update.setNavClass('transparent-parchment')
     } else if (router.pathname === '/directors/film/[slug]') {
@@ -45,10 +47,6 @@ const MainNav = ({links, setMenuOpen}) => {
     }
   }
 
-  useEffect(() => {
-    setHovered(false)
-  }, [router.asPath])
-
   const handleMouseEnter = () => {
     if (isLargeQuery) {
       setHovered(true)
@@ -64,7 +62,7 @@ const MainNav = ({links, setMenuOpen}) => {
   return (
     <header 
       id={styles['main-nav']} 
-      onMouseEnter={() => handleMouseEnter}
+      onMouseEnter={() => handleMouseEnter()}
       onMouseLeave={() => handleMouseLeave()}
       className={`${styles[state.navClass]} ${hovered ? styles.hovered : null} fixed top-0 left-0 w-full flex justify-between items-center def-x`}
     >

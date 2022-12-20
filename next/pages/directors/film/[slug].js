@@ -15,6 +15,7 @@ import styles from './../../../styles/Pages.module.scss'
 import { useRef, useState, useEffect } from 'react'
 
 export default function DirectorFilmDetail({ data, films }) {
+  console.log(data)
   const pageTitle = `SLMBR PARTY | ${data.title}`
   const video = useRef(null)
   const [videoStarted, setVideoStarted] = useState(false)
@@ -149,6 +150,7 @@ export async function getStaticProps(context) {
         query: `page('Films').children.find('${slug}')`,
         select: {
           title: true,
+          slug: true,
           vimeoId: "page.vimeo_id",
           videoTitle: "page.video_title",
           featuredImage: {
@@ -217,6 +219,8 @@ export async function getStaticProps(context) {
   } else {
     filmsArray = filmsJsonDataResult
   }
+
+  result.key = `${result.slug}`
 
   return {
     props: {

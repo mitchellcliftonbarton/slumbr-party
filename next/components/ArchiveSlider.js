@@ -26,7 +26,7 @@ const ArchiveSlider = ({ item, index }) => {
         animationDelay: `${(index + 2) * 100}ms`
       }}
     >
-      <div className={`${styles['event-slider-buttons']} z-10 absolute top-0 left-0 w-full h-full flex`}>
+      <div className={`${styles['event-slider-buttons']} z-10 absolute top-0 left-0 w-full h-full hidden lg:flex`}>
         <button
           onClick={handlePrev}
           className='w-1/2 h-full flex justify-start items-center pl-def'
@@ -47,6 +47,7 @@ const ArchiveSlider = ({ item, index }) => {
         spaceBetween={10}
         slidesPerView={"auto"}
         loop
+        allowTouchMove={true}
       >
         {item.galleryImages.map((image, idx) => (
           <SwiperSlide

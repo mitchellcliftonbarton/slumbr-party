@@ -301,6 +301,10 @@
   svg {
     width: 4rem;
   }
+
+  .hide-cursor & {
+    opacity: 0;
+  }
 }
 
 .def-image {
