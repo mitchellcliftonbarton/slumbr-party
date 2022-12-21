@@ -43,14 +43,25 @@ const Layout = ({ children }) => {
   const [menuOpen, setMenuOpen] = useState(false)
   const [contactModalOpen, setContactModalOpen] = useState(false)
   const [cursorFill, setCursorFill] = useState('#6944FF')
-  // const [bodyClass, setBodyClass] = useState(false)
+
+  const [isFilm] = useMemo(() => {
+    let value = false
+
+    if (router.pathname === '/films/[slug]' || router.pathname === '/directors/film/[slug]') {
+      value = true
+    }
+
+    return [
+      value
+    ]
+  }, [router.asPath])
 
   useEffect(() => {
     console.log(
       "%c \nDevelopment by Cold Rice \n \ncold-rice.info \n \n",
       "color: grey"
     );
-    
+
     document.addEventListener('mousemove', e => {
       setCursorX(e.clientX + 40)
       setCursorY(e.clientY + 40)
@@ -84,13 +95,6 @@ const Layout = ({ children }) => {
       }
     }
 
-    if (router.pathname === '/films/[slug]' || router.pathname === '/directors/film/[slug]') {
-      // console.log('on film page')
-      if (showCursor) setShowCursor(false)
-    } else {
-      if (!showCursor) setShowCursor(true)
-    }
-
     // close mobile menu on route change
     setMenuOpen(false)
     if (Cookies.get('slumbr-party-splash') && router.pathname !== '/') {
@@ -99,23 +103,11 @@ const Layout = ({ children }) => {
       }
     }
     
-    if (router.pathname === '/films/[slug]' || router.query.contact) {
+    if (router.query.contact) {
       setCursorFill('#FF4E00')
     } else {
       setCursorFill('#6944FF')
     } 
-  }, [router.asPath])
-
-  const [isFilm] = useMemo(() => {
-    let value = false
-
-    if (router.pathname === '/films/[slug]' || router.pathname === '/directors/film/[slug]') {
-      value = true
-    }
-
-    return [
-      value
-    ]
   }, [router.asPath])
 
   return (
