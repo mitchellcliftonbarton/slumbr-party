@@ -15,7 +15,6 @@ import styles from './../../../styles/Pages.module.scss'
 import { useRef, useState, useEffect } from 'react'
 
 export default function DirectorFilmDetail({ data, films }) {
-  console.log(data)
   const pageTitle = `SLMBR PARTY | ${data.title}`
   const video = useRef(null)
   const [videoStarted, setVideoStarted] = useState(false)

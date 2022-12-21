@@ -80,7 +80,7 @@ const Layout = ({ children }) => {
     }
 
     if (router.pathname === '/films/[slug]' || router.pathname === '/directors/film/[slug]') {
-      console.log('on film page')
+      // console.log('on film page')
       if (showCursor) setShowCursor(false)
     } else {
       if (!showCursor) setShowCursor(true)

@@ -180,10 +180,6 @@ export async function getStaticProps() {
 
   const filmsJsonData = await filmsData.json()
 
-  filmsJsonData.result.forEach(film => {
-    console.log(film.director.slug, film.title)
-  })
-
   /* PUT DIRECTOR AND FILM DATA TOGETHER */
   result.directors.forEach(director => {
     const slug = director.slug

@@ -9,7 +9,6 @@ import DefImage from '../../components/DefImage'
 import Link from 'next/link'
 
 export default function Films({ data }) {
-  console.log(data)
   return (
     <div className={`push-nav def-x bg-parchment`}>
       <Head>
