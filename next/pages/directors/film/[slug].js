@@ -12,10 +12,11 @@ import FilmSlider from '../../../components/FilmSlider'
 import styles from './../../../styles/Pages.module.scss'
 
 // React
-import { useRef, useState, useEffect } from 'react'
+import { useRef, useState, useEffect, useMemo } from 'react'
 
 export default function DirectorFilmDetail({ data, films }) {
-  const pageTitle = `SLMBR PARTY | ${data.title}`
+  const [filmData, setFilmData] = useState(data)
+  const pageTitle = `SLMBR PARTY | ${filmData.title}`
   const video = useRef(null)
   const [videoStarted, setVideoStarted] = useState(false)
 
@@ -24,15 +25,19 @@ export default function DirectorFilmDetail({ data, films }) {
     video.current.player.play()
   }
 
-  const titleString = `${data.director ? `${data.director.title.toUpperCase()} ` : ''}${data.title}${data.videoTitle ? data.videoTitle : ''}`
-
-  const [poster, setPoster] = useState(data.featuredImage)
-
   useEffect(() => {
-    if (data.videoPoster) {
-      setPoster(data.videoPoster)
-    }
-  }, [])
+    setFilmData(data)
+  }, [data])
+
+  const [poster] = useMemo(() => {
+    let value = data.videoPoster || data.featuredImage
+
+    return [
+      value
+    ]
+  }, [data])
+
+  const titleString = `${filmData.director ? `${filmData.director.title.toUpperCase()} ` : ''}${filmData.title}${filmData.videoTitle ? filmData.videoTitle : ''}`
 
   return (
     <div className={`push-nav bg-merlot min-h-screen`}>
@@ -42,7 +47,7 @@ export default function DirectorFilmDetail({ data, films }) {
       </Head>
 
       <div className="pt-40 lg:pt-32 lg:pt-12 pb-4 lg:pb-def">
-        {data.vimeoId && (
+        {filmData.vimeoId && (
           <div className='def-x mb-60 lg:mb-32'>
             <div
               className={`${styles['main-video']} enter-in-1 relative mb-4 lg:mb-def`}
@@ -51,13 +56,16 @@ export default function DirectorFilmDetail({ data, films }) {
               }}
             >
               <Vimeo
-                video={data.vimeoId}
+                video={filmData.vimeoId}
                 ref={video}
                 className='w-full h-full absolute top-0 left-0'
               />
 
               {poster && (
-                <div className={`${styles['video-poster']} ${videoStarted ? styles.started : null} featured-image absolute top-0 left-0 w-full h-full`}>
+                <div
+                  key={filmData.slug}
+                  className={`${styles['video-poster']} ${videoStarted ? styles.started : null} featured-image absolute top-0 left-0 w-full h-full`}
+                >
                   <DefImage
                     src={poster.url}
                     alt={poster.alt}
@@ -84,7 +92,7 @@ export default function DirectorFilmDetail({ data, films }) {
         )}
 
         <FilmSlider
-          title={`More Films${data.director ? ` by ${data.director.title}` : ''}`}
+          title={`More Films${filmData.director ? ` by ${filmData.director.title}` : ''}`}
           films={films}
           textColor="parchment"
           prefix="/directors/film/"

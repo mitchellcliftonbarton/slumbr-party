@@ -1,12 +1,12 @@
 import Head from 'next/head'
 
 // Components
-import DefaultLayout from '../../../components/layouts/DefaultLayout'
+import DefaultLayout from '../../components/layouts/DefaultLayout'
 import Link from 'next/link'
-import VideoBlock from '../../../components/VideoBlock'
+import VideoBlock from '../../components/VideoBlock'
 
 // Styles
-import styles from './../../../styles/Pages.module.scss'
+import styles from './../../styles/Pages.module.scss'
 
 export default function DirectorsDetail({ data, filmsData }) {
   const pageTitle = `SLMBR PARTY | ${data.title}`
