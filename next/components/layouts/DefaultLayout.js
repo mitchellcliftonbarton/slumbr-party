@@ -1,7 +1,7 @@
 import Cookies from 'js-cookie'
 
 // React
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useMemo } from 'react'
 import { useRouter } from 'next/router'
 import { AppWrapper } from '../../context'
 
@@ -101,6 +101,18 @@ const Layout = ({ children }) => {
     } 
   }, [router.asPath])
 
+  const [isFilm] = useMemo(() => {
+    let value = false
+
+    if (router.pathname === '/films/[slug]' || router.pathname === '/directors/film/[slug]') {
+      value = true
+    }
+
+    return [
+      value
+    ]
+  }, [router.asPath])
+
   return (
     <AppWrapper>
       <div>
@@ -130,15 +142,17 @@ const Layout = ({ children }) => {
           setContactModalOpen={setContactModalOpen}
         />
 
-        <div
-          className={`${styles['main-cursor']} hidden lg:block`}
-          style={{
-            transform: `translate3d(${cursorX}px, ${cursorY}px, 0px)`,
-            opacity: showCursor ? 1 : 0
-          }}
-        >
-          <Logo fill={cursorFill} />
-        </div>
+        {!isFilm && (
+          <div
+            className={`${styles['main-cursor']} hidden lg:block`}
+            style={{
+              transform: `translate3d(${cursorX}px, ${cursorY}px, 0px)`,
+              opacity: showCursor ? 1 : 0
+            }}
+          >
+            <Logo fill={cursorFill} />
+          </div>
+        )}
       </div>
     </AppWrapper>
   )
