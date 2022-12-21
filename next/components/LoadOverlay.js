@@ -7,6 +7,7 @@ import { Logo } from './icons/Icons'
 
 const LoadOverlay = () => {
   const [showLoadOverlay, setShowLoadOverlay] = useState(false)
+  const [hasTransition, setHasTransition] = useState(false)
 
   useEffect(() => {
     if (!Cookies.get('slumbr-party-splash')) {
@@ -16,10 +17,11 @@ const LoadOverlay = () => {
       }
 
       setTimeout(() => {
+        setHasTransition(true)
         toggleOff()
-      }, 3000)
+      }, 1000)
     }
-  }, [])
+  }, [showLoadOverlay, hasTransition])
 
   const toggleOff = () => {
     setShowLoadOverlay(false)
@@ -31,7 +33,12 @@ const LoadOverlay = () => {
   }
 
   return (
-    <div className={`${styles['load-overlay']} ${showLoadOverlay ? styles.open : null} fixed top-0 left-0 w-full h-full flex justify-center items-start bg-periwinkle`}>
+    <div
+      className={`${styles['load-overlay']} ${showLoadOverlay ? styles.open : null} fixed top-0 left-0 w-full h-full flex justify-center items-start bg-periwinkle`}
+      style={{
+        transition: hasTransition ? `opacity 4s` : `opacity .3s`
+      }}
+    >
       <Logo fill="#460223" />
     </div>
   )

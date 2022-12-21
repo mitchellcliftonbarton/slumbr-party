@@ -91,7 +91,7 @@ export async function getStaticProps() {
             select: {
               title: true,
               eventType: "page.event_type",
-              description: "page.description.markdown",
+              description: "page.description.markdown.kirbyText",
               galleryImages: {
                 query: "page.gallery_images.toFiles",
                 select: {

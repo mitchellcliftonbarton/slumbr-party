@@ -46,6 +46,11 @@ const Layout = ({ children }) => {
   // const [bodyClass, setBodyClass] = useState(false)
 
   useEffect(() => {
+    console.log(
+      "%c \nDevelopment by Cold Rice \n \ncold-rice.info \n \n",
+      "color: grey"
+    );
+    
     document.addEventListener('mousemove', e => {
       setCursorX(e.clientX + 40)
       setCursorY(e.clientY + 40)

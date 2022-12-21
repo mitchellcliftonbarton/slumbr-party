@@ -321,7 +321,7 @@
   opacity: 0;
   cursor: pointer;
   pointer-events: none;
-  transition: opacity .6s;
+  // transition: opacity .3s;
 
   svg {
     position: absolute;
@@ -337,7 +337,7 @@
   }
 
   &.open {
-    opacity: 1;
+    opacity: .9;
     pointer-events: auto;
   }
 }

@@ -77,6 +77,14 @@
       p:not(:last-child) {
         margin-bottom: 1.8rem;
       }
+
+      a {
+        text-decoration: underline;
+
+        &:hover {
+          text-decoration: none;
+        }
+      }
     }
   }
 
