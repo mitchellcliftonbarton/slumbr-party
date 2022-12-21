@@ -43,7 +43,7 @@ const Layout = ({ children }) => {
   const [menuOpen, setMenuOpen] = useState(false)
   const [contactModalOpen, setContactModalOpen] = useState(false)
   const [cursorFill, setCursorFill] = useState('#6944FF')
-  const [bodyClass, setBodyClass] = useState(false)
+  // const [bodyClass, setBodyClass] = useState(false)
 
   useEffect(() => {
     document.addEventListener('mousemove', e => {

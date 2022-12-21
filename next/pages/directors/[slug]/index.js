@@ -26,7 +26,7 @@ export default function DirectorsDetail({ data, filmsData }) {
 
       <div className="pt-20 lg:pt-4 pb-4 lg:pb-def">
         {filmsData.length > 0 && (
-          <div className='films grid grid-cols-12 gap-4 lg:gap-def mb-4 lg:mb-0'>
+          <div className='films grid grid-cols-12 gap-4 lg:gap-def mb-4 lg:mb-def'>
             {filmsData.map((film, index) => (
               <VideoBlock
                 film={film}
@@ -37,6 +37,7 @@ export default function DirectorsDetail({ data, filmsData }) {
                 style={{
                   animationDelay: `${2000 + (100 * (index + 1))}ms`
                 }}
+                priority={index < 4 ? true : false}
               />
             ))}
           </div>
@@ -139,7 +140,7 @@ export async function getStaticProps(context) {
         Authorization: `Basic ${process.env.AUTH}`,
       },
       body: JSON.stringify({
-        query: `page('Films').children.filterBy('director', 'Directors/${slug}', ',')`,
+        query: `page('Films').children.filterBy('film_type', 'commercial').filterBy('director', 'Directors/${slug}', ',')`,
         select: {
           title: true,
           slug: true,

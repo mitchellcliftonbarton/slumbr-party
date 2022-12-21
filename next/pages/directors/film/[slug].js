@@ -114,7 +114,7 @@ export async function getStaticPaths() {
       Authorization: `Basic ${process.env.AUTH}`,
     },
     body: JSON.stringify({
-      query: "page('Films').children",
+      query: `page('Films').children.filterBy('film_type', 'commercial')`,
       select: {
         slug: true
       },

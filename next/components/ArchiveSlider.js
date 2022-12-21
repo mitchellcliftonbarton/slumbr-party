@@ -4,7 +4,7 @@ import styles from './../styles/Pages.module.scss'
 import 'swiper/css'
 import { useRef, useCallback } from "react"
 
-const ArchiveSlider = ({ item, index }) => {
+const ArchiveSlider = ({ item, index, priority = false }) => {
   const swiperRef = useRef(null)
 
   const handlePrev = useCallback(() => {
@@ -59,6 +59,7 @@ const ArchiveSlider = ({ item, index }) => {
               alt={image.alt}
               width={image.width}
               height={image.height}
+              priority={priority}
             />
           </SwiperSlide>
         ))}

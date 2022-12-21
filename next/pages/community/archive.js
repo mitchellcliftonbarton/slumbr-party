@@ -53,7 +53,11 @@ export default function CommunityArchive({ data }) {
                     )}
                   </div>
 
-                  <ArchiveSlider item={item} index={index} />
+                  <ArchiveSlider 
+                    item={item} 
+                    index={index}
+                    priority={index < 2 ? true : false}
+                  />
                 </div>
               </div>
             ))}

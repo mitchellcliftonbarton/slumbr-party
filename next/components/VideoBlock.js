@@ -5,7 +5,7 @@ import Link from "next/link"
 import DefImage from './DefImage'
 import { useState, useRef } from 'react'
 
-const VideoBlock = ({ film, title, classes, style, href, showTitleOnHover = false }) => {
+const VideoBlock = ({ film, title, classes, style, href, showTitleOnHover = false, priority = false }) => {
   const [showVideo, setShowVideo] = useState(false)
   const [hideImage, setHideImage] = useState(false)
   const hoverVideo = useRef(null)
@@ -40,7 +40,7 @@ const VideoBlock = ({ film, title, classes, style, href, showTitleOnHover = fals
       className={`${styles['director-film']} ${hideImage ? styles['show-video'] : null} ${classes} relative`}
       style={style}
     >
-      <div className={`${styles['director-film-image']} relative lg:mb-def`}>
+      <div className={`${styles['director-film-image']} relative`}>
         <div className='overflow-hidden absolute top-0 left-0 w-full h-full z-10'>
           {film.hoverVideo && film.hoverVideo.url && (
             <div className={`${styles['hover-video']} absolute top-0 left-0 w-full h-full`}>
@@ -64,6 +64,7 @@ const VideoBlock = ({ film, title, classes, style, href, showTitleOnHover = fals
               className="object-cover w-full h-full"
               width={film.featuredImage.width}
               height={film.featuredImage.height}
+              priority={priority}
             />
           </div>
 

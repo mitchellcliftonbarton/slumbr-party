@@ -4,7 +4,7 @@ import { useState } from 'react'
 // Styles
 import styles from './../styles/Globals.module.scss'
 
-const DefImage = ({src, alt, style, width, height, className}) => {
+const DefImage = ({src, alt, style, width, height, className, priority}) => {
   const [loaded, setLoaded] = useState(false)
 
   return (
@@ -18,6 +18,7 @@ const DefImage = ({src, alt, style, width, height, className}) => {
       }}
       width={width}
       height={height}
+      priority={priority}
     />
   )
 }

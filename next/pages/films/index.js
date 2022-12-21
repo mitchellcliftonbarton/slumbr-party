@@ -90,6 +90,7 @@ export default function Films({ data }) {
                         className="object-cover w-full h-full"
                         width={film.image.width}
                         height={film.image.height}
+                        priority={index < 2 ? true : false}
                       />
                     </div>
 

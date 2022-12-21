@@ -144,7 +144,7 @@ export default function About({ data }) {
             <ul className={`${styles.clients} flex flex-wrap`}>
               {data.clients.map((client, index) => (
                 <li key={index}>
-                  <p className='level-body'>{client.title}</p>
+                  <p className='level-body'>○ {client.title}</p>
                 </li>
               ))}
             </ul>

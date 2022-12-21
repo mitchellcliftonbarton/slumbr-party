@@ -12,6 +12,7 @@ import Link from 'next/link'
 import DefImage from '../../components/DefImage'
 
 export default function Directors({ data }) {
+  // console.log(data)
   const [activeDirector, setActiveDirector] = useState(false)
 
   const handleMouseEnter = (index) => {
@@ -178,6 +179,10 @@ export async function getStaticProps() {
   })
 
   const filmsJsonData = await filmsData.json()
+
+  filmsJsonData.result.forEach(film => {
+    console.log(film.director.slug, film.title)
+  })
 
   /* PUT DIRECTOR AND FILM DATA TOGETHER */
   result.directors.forEach(director => {
