@@ -41,7 +41,7 @@ export default function Home({ data }) {
     })
 
     return () => trigger.kill()
-  }, [])
+  }, [update])
 
   useEffect(() => {
     video.current.currentTime = 0

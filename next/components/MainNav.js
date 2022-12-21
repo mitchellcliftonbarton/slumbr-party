@@ -38,7 +38,7 @@ const MainNav = ({links, setMenuOpen}) => {
     } else {
       update.setNavClass('transparent-merlot')
     }
-  }, [router.asPath])
+  }, [router.pathname])
 
   const menuOn = () => {
     setMenuOpen(true)
