@@ -38,6 +38,7 @@ const MainNav = ({links, setMenuOpen}) => {
     } else {
       update.setNavClass('transparent-merlot')
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.pathname])
 
   const menuOn = () => {

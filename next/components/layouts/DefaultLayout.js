@@ -54,6 +54,7 @@ const Layout = ({ children }) => {
     return [
       value
     ]
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.asPath])
 
   useEffect(() => {
@@ -76,6 +77,7 @@ const Layout = ({ children }) => {
     document.addEventListener('mouseleave', () => {
       setShowCursor(false)
     })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useEffect(() => {
@@ -107,8 +109,9 @@ const Layout = ({ children }) => {
       setCursorFill('#FF4E00')
     } else {
       setCursorFill('#6944FF')
-    } 
-  }, [router.asPath])
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [router.pathname])
 
   return (
     <AppWrapper>

@@ -12,7 +12,7 @@ import Link from 'next/link'
 import DefImage from '../../components/DefImage'
 
 export default function Directors({ data }) {
-  const [activeDirector, setActiveDirector] = useState(false)
+  const [activeDirector, setActiveDirector] = useState(0)
 
   const handleMouseEnter = (index) => {
     setActiveDirector(index)
@@ -31,7 +31,7 @@ export default function Directors({ data }) {
 
       <h1 className='wcag-hidden'>Directors</h1>
 
-      <div className="min-h-screen">
+      <div>
         <div className="def-x">
           {data.directors.length > 0 && (
             <div className='enter-in-1 delay-100 directors py-48 text-center px-def-mobile lg:px-20'>
@@ -53,7 +53,7 @@ export default function Directors({ data }) {
         </div>
 
         {data.directors.length > 0 && (
-          <div className={`${styles['films-marquee']} relative py-def-mobile lg:py-def fixed bottom-0 left-0 w-full`}>
+          <div className={`${styles['films-marquee']} relative py-def-mobile lg:py-def w-full`}>
             <div className='relative'>
               <div className="spacer w-1/2 lg:w-1/6 pointer-events-none opacity-0">
                 <div

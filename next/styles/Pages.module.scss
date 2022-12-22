@@ -140,10 +140,6 @@
   bottom: 0px;
   left: 0px;
   pointer-events: none;
-
-  @media screen and (min-width: theme("screens.lg")) {
-    position: fixed;
-  }
 }
 
 .film-item {
