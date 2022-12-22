@@ -12,7 +12,7 @@ import Link from 'next/link'
 import DefImage from '../../components/DefImage'
 
 export default function Directors({ data }) {
-  const [activeDirector, setActiveDirector] = useState(0)
+  const [activeDirector, setActiveDirector] = useState(false)
 
   const handleMouseEnter = (index) => {
     setActiveDirector(index)

@@ -111,7 +111,7 @@ const Layout = ({ children }) => {
       setCursorFill('#6944FF')
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [router.pathname])
+  }, [router.asPath])
 
   return (
     <AppWrapper>
