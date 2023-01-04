@@ -63,6 +63,8 @@ const Layout = ({ children }) => {
       "color: grey"
     );
 
+    console.log(Buffer.from(`mitchell@cold-rice.info:WEQ-pmn6puz!zwa2xvy`).toString("base64"))
+
     document.addEventListener('mousemove', e => {
       setCursorX(e.clientX + 40)
       setCursorY(e.clientY + 40)

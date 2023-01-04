@@ -19,17 +19,23 @@ Contact-location-items:
 
 - 
   name: East Coast
+  people:
+    - 
+      title: Simpatico, Jolie Miller
+      email: jolie@wearesimpatico.com
+      phone: (555) 555 5555
+    - 
+      title: Some other person
+      email: other@person.com
+      phone: ""
   title: Simpatico, Jolie Miller
   email: jolie@wearesimpatico.com
 - 
   name: Midwest
+  people:
+    - 
+      title: 'Renee & Melissa, Melissa Erke'
+      email: melissa@reneeandmelissa.com
+      phone: ""
   title: 'Renee & Melissa, Melissa Erke'
   email: melissa@reneeandmelissa.com
-- 
-  name: West Coast
-  title: Simpatico West, Faith Loop
-  email: faith@wearesimpatico.com
-- 
-  name: Latinx US
-  title: Kontakto, Isabel Echeverry
-  email: isabel@kontaktoreps.com

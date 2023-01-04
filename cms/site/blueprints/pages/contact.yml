@@ -30,13 +30,19 @@ columns:
                 type: text
                 label: Name
                 help: i.e. East Coast
-              title:
-                type: text
-                label: Title
-                help: i.e. Simpatico, Jolie Miller
-              email:
-                type: text
-                label: Email
+              people:
+                type: structure
+                fields:
+                  title:
+                    type: text
+                    label: Title
+                    help: i.e. Simpatico, Jolie Miller
+                  email:
+                    type: text
+                    label: Email
+                  phone:
+                    type: text
+                    label: Phone
   - width: 1/4
     sections:
       build:
