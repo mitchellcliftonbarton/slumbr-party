@@ -49,16 +49,16 @@ export default function About({ data }) {
     if (playPromise !== undefined) {
       playPromise
         .then(() => {
-          console.log('autoplay worked')
+          // console.log('autoplay worked')
         })
         .catch((error) => {
           if (error.name === 'NotAllowedError') {
-            console.log('autoplay not allowed')
+            // console.log('autoplay not allowed')
             video.current.pause()
 
             setHideVid(true)
           } else {
-            console.log('autoplay not working for another reason')
+            // console.log('autoplay not working for another reason')
             video.current.pause()
 
             setHideVid(true)
