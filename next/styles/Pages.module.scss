@@ -208,10 +208,8 @@
     }
 
     &:hover {
-      @media screen and (min-width: theme("screens.lg")) {
-        .film-awards-image {
-          opacity: 1;
-        }
+      .film-awards-image {
+        opacity: 1;
       }
     }
   }
@@ -385,7 +383,7 @@
 
       &:hover {
         @media screen and (min-width: theme("screens.lg")) {
-          color: theme('colors.merlot');
+          color: theme('colors.coral');
         }
       }
     }

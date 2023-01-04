@@ -81,7 +81,7 @@ const Layout = ({ children }) => {
   }, [])
 
   useEffect(() => {
-    if (router.query.contact && router.query.contact === 'true') {
+    if (router.asPath.includes('?contact=true')) {
       setContactModalOpen(true)
 
       if (document !== undefined) {

@@ -5,14 +5,18 @@ import pageStyles from './../styles/Pages.module.scss'
 import { XIcon, Diamond, Logo } from './icons/Icons'
 import { useRouter } from 'next/router'
 
-const ContactModal = ({ data, contactModalOpen, setContactModalOpen }) => {
+const ContactModal = ({ data, contactModalOpen }) => {
   const router = useRouter()
+
+  const getBackPath = () => {
+    return router.asPath.replace('?contact=true', '')
+  }
 
   return (
     <div className={`${styles['contact-modal-container']} ${contactModalOpen ? styles.open : null} fixed top-0 left-0 w-full h-full p-4`}>
       <Link
         href={{
-          pathname: router.pathname
+          pathname: getBackPath()
         }}
         scroll={false}
         className={`absolute top-0 left-0 w-full h-full`}
@@ -23,7 +27,7 @@ const ContactModal = ({ data, contactModalOpen, setContactModalOpen }) => {
           className={styles['contact-modal-x']}
           scroll={false}
           href={{
-            pathname: router.pathname
+            pathname: getBackPath()
           }}
         >
           <XIcon />
@@ -35,7 +39,7 @@ const ContactModal = ({ data, contactModalOpen, setContactModalOpen }) => {
               <h1 className={`${styles['contact-modal-title']} level-subhead text-merlot upright pb-def`}>Contact</h1>
             </div>
 
-            <div className="col-span-4 py-40 lg:py-48">
+            <div className="col-span-4 pt-40 pb-20 lg:py-48">
               {data.contactPeopleItems.length > 0 && (
                 <div className="people">
                   {data.contactPeopleItems.map((item, index) => (
@@ -66,7 +70,7 @@ const ContactModal = ({ data, contactModalOpen, setContactModalOpen }) => {
                 </div>
               )}
 
-              <div className={`${pageStyles['contact-logo']} flex justify-center mt-32`}>
+              <div className={`${pageStyles['contact-logo']} flex lg:hidden justify-center mt-32`}>
                 <Logo fill="#460223" />
               </div>
             </div>

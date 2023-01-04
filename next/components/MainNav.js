@@ -88,7 +88,7 @@ const MainNav = ({links, setMenuOpen}) => {
 
         <Link
           href={{
-            pathname: router.pathname,
+            pathname: router.asPath,
             query: {
               contact: true
             }
