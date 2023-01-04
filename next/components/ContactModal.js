@@ -6,6 +6,7 @@ import { XIcon, Diamond, Logo } from './icons/Icons'
 import { useRouter } from 'next/router'
 
 const ContactModal = ({ data, contactModalOpen }) => {
+  console.log(data)
   const router = useRouter()
 
   const getBackPath = () => {
@@ -61,10 +62,26 @@ const ContactModal = ({ data, contactModalOpen }) => {
               {data.contactLocationItems.length > 0 && (
                 <div className="people">
                   {data.contactLocationItems.map((item, index) => (
-                    <div className="item level-subhead text-merlot text-center mb-6 lg:mb-10" key={index}>
+                    <div className="item level-subhead text-merlot text-center" key={index}>
                       <h2 className='uppercase'>{item.name}</h2>
-                      <p>{item.title}</p>
-                      <Link href={`mailto:${item.email}`}>{item.email}</Link>
+                      {item.people.map((person, idx) => (
+                        <div
+                          className='mb-6 lg:mb-10'
+                          key={idx}
+                        >
+                          <p>{person.title}</p>
+                          {person.email && (
+                            <p>
+                              <Link href={`mailto:${person.email}`}>{person.email}</Link>
+                            </p>
+                          )}
+                          {person.phone && (
+                            <p>
+                              <Link href={`tel:${person.phone}`}>{person.phone}</Link>
+                            </p>
+                          )}
+                        </div>
+                      ))}
                     </div>
                   ))}
                 </div>

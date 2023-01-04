@@ -36,7 +36,6 @@ export default function Directors({ data }) {
           {data.directors.length > 0 && (
             <div className='enter-in-1 delay-100 directors py-48 text-center px-def-mobile lg:px-20'>
               <div
-                onMouseLeave={() => handleMouseLeave()}
                 className="inner flex flex-col items-center"
               >
                 {data.directors.map((director, index) => (
@@ -45,6 +44,7 @@ export default function Directors({ data }) {
                     href={`/directors/${director.slug}`}
                     className="level-1 text-merlot hover:italic"
                     onMouseEnter={() => handleMouseEnter(index)}
+                    onMouseLeave={() => handleMouseLeave()}
                   >{director.title}</Link>
                 ))}
               </div>

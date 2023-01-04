@@ -83,6 +83,7 @@ const Layout = ({ children }) => {
   useEffect(() => {
     if (router.asPath.includes('?contact=true')) {
       setContactModalOpen(true)
+      setCursorFill('#FF4E00')
 
       if (document !== undefined) {
         document.body.style.overflow = 'hidden'

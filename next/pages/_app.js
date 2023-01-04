@@ -80,8 +80,14 @@ MyApp.getInitialProps = async () => {
             query: "page.contact_location_items.toStructure",
             select: {
               name: true,
-              title: true,
-              email: true
+              people: {
+                query: "structureItem.people.toStructure",
+                select: {
+                  title: true,
+                  email: true,
+                  phone: true
+                }
+              }
             }
           }
         }

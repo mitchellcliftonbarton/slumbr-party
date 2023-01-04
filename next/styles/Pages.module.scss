@@ -208,8 +208,10 @@
     }
 
     &:hover {
-      .film-awards-image {
-        opacity: 1;
+      @media screen and (min-width: theme("screens.lg")) {
+        .film-awards-image {
+          opacity: 1;
+        }
       }
     }
   }
