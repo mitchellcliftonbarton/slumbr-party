@@ -1,3 +1,3 @@
-# Slumbr Party
+# SLMBR PRTY
 
 Test stuff.

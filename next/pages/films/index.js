@@ -12,8 +12,8 @@ export default function Films({ data }) {
   return (
     <div className={`push-nav def-x bg-parchment`}>
       <Head>
-        <title>SLMBR PARTY | Films</title>
-        <meta name="description" content="Slmbr Party" />
+        <title>SLMBR PRTY | Films</title>
+        <meta name="description" content="SLMBR PRTY is a women-founded and led production company devoted to craft and intent on transcending tradition." />
       </Head>
 
       <h1 className='wcag-hidden'>Films</h1>

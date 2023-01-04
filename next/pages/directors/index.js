@@ -25,8 +25,8 @@ export default function Directors({ data }) {
   return (
     <div className={`push-nav bg-parchment`}>
       <Head>
-        <title>SLMBR PARTY | Directors</title>
-        <meta name="description" content="Slmbr Party" />
+        <title>SLMBR PRTY | Directors</title>
+        <meta name="description" content="SLMBR PRTY is a women-founded and led production company devoted to craft and intent on transcending tradition." />
       </Head>
 
       <h1 className='wcag-hidden'>Directors</h1>

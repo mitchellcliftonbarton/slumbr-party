@@ -15,7 +15,7 @@ import { useEffect, useRef, useState, useMemo } from 'react'
 
 export default function FilmDetail({ data, films }) {
   const [filmData, setFilmData] = useState(data)
-  const pageTitle = `SLMBR PARTY | ${filmData.title}`
+  const pageTitle = `SLMBR PRTY | ${filmData.title}`
   const video = useRef(null)
   const [videoStarted, setVideoStarted] = useState(false)
   const playVideo = () => {
@@ -39,7 +39,7 @@ export default function FilmDetail({ data, films }) {
     <div className={`push-nav bg-periwinkle min-h-screen`}>
       <Head>
         <title>{pageTitle}</title>
-        <meta name="description" content="Slmbr Party" />
+        <meta name="description" content="SLMBR PRTY is a women-founded and led production company devoted to craft and intent on transcending tradition." />
       </Head>
 
       <div className="pt-40 lg:pt-32 lg:pt-12 pb-4 lg:pb-def">

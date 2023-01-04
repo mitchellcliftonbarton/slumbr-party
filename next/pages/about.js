@@ -70,8 +70,8 @@ export default function About({ data }) {
   return (
     <div ref={aboutContainer} className={`${styles.about} ${hideVid ? styles['hide-vid'] : ''} push-nav def-x relative`}>
       <Head>
-        <title>SLMBR PARTY | About</title>
-        <meta name="description" content="Slmbr Party" />
+        <title>SLMBR PRTY | About</title>
+        <meta name="description" content="SLMBR PRTY is a women-founded and led production company devoted to craft and intent on transcending tradition." />
       </Head>
 
       <h1 className="wcag-hidden">About</h1>

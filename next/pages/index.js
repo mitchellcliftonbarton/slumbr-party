@@ -81,8 +81,8 @@ export default function Home({ data }) {
       className={`${styles.home}`}
     >
       <Head>
-        <title>SLMBR PARTY | Home</title>
-        <meta name="description" content="Slmbr Party" />
+        <title>SLMBR PRTY | Home</title>
+        <meta name="description" content="SLMBR PRTY is a women-founded and led production company devoted to craft and intent on transcending tradition." />
       </Head>
 
       <h1 className="wcag-hidden">Home</h1>

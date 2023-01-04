@@ -11,8 +11,8 @@ export default function CommunityArchive({ data }) {
   return (
     <div className={`push-nav bg-parchment`}>
       <Head>
-        <title>SLMBR PARTY | Community Archive</title>
-        <meta name="description" content="Slmbr Party" />
+        <title>SLMBR PRTY | Community Archive</title>
+        <meta name="description" content="SLMBR PRTY is a women-founded and led production company devoted to craft and intent on transcending tradition." />
       </Head>
 
       <h1 className='wcag-hidden'>Community Archive</h1>

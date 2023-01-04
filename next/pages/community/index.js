@@ -35,8 +35,8 @@ export default function Community({ data }) {
   return (
     <div className={`${styles.community} bg-coral`}>
       <Head>
-        <title>SLMBR PARTY | Community</title>
-        <meta name="description" content="Slmbr Party" />
+        <title>SLMBR PRTY | Community</title>
+        <meta name="description" content="SLMBR PRTY is a women-founded and led production company devoted to craft and intent on transcending tradition." />
       </Head>
 
       <h1 className="wcag-hidden">Community</h1>

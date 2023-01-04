@@ -12,8 +12,8 @@ export default function Contact({ data }) {
   return (
     <div className={`${styles.contact} push-nav def-x bg-periwinkle min-h-screen relative`}>
       <Head>
-        <title>SLMBR PARTY | Contact</title>
-        <meta name="description" content="Slmbr Party" />
+        <title>SLMBR PRTY | Contact</title>
+        <meta name="description" content="SLMBR PRTY is a women-founded and led production company devoted to craft and intent on transcending tradition." />
       </Head>
 
       <div className="relative py-40 grid grid-cols-6 gap-def">
