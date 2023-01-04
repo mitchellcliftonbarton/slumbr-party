@@ -27,21 +27,21 @@ export default function Home({ data }) {
   const directorsSection = useRef(null)
   const update = useAppUpdate()
 
-  useEffect(() => {
-    const trigger = ScrollTrigger.create({
-      trigger: directorsSection.current,
-      start: "top top",
-      end: "top top",
-      onEnter: () => {
-        update.setNavClass('transparent-merlot')
-      },
-      onLeaveBack: () => {
-        update.setNavClass('transparent-parchment')
-      }
-    })
+  // useEffect(() => {
+  //   const trigger = ScrollTrigger.create({
+  //     trigger: directorsSection.current,
+  //     start: "top top",
+  //     end: "top top",
+  //     onEnter: () => {
+  //       update.setNavClass('transparent-merlot')
+  //     },
+  //     onLeaveBack: () => {
+  //       update.setNavClass('transparent-parchment')
+  //     }
+  //   })
 
-    return () => trigger.kill()
-  }, [update])
+  //   return () => trigger.kill()
+  // }, [update])
 
   useEffect(() => {
     video.current.currentTime = 0
