@@ -79,7 +79,7 @@ const VideoBlock = ({ film, title, classes, style, href, showTitleOnHover = fals
       </div>
 
       {title && (
-        <h3 className='level-subhead text-merlot mt-4'>{title}</h3>
+        <h3 className='level-subhead text-merlot mt-8'>{title}</h3>
       )}
     </Link>
   )
