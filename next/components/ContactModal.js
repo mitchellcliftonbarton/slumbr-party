@@ -6,7 +6,6 @@ import { XIcon, Diamond, Logo } from './icons/Icons'
 import { useRouter } from 'next/router'
 
 const ContactModal = ({ data, contactModalOpen }) => {
-  console.log(data)
   const router = useRouter()
 
   const getBackPath = () => {
