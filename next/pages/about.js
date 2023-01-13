@@ -131,7 +131,7 @@ export default function About({ data }) {
         >
           {data.text && (
             <div 
-              className="level-body rich-text" 
+              className="level-body rich-text mb-7" 
               dangerouslySetInnerHTML={{ __html: data.text }}
             ></div>
           )}

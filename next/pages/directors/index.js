@@ -13,7 +13,7 @@ import DefImage from '../../components/DefImage'
 
 export default function Directors({ data }) {
   console.log(data)
-  const [activeDirector, setActiveDirector] = useState(false)
+  const [activeDirector, setActiveDirector] = useState(0)
 
   const handleMouseEnter = (index) => {
     setActiveDirector(index)
@@ -56,7 +56,7 @@ export default function Directors({ data }) {
         {data.directors.length > 0 && (
           <div className={`${styles['films-marquee']} relative py-def-mobile lg:py-def w-full`}>
             <div className='relative'>
-              <div className="spacer w-1/2 lg:w-1/6 pointer-events-none opacity-0">
+              <div className="spacer w-1/3 lg:w-1/6 pointer-events-none opacity-0">
                 <div
                   style={{
                     paddingBottom: '56.25%'
@@ -77,10 +77,11 @@ export default function Directors({ data }) {
                     <Marquee
                       gradient={false}
                     >
-                      {data.directors[activeDirector].films.map((film, idx) => (
+                      {data.directors[activeDirector].films.map((film) => (
                         <div 
-                          className="film-image w-1/2 lg:w-1/6 flex-0-0" 
-                          key={idx}
+                          className="film-image w-1/3 lg:w-1/6 flex-0-0" 
+                          key={film.slug}
+                          data-slug={film.slug}
                         >
                           <div className='px-2 lg:px-def-1/2'>
                             <div
