@@ -61,7 +61,7 @@ export default function DirectorFilmDetail({ data, films }) {
                 className='w-full h-full absolute top-0 left-0'
               />
 
-              {poster && (
+              {/* {poster && (
                 <div
                   key={filmData.slug}
                   className={`${styles['video-poster']} ${videoStarted ? styles.started : null} featured-image absolute top-0 left-0 w-full h-full`}
@@ -84,7 +84,7 @@ export default function DirectorFilmDetail({ data, films }) {
                     </p>
                   </button>
                 </div>
-              )}
+              )} */}
             </div>
 
             <h1 className='level-subhead text-parchment'>{titleString}</h1>
@@ -147,6 +147,8 @@ export async function getStaticPaths() {
 
 export async function getStaticProps(context) {
   const { slug = '' } = context.params || {}
+
+  console.log(slug)
 
   const filmData = await fetch(process.env.API_HOST, {
       method: "POST",

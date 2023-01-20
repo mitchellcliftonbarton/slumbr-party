@@ -1,0 +1,41 @@
+Title: Levis
+
+----
+
+Featured-image: - poster.jpg
+
+----
+
+Hover-video: - buzzer.mp4
+
+----
+
+Vimeo-id: 778302269
+
+----
+
+Video-poster: - poster.jpg
+
+----
+
+Video-title: 
+
+----
+
+Film-type: commercial
+
+----
+
+Director: Directors/victoria-rivera
+
+----
+
+Description: 
+
+----
+
+Awards: 
+
+----
+
+Awards-image: 

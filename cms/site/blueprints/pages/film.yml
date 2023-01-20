@@ -54,6 +54,7 @@ columns:
             type: select
             label: Director
             options: query
+            required: true
             when:
               film_type: commercial
             query: site.find('Directors').children
