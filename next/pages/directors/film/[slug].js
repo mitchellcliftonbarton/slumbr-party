@@ -61,7 +61,7 @@ export default function DirectorFilmDetail({ data, films }) {
                 className='w-full h-full absolute top-0 left-0'
               />
 
-              {/* {poster && (
+              {poster && (
                 <div
                   key={filmData.slug}
                   className={`${styles['video-poster']} ${videoStarted ? styles.started : null} featured-image absolute top-0 left-0 w-full h-full`}
@@ -84,7 +84,7 @@ export default function DirectorFilmDetail({ data, films }) {
                     </p>
                   </button>
                 </div>
-              )} */}
+              )}
             </div>
 
             <h1 className='level-subhead text-parchment'>{titleString}</h1>
