@@ -53,11 +53,11 @@ export default function Community({ data }) {
           <button
             onClick={() => toggleModal()}
             className='enter-in-1 delay-100 level-1 text-merlot lg:hover:italic'
-          >Upcoming Events</button>
+          >Upcoming Events →</button>
           <Link 
             href="/community/archive" 
             className='enter-in-1 delay-200 level-1 text-merlot lg:hover:italic'
-          >Community Archive</Link>
+          >Community Archive →</Link>
         </div>
       </div>
 
