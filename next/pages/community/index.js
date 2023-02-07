@@ -103,19 +103,25 @@ export default function Community({ data }) {
                       <p className="absolute top-3 left-0 upright text-parchment level-subhead">Upcoming Event</p>
 
                       <div className="top flex flex-col items-center w-full">
-                        <p className="level-3 text-parchment mb-32">{data.upcomingEvent.eventType}</p>
+                        {data.upcomingEvent.eventType && (
+                          <p className="level-3 text-parchment mb-32">{data.upcomingEvent.eventType}</p>
+                        )}
 
-                        <h2 className="level-2 text-white mb-32">{data.upcomingEvent.title}</h2>
+                        {data.upcomingEvent.title && (
+                          <h2 className="level-2 text-white mb-32">{data.upcomingEvent.title}</h2>
+                        )}
 
-                        <div className="image w-3/4 lg:w-1/3 border-radius-def border-coral border p-def-mobile mb-20">
-                          <DefImage
-                            src={data.upcomingEvent.posterImage.url}
-                            alt={data.upcomingEvent.posterImage.alt}
-                            width={data.upcomingEvent.posterImage.width}
-                            height={data.upcomingEvent.posterImage.height}
-                            className="border-radius-def overflow-hidden w-full"
-                          />
-                        </div>
+                        {data.upcomingEvent.posterImage && data.upcomingEvent.posterImage.url && (
+                          <div className="image w-3/4 lg:w-2/3 border-radius-def border-coral border p-def-mobile mb-20">
+                            <DefImage
+                              src={data.upcomingEvent.posterImage.url}
+                              alt={data.upcomingEvent.posterImage.alt}
+                              width={data.upcomingEvent.posterImage.width}
+                              height={data.upcomingEvent.posterImage.height}
+                              className="border-radius-def overflow-hidden w-full"
+                            />
+                          </div>
+                        )}
                       </div>
 
                       <div className="bottom text-center pb-20">

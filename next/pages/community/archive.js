@@ -43,7 +43,9 @@ export default function CommunityArchive({ data }) {
                       animationDelay: `${(index + 1) * 100}ms`
                     }}
                   >
-                    <h2 className="level-3 text-merlot mb-12">{item.title}</h2>
+                    {item.title && (
+                      <h2 className="level-3 text-merlot mb-12">{item.title}</h2>
+                    )}
 
                     {item.description && (
                       <div 
@@ -52,11 +54,13 @@ export default function CommunityArchive({ data }) {
                       ></div>
                     )}
                   </div>
-
-                  <ArchiveSlider 
-                    item={item} 
-                    index={index}
-                  />
+                  
+                  {item.galleryImages.length > 0 && (
+                    <ArchiveSlider 
+                      item={item} 
+                      index={index}
+                    />
+                  )}
                 </div>
               </div>
             ))}
