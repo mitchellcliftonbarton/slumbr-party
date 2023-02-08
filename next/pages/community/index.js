@@ -143,7 +143,7 @@ export default function Community({ data }) {
                             target="_blank"
                             rel="noreferrer"
                             className="level-3 text-white"
-                          >RSVP</Link>
+                          >RSVP →</Link>
                         )}
                       </div>
                     </div>

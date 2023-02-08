@@ -3,9 +3,48 @@ import Head from 'next/head'
 // Components
 import DefaultLayout from '../../components/layouts/DefaultLayout'
 import ArchiveSlider from '../../components/ArchiveSlider'
+import DefImage from '../../components/DefImage'
 
 // Styles
 import styles from './../../styles/Pages.module.scss'
+
+const SliderArea = ({item, index}) => {
+  if (item.galleryImages.length > 1) {
+    return (
+      <ArchiveSlider 
+        item={item} 
+        index={index}
+      />
+    )
+  }
+
+  if (item.galleryImages.length === 1) {
+    const firstImage = item.galleryImages[0]
+
+    return (
+      <div
+        className="enter-in-1 col-span-12 col-span-7 h-full relative h-auto pl-def-mobile lg:pl-0"
+        style={{
+          animationDelay: `${(index + 2) * 100}ms`,
+          maxHeight: '400px'
+        }}
+      >
+        <DefImage
+          src={firstImage.url}
+          alt={firstImage.alt}
+          width={firstImage.width}
+          height={firstImage.height}
+          className="h-full w-auto"
+          style={{
+            borderRadius: '1rem'
+          }}
+        />
+      </div>
+    )
+  }
+
+  return
+}
 
 export default function CommunityArchive({ data }) {
   return (
@@ -55,12 +94,7 @@ export default function CommunityArchive({ data }) {
                     )}
                   </div>
                   
-                  {item.galleryImages.length > 0 && (
-                    <ArchiveSlider 
-                      item={item} 
-                      index={index}
-                    />
-                  )}
+                  <SliderArea item={item} index={index} />
                 </div>
               </div>
             ))}
