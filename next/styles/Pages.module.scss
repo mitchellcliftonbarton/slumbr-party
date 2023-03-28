@@ -9,15 +9,16 @@
     }
 
     & > div:first-child {
-      opacity: 0;
+      // opacity: 0;
+      opacity: 1;
       transition: opacity 1s;
     }
 
-    &.loaded {
-      & > div:first-child {
-        opacity: 1;
-      }
-    }
+    // &.loaded {
+    //   & > div:first-child {
+    //     opacity: 1;
+    //   }
+    // }
 
     .play-button {
       svg {
