@@ -158,6 +158,7 @@ export async function getStaticProps() {
         select: {
           title: true,
           slug: true,
+          disableOnDirectorPage: "page.disable_on_director_page.toBool",
           director: {
             query: "page.director.toPage",
             select: {
@@ -178,14 +179,15 @@ export async function getStaticProps() {
       }),
   })
 
-  const filmsJsonData = await filmsData.json()
+  const filmsJsonDataResult = await filmsData.json()
+  const filmsJsonData = filmsJsonDataResult.result.filter(film => film.disableOnDirectorPage !== true)
 
   /* PUT DIRECTOR AND FILM DATA TOGETHER */
   result.directors.forEach(director => {
     const slug = director.slug
     const films = []
 
-    filmsJsonData.result.forEach(film => {
+    filmsJsonData.forEach(film => {
       if (film.director && film.director.slug === slug) {
         films.push(film)
       }

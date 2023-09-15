@@ -59,6 +59,10 @@ columns:
               film_type: commercial
             query: site.find('Directors').children
             help: The director for this film. Required if film type is commercial.
+          disable_on_director_page:
+            type: toggle
+            label: Disable on Director Page?
+            help: If disabled, this film will not appear on the directors page, but can be referenced on other pages.
           description:
             type: textarea
             label: Description

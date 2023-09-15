@@ -144,6 +144,7 @@ export async function getStaticProps(context) {
         select: {
           title: true,
           slug: true,
+          disableOnDirectorPage: "page.disable_on_director_page.toBool",
           featuredImage: {
             query: "page.featured_image.toFiles.first",
             select: {
@@ -169,7 +170,7 @@ export async function getStaticProps(context) {
   return {
     props: {
       data: result,
-      filmsData: filmsJsonData.result
+      filmsData: filmsJsonData.result.filter(film => film.disableOnDirectorPage !== true)
     },
   }
 }
