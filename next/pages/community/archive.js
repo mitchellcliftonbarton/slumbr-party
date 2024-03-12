@@ -132,7 +132,7 @@ export async function getStaticProps() {
               galleryImages: {
                 query: "page.gallery_images.toFiles",
                 select: {
-                  url: true,
+                  url: "file.resize(700).url",
                   alt: true,
                   width: true,
                   height: true

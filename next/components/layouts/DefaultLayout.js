@@ -26,7 +26,7 @@ const links = [
   },
   {
     text: 'Community',
-    link: '/community'
+    link: '/community/archive'
   },
   {
     text: 'About',
