@@ -106,7 +106,7 @@ FilmDetail.getLayout = function getLayout(page) {
 }
 
 export async function getStaticPaths() {
-  const directorsData = await fetch(process.env.API_HOST, {
+  const filmData = await fetch(process.env.API_HOST, {
     method: "POST",
     headers: {
       Authorization: `Basic ${process.env.AUTH}`,
@@ -114,15 +114,26 @@ export async function getStaticPaths() {
     body: JSON.stringify({
       query: "page('Films').children",
       select: {
-        slug: true
+        slug: true,
+        director: {
+          query: "page.director.toPage",
+          select: {
+            title: true
+          }
+        }
       },
     }),
   });
 
-  const jsonData = await directorsData.json();
+  const jsonData = await filmData.json();
   const { result } = jsonData
 
-  const paths = result.map((page) => {
+  // only build this page for films that have a director
+  const filmsWithDirectors = result.filter((film) => {
+    return film.director
+  })
+
+  const paths = filmsWithDirectors.map((page) => {
     return {
       params: {
         slug: page.slug

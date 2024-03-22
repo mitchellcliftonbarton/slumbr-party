@@ -123,7 +123,13 @@ export async function getStaticPaths() {
     body: JSON.stringify({
       query: `page('Films').children.filterBy('film_type', 'commercial')`,
       select: {
-        slug: true
+        slug: true,
+        director: {
+          query: "page.director.toPage",
+          select: {
+            title: true
+          }
+        }
       },
     }),
   });
@@ -131,7 +137,12 @@ export async function getStaticPaths() {
   const jsonData = await filmData.json();
   const { result } = jsonData
 
-  const paths = result.map((page) => {
+  // only build this page for films that have a director
+  const filmsWithDirectors = result.filter((film) => {
+    return film.director
+  })
+
+  const paths = filmsWithDirectors.map((page) => {
     return {
       params: {
         slug: page.slug
