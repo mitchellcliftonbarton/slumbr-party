@@ -39,7 +39,7 @@ const LoadOverlay = () => {
         transition: hasTransition ? `opacity 4s` : `opacity .3s`
       }}
     >
-      <Logo fill="#460223" />
+      <img src="logo.gif" />
     </div>
   )
 }
