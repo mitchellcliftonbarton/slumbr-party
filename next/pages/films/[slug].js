@@ -107,6 +107,7 @@ FilmDetail.getLayout = function getLayout(page) {
 
 export async function getStaticPaths() {
   const filmData = await fetch(process.env.API_HOST, {
+    cache: 'no-store',
     method: "POST",
     headers: {
       Authorization: `Basic ${process.env.AUTH}`,
@@ -151,6 +152,7 @@ export async function getStaticProps(context) {
   const { slug = '' } = context.params || {}
 
   const directorData = await fetch(process.env.API_HOST, {
+      cache: 'no-store',
       method: "POST",
       headers: {
         Authorization: `Basic ${process.env.AUTH}`,
@@ -195,6 +197,7 @@ export async function getStaticProps(context) {
 
   /* GET ALL FILMS */
   const filmsData = await fetch(process.env.API_HOST, {
+      cache: 'no-store',
       method: "POST",
       headers: {
         Authorization: `Basic ${process.env.AUTH}`,

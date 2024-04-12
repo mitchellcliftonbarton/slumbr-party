@@ -17,6 +17,7 @@ function MyApp({ Component, pageProps, footerData, directorsData, contactData })
 MyApp.getInitialProps = async () => {
   /* GET FOOTER DATA */
   const footerData = await fetch(process.env.API_HOST, {
+    cache: 'no-store',
     method: "POST",
     headers: {
       Authorization: `Basic ${process.env.AUTH}`,
@@ -43,12 +44,13 @@ MyApp.getInitialProps = async () => {
   /* GET DIRECTORS */
 
   const directorsData = await fetch(process.env.API_HOST, {
+    cache: 'no-store',
     method: "POST",
     headers: {
       Authorization: `Basic ${process.env.AUTH}`,
     },
     body: JSON.stringify({
-      query: "page('Directors').children",
+      query: "page('Directors').children.listed",
       select: {
         slug: true,
         title: true
@@ -61,6 +63,7 @@ MyApp.getInitialProps = async () => {
   /* GET CONTACT DATA */
 
   const contactData = await fetch(process.env.API_HOST, {
+      cache: 'no-store',
       method: "POST",
       headers: {
         Authorization: `Basic ${process.env.AUTH}`,

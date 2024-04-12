@@ -12,6 +12,7 @@ import Link from 'next/link'
 import DefImage from '../../components/DefImage'
 
 export default function Directors({ data }) {
+  console.log(data)
   const [activeDirector, setActiveDirector] = useState(false)
 
   const handleMouseEnter = (index) => {
@@ -76,10 +77,10 @@ export default function Directors({ data }) {
                     <Marquee
                       gradient={false}
                     >
-                      {data.directors[activeDirector].films.map((film) => (
+                      {data.directors[activeDirector].films.map((film, index) => (
                         <div 
                           className="film-image w-1/3 lg:w-1/6 flex-0-0" 
-                          key={film.slug}
+                          key={`${film.slug}-${data.directors[activeDirector].slug}-${index}`}
                           data-slug={film.slug}
                         >
                           <div className='px-2 lg:px-def-1/2'>
@@ -125,6 +126,7 @@ Directors.getLayout = function getLayout(page) {
 export async function getStaticProps() {
   /* GET DIRECTOR DATA */
   const directorsData = await fetch(process.env.API_HOST, {
+      cache: 'no-store',
       method: "POST",
       headers: {
         Authorization: `Basic ${process.env.AUTH}`,
@@ -134,7 +136,7 @@ export async function getStaticProps() {
         select: {
           introText: "page.intro_text.markdown",
           directors: {
-            query: "page.children",
+            query: "page.children.listed",
             select: {
               slug: true,
               title: true
@@ -149,6 +151,7 @@ export async function getStaticProps() {
 
   /* GET FILM DATA */
   const filmsData = await fetch(process.env.API_HOST, {
+      cache: 'no-store',
       method: "POST",
       headers: {
         Authorization: `Basic ${process.env.AUTH}`,

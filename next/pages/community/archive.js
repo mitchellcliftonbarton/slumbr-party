@@ -115,6 +115,7 @@ CommunityArchive.getLayout = function getLayout(page) {
 
 export async function getStaticProps() {
   const communityData = await fetch(process.env.API_HOST, {
+      cache: 'no-store',
       method: "POST",
       headers: {
         Authorization: `Basic ${process.env.AUTH}`,
