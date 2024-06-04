@@ -72,7 +72,7 @@ export default function CommunityArchive({ data }) {
           <div className="events">
             {data.items.map((item, index) => (
               <div
-                id={slugify(item.title, { lower: true })}
+                id={slugify(item.title, { lower: true, strict: true })}
                 className={`${styles['event-detail-item']} w-full pb-4 lg:pb-def`}
                 key={index}
               >
