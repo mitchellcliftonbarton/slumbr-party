@@ -9,6 +9,11 @@ columns:
         label: Directors (Drafts)
         status: drafts
         templates: [director]
+      directors_unlisted:
+        type: pages
+        label: Directors (Unlisted)
+        status: unlisted
+        templates: [director]
       directors_published:
         type: pages
         label: Directors (Published)

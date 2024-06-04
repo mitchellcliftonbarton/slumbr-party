@@ -4,7 +4,7 @@
     overflow: hidden;
     padding-bottom: 206%;
 
-    @media screen and (min-width: theme("screens.lg")) {
+    @media screen and (min-width: theme('screens.lg')) {
       padding-bottom: 61.6%;
     }
 
@@ -24,7 +24,7 @@
       svg {
         width: 3rem;
 
-        @media screen and (min-width: theme("screens.lg")) {
+        @media screen and (min-width: theme('screens.lg')) {
           width: 6.3rem;
         }
       }
@@ -43,12 +43,12 @@
 
 .director-detail {
   min-height: 100vh;
-  
+
   .director-title {
     z-index: 200;
     // transition: opacity .6s;
     opacity: 1;
-    animation: fadeOut .4s forwards;
+    animation: fadeOut 0.4s forwards;
     animation-delay: 1.5s;
 
     // &.hide-title {
@@ -89,23 +89,23 @@
       border: 2px solid theme('colors.coral');
       border-radius: var(--border-radius);
       opacity: 0;
-      transition: opacity .3s;
+      transition: opacity 0.3s;
     }
   }
 
   .director-film-image-inner {
     z-index: 1;
     opacity: 1;
-    transition: opacity .3s;
-    transition-delay: .1s;
+    transition: opacity 0.3s;
+    transition-delay: 0.1s;
   }
 
   .plus {
     opacity: 1;
-    transition: opacity .3s;
+    transition: opacity 0.3s;
     z-index: 10;
 
-    @media screen and (min-width: theme("screens.lg")) {
+    @media screen and (min-width: theme('screens.lg')) {
       opacity: 0;
     }
 
@@ -122,7 +122,7 @@
   }
 
   &:hover {
-    @media screen and (min-width: theme("screens.lg")) {
+    @media screen and (min-width: theme('screens.lg')) {
       .director-film-image {
         &:before {
           opacity: 1;
@@ -153,17 +153,17 @@
   height: 260px;
   max-height: 400px;
 
-  @media screen and (min-width: theme("screens.lg")) {
+  @media screen and (min-width: theme('screens.lg')) {
     height: auto;
   }
 
   .event-slider-buttons {
     button {
       opacity: 0;
-      transition: opacity .3s;
+      transition: opacity 0.3s;
 
       &:hover {
-        @media screen and (min-width: theme("screens.lg")) {
+        @media screen and (min-width: theme('screens.lg')) {
           opacity: 1;
         }
       }
@@ -172,9 +172,7 @@
 }
 
 .event-detail-item {
-  // @media screen and (min-width: theme("screens.lg")) {
-  //   min-height: 380px;
-  // }
+  scroll-margin: 75px;
 
   .event-border {
     & > div {
@@ -185,7 +183,7 @@
   }
 
   .event-detail-grid {
-    @media screen and (min-width: theme("screens.lg")) {
+    @media screen and (min-width: theme('screens.lg')) {
       min-height: 380px;
     }
   }
@@ -202,14 +200,14 @@
     overflow: hidden;
 
     .film-awards-image {
-      background-color: rgba(105, 68, 255, .9);
+      background-color: rgba(105, 68, 255, 0.9);
       opacity: 0;
       pointer-events: none;
-      transition: opacity .3s;
+      transition: opacity 0.3s;
     }
 
     &:hover {
-      @media screen and (min-width: theme("screens.lg")) {
+      @media screen and (min-width: theme('screens.lg')) {
         .film-awards-image {
           opacity: 1;
         }
@@ -230,7 +228,7 @@
 
 .clients {
   list-style: none;
-  
+
   li {
     width: 50%;
   }
@@ -250,7 +248,7 @@
       svg {
         width: 3rem;
 
-        @media screen and (min-width: theme("screens.lg")) {
+        @media screen and (min-width: theme('screens.lg')) {
           width: 6.3rem;
         }
       }
@@ -283,7 +281,7 @@
   svg {
     width: 3rem;
 
-    @media screen and (min-width: theme("screens.lg")) {
+    @media screen and (min-width: theme('screens.lg')) {
       width: 6.3rem;
     }
   }
@@ -291,7 +289,7 @@
 
 .video-poster {
   opacity: 1;
-  transition: opacity .3s;
+  transition: opacity 0.3s;
   pointer-events: auto;
 
   &.started {
@@ -317,7 +315,7 @@
 .event-slider .community-slider {
   padding-left: 1rem;
 
-  @media screen and (min-width: theme("screens.lg")) {
+  @media screen and (min-width: theme('screens.lg')) {
     padding: 0px;
   }
 
@@ -341,7 +339,7 @@
 .contact-logo svg {
   width: 4rem;
 
-  @media screen and (min-width: theme("screens.lg")) {
+  @media screen and (min-width: theme('screens.lg')) {
     width: 7.6rem;
   }
 }
@@ -353,7 +351,7 @@
 
 .director-info {
   & > div:first-child {
-    @media screen and (min-width: theme("screens.lg")) {
+    @media screen and (min-width: theme('screens.lg')) {
       padding-bottom: 56.25%;
     }
   }
@@ -361,15 +359,19 @@
 
 .film-slider {
   &.merlot {
-    h2, p, button, div, h3 {
+    h2,
+    p,
+    button,
+    div,
+    h3 {
       color: theme('colors.merlot');
     }
 
     button {
-      transition: color .3s;
+      transition: color 0.3s;
 
       &:hover {
-        @media screen and (min-width: theme("screens.lg")) {
+        @media screen and (min-width: theme('screens.lg')) {
           color: theme('colors.coral');
         }
       }
@@ -377,15 +379,19 @@
   }
 
   &.parchment {
-    h2, p, button, div, h3 {
+    h2,
+    p,
+    button,
+    div,
+    h3 {
       color: theme('colors.parchment');
     }
 
     button {
-      transition: color .3s;
+      transition: color 0.3s;
 
       &:hover {
-        @media screen and (min-width: theme("screens.lg")) {
+        @media screen and (min-width: theme('screens.lg')) {
           color: theme('colors.coral');
         }
       }
@@ -410,12 +416,12 @@
         border: 2px solid theme('colors.coral');
         border-radius: var(--border-radius);
         opacity: 0;
-        transition: opacity .3s;
+        transition: opacity 0.3s;
       }
 
       .plus {
         opacity: 0;
-        transition: opacity .3s;
+        transition: opacity 0.3s;
         z-index: 10;
 
         // @media screen and (min-width: theme("screens.lg")) {
@@ -425,7 +431,7 @@
     }
 
     &:hover {
-      @media screen and (min-width: theme("screens.lg")) {
+      @media screen and (min-width: theme('screens.lg')) {
         .inner {
           &:before {
             opacity: 1;
@@ -443,7 +449,7 @@
 .no-event-image {
   max-height: 50%;
 
-  @media screen and (min-width: theme("screens.lg")) {
+  @media screen and (min-width: theme('screens.lg')) {
     max-height: 75%;
   }
 }
