@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import { useState } from 'react'
-import Marquee from "react-fast-marquee"
-import { motion, AnimatePresence } from "framer-motion"
+import Marquee from 'react-fast-marquee'
+import { motion, AnimatePresence } from 'framer-motion'
 
 // Styles
 import styles from './../../styles/Pages.module.scss'
@@ -12,7 +12,7 @@ import Link from 'next/link'
 import DefImage from '../../components/DefImage'
 
 export default function Directors({ data }) {
-  console.log(data)
+  // console.log(data)
   const [activeDirector, setActiveDirector] = useState(false)
 
   const handleMouseEnter = (index) => {
@@ -22,23 +22,24 @@ export default function Directors({ data }) {
   const handleMouseLeave = () => {
     setActiveDirector(false)
   }
-  
+
   return (
     <div className={`push-nav bg-parchment`}>
       <Head>
         <title>SLMBR PRTY | Directors</title>
-        <meta name="description" content="SLMBR PRTY is a women-founded and led production company devoted to craft and intent on transcending tradition." />
+        <meta
+          name="description"
+          content="SLMBR PRTY is a women-founded and led production company devoted to craft and intent on transcending tradition."
+        />
       </Head>
 
-      <h1 className='wcag-hidden'>Directors</h1>
+      <h1 className="wcag-hidden">Directors</h1>
 
       <div>
         <div className="def-x">
           {data.directors.length > 0 && (
-            <div className='enter-in-1 delay-100 directors py-48 text-center px-def-mobile lg:px-20'>
-              <div
-                className="inner flex flex-col items-center"
-              >
+            <div className="enter-in-1 delay-100 directors py-48 text-center px-def-mobile lg:px-20">
+              <div className="inner flex flex-col items-center">
                 {data.directors.map((director, index) => (
                   <Link
                     key={index}
@@ -46,7 +47,9 @@ export default function Directors({ data }) {
                     className="level-1 text-merlot hover:italic"
                     onMouseEnter={() => handleMouseEnter(index)}
                     onMouseLeave={() => handleMouseLeave()}
-                  >{director.title}</Link>
+                  >
+                    {director.title}
+                  </Link>
                 ))}
               </div>
             </div>
@@ -55,18 +58,18 @@ export default function Directors({ data }) {
 
         {data.directors.length > 0 && (
           <div className={`${styles['films-marquee']} relative py-def-mobile lg:py-def w-full`}>
-            <div className='relative'>
+            <div className="relative">
               <div className="spacer w-1/3 lg:w-1/6 pointer-events-none opacity-0">
                 <div
                   style={{
-                    paddingBottom: '56.25%'
+                    paddingBottom: '56.25%',
                   }}
                 ></div>
               </div>
-              
+
               <AnimatePresence>
                 {activeDirector !== false && activeDirector >= 0 && (
-                  <motion.div 
+                  <motion.div
                     key={data.directors[activeDirector].slug}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
@@ -74,20 +77,18 @@ export default function Directors({ data }) {
                     transition={{ duration: 0.5 }}
                     className="director-film-marquee flex absolute top-0 left-0 w-full h-full"
                   >
-                    <Marquee
-                      gradient={false}
-                    >
+                    <Marquee gradient={false}>
                       {data.directors[activeDirector].films.map((film, index) => (
-                        <div 
-                          className="film-image w-1/3 lg:w-1/6 flex-0-0" 
+                        <div
+                          className="film-image w-1/3 lg:w-1/6 flex-0-0"
                           key={`${film.slug}-${data.directors[activeDirector].slug}-${index}`}
                           data-slug={film.slug}
                         >
-                          <div className='px-2 lg:px-def-1/2'>
+                          <div className="px-2 lg:px-def-1/2">
                             <div
-                              className='relative overflow-hidden border-radius-def'
+                              className="relative overflow-hidden border-radius-def"
                               style={{
-                                paddingBottom: '56.25%'
+                                paddingBottom: '56.25%',
                               }}
                             >
                               <div className="absolute top-0 left-0 w-full h-full">
@@ -116,34 +117,30 @@ export default function Directors({ data }) {
 }
 
 Directors.getLayout = function getLayout(page) {
-  return (
-    <DefaultLayout>
-      {page}
-    </DefaultLayout>
-  )
+  return <DefaultLayout>{page}</DefaultLayout>
 }
 
 export async function getStaticProps() {
   /* GET DIRECTOR DATA */
   const directorsData = await fetch(process.env.API_HOST, {
-      cache: 'no-store',
-      method: "POST",
-      headers: {
-        Authorization: `Basic ${process.env.AUTH}`,
+    cache: 'no-store',
+    method: 'POST',
+    headers: {
+      Authorization: `Basic ${process.env.AUTH}`,
+    },
+    body: JSON.stringify({
+      query: "page('Directors')",
+      select: {
+        introText: 'page.intro_text.markdown',
+        directors: {
+          query: 'page.children.listed',
+          select: {
+            slug: true,
+            title: true,
+          },
+        },
       },
-      body: JSON.stringify({
-        query: "page('Directors')",
-        select: {
-          introText: "page.intro_text.markdown",
-          directors: {
-            query: "page.children.listed",
-            select: {
-              slug: true,
-              title: true
-            }
-          }
-        }
-      }),
+    }),
   })
 
   const jsonData = await directorsData.json()
@@ -151,46 +148,46 @@ export async function getStaticProps() {
 
   /* GET FILM DATA */
   const filmsData = await fetch(process.env.API_HOST, {
-      cache: 'no-store',
-      method: "POST",
-      headers: {
-        Authorization: `Basic ${process.env.AUTH}`,
-      },
-      body: JSON.stringify({
-        query: `page('Films').children.filterBy('film_type', 'commercial')`,
-        select: {
-          title: true,
-          slug: true,
-          disableOnDirectorPage: "page.disable_on_director_page.toBool",
-          director: {
-            query: "page.director.toPage",
-            select: {
-              title: true,
-              slug: true
-            },
+    cache: 'no-store',
+    method: 'POST',
+    headers: {
+      Authorization: `Basic ${process.env.AUTH}`,
+    },
+    body: JSON.stringify({
+      query: `page('Films').children.filterBy('film_type', 'commercial')`,
+      select: {
+        title: true,
+        slug: true,
+        disableOnDirectorPage: 'page.disable_on_director_page.toBool',
+        director: {
+          query: 'page.director.toPage',
+          select: {
+            title: true,
+            slug: true,
           },
-          image: {
-            query: "page.featured_image.toFiles.first",
-            select: {
-              url: true,
-              width: true,
-              height: true,
-              alt: true
-            }
-          }
-        }
-      }),
+        },
+        image: {
+          query: 'page.featured_image.toFiles.first',
+          select: {
+            url: true,
+            width: true,
+            height: true,
+            alt: true,
+          },
+        },
+      },
+    }),
   })
 
   const filmsJsonDataResult = await filmsData.json()
-  const filmsJsonData = filmsJsonDataResult.result.filter(film => film.disableOnDirectorPage !== true)
+  const filmsJsonData = filmsJsonDataResult.result.filter((film) => film.disableOnDirectorPage !== true)
 
   /* PUT DIRECTOR AND FILM DATA TOGETHER */
-  result.directors.forEach(director => {
+  result.directors.forEach((director) => {
     const slug = director.slug
     const films = []
 
-    filmsJsonData.forEach(film => {
+    filmsJsonData.forEach((film) => {
       if (film.director && film.director.slug === slug) {
         films.push(film)
       }
@@ -207,7 +204,7 @@ export async function getStaticProps() {
 
   return {
     props: {
-      data: result
+      data: result,
     },
   }
 }

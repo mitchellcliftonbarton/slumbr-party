@@ -30,14 +30,14 @@ export default function Home({ data }) {
   useEffect(() => {
     const trigger = ScrollTrigger.create({
       trigger: directorsSection.current,
-      start: "top top",
-      end: "top top",
+      start: 'top top',
+      end: 'top top',
       onEnter: () => {
         update.setNavClass('transparent-merlot')
       },
       onLeaveBack: () => {
         update.setNavClass('transparent-parchment')
-      }
+      },
     })
 
     return () => trigger.kill()
@@ -54,12 +54,12 @@ export default function Home({ data }) {
           // console.log('autoplay worked')
         })
         .catch((error) => {
-          if (error.name === 'NotAllowedError') {
+          if (error.name === 'NotAllowedError' && video.current) {
             // console.log('autoplay not allowed')
             video.current.pause()
 
             setShowPlay(true)
-          } else {
+          } else if (video.current) {
             // console.log('autoplay not working for another reason')
             video.current.pause()
 
@@ -75,33 +75,36 @@ export default function Home({ data }) {
       setShowPlay(false)
     }
   }
-  
+
   return (
-    <div 
-      ref={comp} 
+    <div
+      ref={comp}
       className={`${styles.home}`}
     >
       <Head>
         <title>SLMBR PRTY | Home</title>
-        <meta name="description" content="SLMBR PRTY is a women-founded and led production company devoted to craft and intent on transcending tradition." />
+        <meta
+          name="description"
+          content="SLMBR PRTY is a women-founded and led production company devoted to craft and intent on transcending tradition."
+        />
       </Head>
 
       <h1 className="wcag-hidden">Home</h1>
 
-      <LoadOverlay/>
+      <LoadOverlay />
 
       {data.reelVideo && data.reelVideoPoster && (
         <div className={`${styles.hero} ${videoLoaded ? styles.loaded : null}`}>
           <div className="absolute top-0 left-0 w-full h-full">
-            <video 
+            <video
               ref={video}
-              src={data.reelVideo.url} 
+              src={data.reelVideo.url}
               poster={data.reelVideoPoster.url}
               muted
-              loop 
+              loop
               preload="true"
               playsInline
-              className='object-cover w-full h-full'
+              className="object-cover w-full h-full"
               onLoadedData={() => {
                 setTimeout(() => {
                   setVideoLoaded(true)
@@ -121,24 +124,31 @@ export default function Home({ data }) {
         </div>
       )}
 
-      <div 
-        ref={directorsSection} 
+      <div
+        ref={directorsSection}
         className="directors bg-parchment def-x py-12 grid grid-cols-12 gap-def pb-40"
       >
         {data.directorsTitle && (
-          <h2 className={`${styles['directors-title']} enter-in-1 upright level-subhead text-merlot hidden lg:block`}>{data.directorsTitle}</h2>
+          <h2 className={`${styles['directors-title']} enter-in-1 upright level-subhead text-merlot hidden lg:block`}>
+            {data.directorsTitle}
+          </h2>
         )}
 
         <div className="col-span-12 lg:col-span-11 lg:col-start-2 mb-24 lg:mb-20">
           {data.directorHeadline && (
-            <div 
-              className="enter-in-1 delay-100 level-2 text-merlot mb-12 lg:mb-16 rich-text" 
+            <div
+              className="enter-in-1 delay-100 level-2 text-merlot mb-12 lg:mb-16 rich-text"
               dangerouslySetInnerHTML={{ __html: data.directorHeadline }}
             ></div>
           )}
 
-          <p className='enter-in-1 delay-200 level-subhead text-merlot'>
-            <Link href="/directors" className='link-with-arrow'>View All Directors</Link>
+          <p className="enter-in-1 delay-200 level-subhead text-merlot">
+            <Link
+              href="/directors"
+              className="link-with-arrow"
+            >
+              View All Directors
+            </Link>
           </p>
         </div>
 
@@ -161,75 +171,71 @@ export default function Home({ data }) {
 }
 
 Home.getLayout = function getLayout(page) {
-  return (
-    <DefaultLayout>
-      {page}
-    </DefaultLayout>
-  )
+  return <DefaultLayout>{page}</DefaultLayout>
 }
 
 export async function getStaticProps() {
   const homeData = await fetch(process.env.API_HOST, {
-      cache: 'no-store',
-      method: "POST",
-      headers: {
-        Authorization: `Basic ${process.env.AUTH}`,
+    cache: 'no-store',
+    method: 'POST',
+    headers: {
+      Authorization: `Basic ${process.env.AUTH}`,
+    },
+    body: JSON.stringify({
+      query: "page('Home')",
+      select: {
+        reelVimeoId: 'page.reel_vimeo_id',
+        reelVideo: {
+          query: 'page.reel_video.toFiles.first',
+          select: {
+            url: true,
+          },
+        },
+        reelVideoPoster: {
+          query: 'page.reel_video_poster.toFiles.first',
+          select: {
+            url: true,
+          },
+        },
+        directorsTitle: 'page.directors_title',
+        directorHeadline: 'page.headline.markdown',
+        directorFilms: {
+          query: 'page.films.toPages',
+          select: {
+            title: true,
+            slug: true,
+            featuredImage: {
+              query: 'page.featured_image.toFiles.first',
+              select: {
+                url: true,
+                width: true,
+                height: true,
+                alt: true,
+              },
+            },
+            hoverVideo: {
+              query: 'page.hover_video.toFiles.first',
+              select: {
+                url: true,
+              },
+            },
+            director: {
+              query: 'page.director.toPage',
+              select: {
+                title: true,
+                slug: true,
+              },
+            },
+          },
+        },
       },
-      body: JSON.stringify({
-        query: "page('Home')",
-        select: {
-          reelVimeoId: "page.reel_vimeo_id",
-          reelVideo: {
-            query: "page.reel_video.toFiles.first",
-            select: {
-              url: true
-            }
-          },  
-          reelVideoPoster: {
-            query: "page.reel_video_poster.toFiles.first",
-            select: {
-              url: true
-            }
-          },  
-          directorsTitle: "page.directors_title",
-          directorHeadline: "page.headline.markdown",
-          directorFilms: {
-            query: "page.films.toPages",
-            select: {
-              title: true,
-              slug: true,
-              featuredImage: {
-                query: "page.featured_image.toFiles.first",
-                select: {
-                  url: true,
-                  width: true,
-                  height: true,
-                  alt: true
-                }
-              },
-              hoverVideo: {
-                query: "page.hover_video.toFiles.first",
-                select: {
-                  url: true
-                }
-              },
-              director: {
-                query: "page.director.toPage",
-                select: {
-                  title: true,
-                  slug: true
-                }
-              }
-            }
-          }
-        }
-      }),
+    }),
   })
 
   const jsonData = await homeData.json()
   const { result } = jsonData
 
   return {
-    props: {data: result},
+    props: { data: result },
   }
 }

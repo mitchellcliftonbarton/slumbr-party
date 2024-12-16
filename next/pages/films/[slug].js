@@ -30,36 +30,37 @@ export default function FilmDetail({ data, films }) {
   const [poster] = useMemo(() => {
     let value = data.videoPoster || data.featuredImage
 
-    return [
-      value
-    ]
+    return [value]
   }, [data])
 
   return (
     <div className={`push-nav bg-periwinkle min-h-screen`}>
       <Head>
         <title>{pageTitle}</title>
-        <meta name="description" content="SLMBR PRTY is a women-founded and led production company devoted to craft and intent on transcending tradition." />
+        <meta
+          name="description"
+          content="SLMBR PRTY is a women-founded and led production company devoted to craft and intent on transcending tradition."
+        />
       </Head>
 
       <div className="pt-40 lg:pt-32 lg:pt-12 pb-4 lg:pb-def">
         {filmData.vimeoId && (
-          <div className='def-x mb-60 lg:mb-32'>
+          <div className="def-x mb-60 lg:mb-32">
             <div
               className={`${styles['main-video']} enter-in-1 relative mb-4 lg:mb-def`}
               style={{
-                paddingBottom: '56.25%'
+                paddingBottom: '56.25%',
               }}
             >
               <Vimeo
                 video={filmData.vimeoId}
                 ref={video}
-                className='w-full h-full absolute top-0 left-0'
+                className="w-full h-full absolute top-0 left-0"
               />
 
               {poster && (
-                <div 
-                  key={filmData.slug} 
+                <div
+                  key={filmData.slug}
                   className={`${styles['video-poster']} ${videoStarted ? styles.started : null} featured-image absolute top-0 left-0 w-full h-full`}
                 >
                   <DefImage
@@ -70,12 +71,12 @@ export default function FilmDetail({ data, films }) {
                     height={poster.height}
                   />
 
-                  <button 
-                    onClick={() => playVideo()} 
+                  <button
+                    onClick={() => playVideo()}
                     className="absolute top-0 left-0 w-full h-full flex justify-center items-center"
                   >
                     <p className={`${styles.play} level-1 text-parchment flex items-center`}>
-                      <span className='pr-5 lg:pr-10'>Play</span>
+                      <span className="pr-5 lg:pr-10">Play</span>
                       <Play />
                     </p>
                   </button>
@@ -83,7 +84,10 @@ export default function FilmDetail({ data, films }) {
               )}
             </div>
 
-            <h1 className='level-subhead text-merlot'>{filmData.title}{filmData.videoTitle ? filmData.videoTitle : ''}</h1>
+            <h1 className="level-subhead text-merlot">
+              {filmData.title}
+              {filmData.videoTitle ? filmData.videoTitle : ''}
+            </h1>
           </div>
         )}
 
@@ -98,17 +102,13 @@ export default function FilmDetail({ data, films }) {
 }
 
 FilmDetail.getLayout = function getLayout(page) {
-  return (
-    <DefaultLayout>
-      {page}
-    </DefaultLayout>
-  )
+  return <DefaultLayout>{page}</DefaultLayout>
 }
 
 export async function getStaticPaths() {
   const filmData = await fetch(process.env.API_HOST, {
     cache: 'no-store',
-    method: "POST",
+    method: 'POST',
     headers: {
       Authorization: `Basic ${process.env.AUTH}`,
     },
@@ -117,79 +117,91 @@ export async function getStaticPaths() {
       select: {
         slug: true,
         director: {
-          query: "page.director.toPage",
+          query: 'page.director.toPage',
           select: {
-            title: true
-          }
-        }
+            title: true,
+          },
+        },
       },
     }),
-  });
+  })
 
-  const jsonData = await filmData.json();
+  const jsonData = await filmData.json()
   const { result } = jsonData
 
   // only build this page for films that have a director
-  const filmsWithDirectors = result.filter((film) => {
-    return film.director
-  })
+  // const filmsWithDirectors = result.filter((film) => {
+  //   return film.director
+  // })
 
-  const paths = filmsWithDirectors.map((page) => {
+  // console.log(filmsWithDirectors)
+
+  // const paths = filmsWithDirectors.map((page) => {
+  //   return {
+  //     params: {
+  //       slug: page.slug,
+  //     },
+  //   }
+  // })
+
+  const paths = result.map((page) => {
     return {
       params: {
-        slug: page.slug
+        slug: page.slug,
       },
-    };
-  });
+    }
+  })
 
   return {
-      paths: paths,
-      fallback: false,
-  };
+    paths: paths,
+    fallback: false,
+  }
 }
 
 export async function getStaticProps(context) {
   const { slug = '' } = context.params || {}
 
+  console.log('film: ' + slug)
+
   const directorData = await fetch(process.env.API_HOST, {
-      cache: 'no-store',
-      method: "POST",
-      headers: {
-        Authorization: `Basic ${process.env.AUTH}`,
+    cache: 'no-store',
+    method: 'POST',
+    headers: {
+      Authorization: `Basic ${process.env.AUTH}`,
+    },
+    body: JSON.stringify({
+      query: `page('Films').children.find('${slug}')`,
+      select: {
+        title: true,
+        slug: true,
+        vimeoId: 'page.vimeo_id',
+        videoTitle: 'page.video_title',
+        featuredImage: {
+          query: 'page.featured_image.toFiles.first',
+          select: {
+            url: true,
+            width: true,
+            height: true,
+            alt: true,
+          },
+        },
+        director: {
+          query: 'page.director.toPage',
+          select: {
+            title: true,
+          },
+        },
+        videoPoster: {
+          query: 'page.video_poster.toFiles.first',
+          select: {
+            url: true,
+            width: true,
+            height: true,
+            alt: true,
+          },
+        },
       },
-      body: JSON.stringify({
-        query: `page('Films').children.find('${slug}')`,
-        select: {
-          title: true,
-          slug: true,
-          vimeoId: "page.vimeo_id",
-          videoTitle: "page.video_title",
-          featuredImage: {
-            query: "page.featured_image.toFiles.first",
-            select: {
-              url: true,
-              width: true,
-              height: true,
-              alt: true,
-            }
-          },
-          director: {
-            query: "page.director.toPage",
-            select: {
-              title: true
-            }
-          },
-          videoPoster: {
-            query: "page.video_poster.toFiles.first",
-            select: {
-              url: true,
-              width: true,
-              height: true,
-              alt: true,
-            }
-          }
-        }
-      }),
+    }),
   })
 
   const jsonData = await directorData.json()
@@ -197,28 +209,28 @@ export async function getStaticProps(context) {
 
   /* GET ALL FILMS */
   const filmsData = await fetch(process.env.API_HOST, {
-      cache: 'no-store',
-      method: "POST",
-      headers: {
-        Authorization: `Basic ${process.env.AUTH}`,
+    cache: 'no-store',
+    method: 'POST',
+    headers: {
+      Authorization: `Basic ${process.env.AUTH}`,
+    },
+    body: JSON.stringify({
+      query: "page('Films').children.filterBy('film_type', 'narrative')",
+      select: {
+        title: true,
+        slug: true,
+        image: {
+          query: 'page.featured_image.toFiles.first',
+          select: {
+            url: true,
+            width: true,
+            height: true,
+            alt: true,
+            type: true,
+          },
+        },
       },
-      body: JSON.stringify({
-        query: "page('Films').children.filterBy('film_type', 'narrative')",
-        select: {
-          title: true,
-          slug: true,
-          image: {
-            query: "page.featured_image.toFiles.first",
-            select: {
-              url: true,
-              width: true,
-              height: true,
-              alt: true,
-              type: true
-            }
-          }
-        }
-      }),
+    }),
   })
 
   const filmsJsonData = await filmsData.json()
@@ -236,7 +248,7 @@ export async function getStaticProps(context) {
   return {
     props: {
       data: result,
-      films: filmsArray
+      films: filmsArray,
     },
   }
 }
