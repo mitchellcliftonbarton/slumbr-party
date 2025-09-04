@@ -16,7 +16,7 @@ import Cookies from 'js-cookie'
 import styles from './../styles/Pages.module.scss'
 
 // Components
-import LoadOverlay from '../components/LoadOverlay'
+// import LoadOverlay from '../components/LoadOverlay'
 import VideoBlock from '../components/VideoBlock'
 import { Play, XIcon } from '../components/icons/Icons'
 
@@ -106,7 +106,7 @@ export default function Home({ data }) {
 
         <h1 className="wcag-hidden">Home</h1>
 
-        <LoadOverlay />
+        {/* <LoadOverlay /> */}
 
         {data.reelVideo && data.reelVideoPoster && (
           <div className={`${styles.hero} ${videoLoaded ? styles.loaded : null}`}>
