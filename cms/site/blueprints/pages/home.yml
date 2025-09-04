@@ -4,6 +4,18 @@ icon: home
 columns:
   - width: 3/4
     sections:
+      popup:
+        type: fields
+        fields:
+          popup_title:
+            label: Popup Title
+            type: text
+            help: This title will show up in the popup section.
+          popup_text:
+            label: Popup Text
+            type: textarea
+            size: medium
+            help: This text will show up in the popup section.
       reel:
         type: fields
         fields:

@@ -7,6 +7,17 @@ columns:
       top:
         type: fields
         fields:
+          main_text:
+            label: Main Text
+            type: textarea
+            size: large
+          marquee_images:
+            label: Marquee Images
+            type: files
+            multiple: true
+            allow:
+              - image
+            help: This images will show up as the marquee images.
           background_video:
             label: Background Video
             type: files

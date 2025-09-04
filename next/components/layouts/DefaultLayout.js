@@ -17,20 +17,16 @@ import ContactModal from '../ContactModal'
 
 const links = [
   {
-    text: 'Directors',
-    link: '/directors'
-  },
-  {
     text: 'Films',
-    link: '/films'
+    link: '/films',
   },
   {
-    text: 'Community',
-    link: '/community/archive'
+    text: 'Archives',
+    link: '/community/archive',
   },
   {
     text: 'About',
-    link: '/about'
+    link: '/about',
   },
 ]
 
@@ -51,19 +47,14 @@ const Layout = ({ children }) => {
       value = true
     }
 
-    return [
-      value
-    ]
+    return [value]
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.asPath])
 
   useEffect(() => {
-    console.log(
-      "%c \nDevelopment by Cold Rice \n \ncold-rice.info \n \n",
-      "color: grey"
-    );
+    console.log('%c \nDevelopment by Cold Rice \n \ncold-rice.info \n \n', 'color: grey')
 
-    document.addEventListener('mousemove', e => {
+    document.addEventListener('mousemove', (e) => {
       setCursorX(e.clientX + 40)
       setCursorY(e.clientY + 40)
     })
@@ -105,7 +96,7 @@ const Layout = ({ children }) => {
         document.body.style.overflow = 'initial'
       }
     }
-    
+
     if (router.query.contact) {
       setCursorFill('#FF4E00')
     } else {
@@ -117,8 +108,8 @@ const Layout = ({ children }) => {
   return (
     <AppWrapper>
       <div>
-        <MainNav 
-          links={links} 
+        <MainNav
+          links={links}
           menuOpen={menuOpen}
           setMenuOpen={setMenuOpen}
           setContactModalOpen={setContactModalOpen}
@@ -126,8 +117,8 @@ const Layout = ({ children }) => {
 
         <main role="main">{children}</main>
 
-        <MainFooter 
-          data={children.props.footerData} 
+        <MainFooter
+          data={children.props.footerData}
           directors={children.props.directorsData}
         />
 
@@ -148,7 +139,7 @@ const Layout = ({ children }) => {
             className={`${styles['main-cursor']} hidden lg:block`}
             style={{
               transform: `translate3d(${cursorX}px, ${cursorY}px, 0px)`,
-              opacity: showCursor ? 1 : 0
+              opacity: showCursor ? 1 : 0,
             }}
           >
             <Logo fill={cursorFill} />

@@ -9,6 +9,7 @@ import { useState, useRef, useEffect } from 'react'
 // Components
 import DefaultLayout from '../components/layouts/DefaultLayout'
 import DefImage from '../components/DefImage'
+import Marquee from 'react-fast-marquee'
 
 // Styles
 import styles from './../styles/Pages.module.scss'
@@ -22,133 +23,73 @@ export default function About({ data }) {
   const aboutContainer = useRef(null)
   const aboutText = useRef(null)
 
-  useEffect(() => {
-    if (window !== undefined && document !== undefined) {
-      gsap.set(window, {
-        scrollTo: {
-          y: 0
-        }
-      })
-
-      gsap.to(window, {
-        duration: 10,
-        ease: 'none',
-        scrollTo: {
-          y: aboutText.current,
-          autoKill: true,
-          offsetY: 100
-        }
-      })
-    }
-  }, [])
-
-  useEffect(() => {
-    video.current.currentTime = 0
-    const playPromise = video.current.play()
-
-    if (playPromise !== undefined) {
-      playPromise
-        .then(() => {
-          // console.log('autoplay worked')
-        })
-        .catch((error) => {
-          if (error.name === 'NotAllowedError') {
-            // console.log('autoplay not allowed')
-            video.current.pause()
-
-            setHideVid(true)
-          } else {
-            // console.log('autoplay not working for another reason')
-            video.current.pause()
-
-            setHideVid(true)
-          }
-        })
-    }
-  }, [video])
-  
   return (
-    <div ref={aboutContainer} className={`${styles.about} ${hideVid ? styles['hide-vid'] : ''} push-nav def-x relative`}>
+    <div
+      ref={aboutContainer}
+      className={`bg-parchment relative min-h-screen flex flex-col`}
+    >
       <Head>
         <title>SLMBR PRTY | About</title>
-        <meta name="description" content="SLMBR PRTY is a women-founded and led production company devoted to craft and intent on transcending tradition." />
+        <meta
+          name="description"
+          content="SLMBR PRTY is a women-founded and led production company devoted to craft and intent on transcending tradition."
+        />
       </Head>
 
       <h1 className="wcag-hidden">About</h1>
 
-      {(() => {
-        if (data.backgroundVideo && data.backgroundVideoPoster !== '') {
-          return (
-            <div className={`${styles['bg-vid']} ${videoLoaded ? styles.loaded : null} fixed top-0 left-0 w-full h-full pointer-events-none`}>
-              <div className="absolute top-0 left-0 w-full h-full">
-                <video 
-                  ref={video}
-                  src={data.backgroundVideo.url} 
-                  poster={data.backgroundVideoPoster.url}
-                  muted
-                  loop 
-                  preload="true"
-                  playsInline
-                  className='object-cover w-full h-full'
-                  onLoadedData={() => {
-                    setTimeout(() => {
-                      setVideoLoaded(true)
-                    }, 100)
-                  }}
-                ></video>
-              </div>
-            </div>
-          )
-        } else if (data.backgroundImage.length > 0) {
-          return (
-            <div className={`${styles['bg-image']} fixed top-0 left-0 w-full h-full pointer-events-none`}>
-              <DefImage
-                src={data.backgroundImage.url}
-                alt={data.backgroundImage.alt}
-                className="object-cover w-full h-full"
-                width={data.backgroundImage.width}
-                height={data.backgroundImage.height}
-              />
-            </div>
-          )
-        }
-      })()}
-      
-      {data.largeText && (
-        <div 
-          className="fade-in large-text level-1 text-center w-full lg:w-3/4 mx-auto pb-60 rich-text" 
-          dangerouslySetInnerHTML={{ __html: data.largeText }}
-          style={{
-            paddingTop: '60vh'
-          }}
+      {data.mainText && data.mainText !== '' && (
+        <div
+          className="enter-in-1 def-x level-body text-merlot rich-text w-full lg:w-1/2 lg:max-w-[800px] mx-auto my-auto py-32"
+          dangerouslySetInnerHTML={{ __html: data.mainText }}
         ></div>
       )}
 
-      {showInfo && (
-        <div 
-          ref={aboutText} 
-          className={`${styles.info} delay-100 info w-full lg:w-5/12`}
-        >
-          {data.text && (
-            <div 
-              className="level-body rich-text mb-7" 
-              dangerouslySetInnerHTML={{ __html: data.text }}
-            ></div>
-          )}
+      {data.marqueeImages.length > 0 && (
+        <div className={`${styles['about-marquee']} relative py-def`}>
+          <Marquee gradient={false}>
+            {data.marqueeImages.map((image, index) => (
+              <div
+                className="film-image w-1/3 lg:w-1/6 flex-0-0"
+                key={index}
+              >
+                <div className="px-2 lg:px-def-1/2">
+                  <div className="relative overflow-hidden border-radius-def aspect-video">
+                    <div className="absolute top-0 left-0 w-full h-full">
+                      <DefImage
+                        src={image.url}
+                        alt={image.alt}
+                        className="object-cover w-full h-full"
+                        width={image.width}
+                        height={image.height}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
 
-          {data.clientTitle && (
-            <h2 className='level-body mb-7'>{data.clientTitle}</h2>
-          )}
-
-          {data.clients.length > 0 && (
-            <ul className={`${styles.clients} flex flex-wrap`}>
-              {data.clients.map((client, index) => (
-                <li key={index}>
-                  <p className='level-body'>○ {client.title}</p>
-                </li>
-              ))}
-            </ul>
-          )}
+            {data.marqueeImages.map((image, index) => (
+              <div
+                className="film-image w-1/3 lg:w-1/6 flex-0-0"
+                key={index}
+              >
+                <div className="px-2 lg:px-def-1/2">
+                  <div className="relative overflow-hidden border-radius-def aspect-video">
+                    <div className="absolute top-0 left-0 w-full h-full">
+                      <DefImage
+                        src={image.url}
+                        alt={image.alt}
+                        className="object-cover w-full h-full"
+                        width={image.width}
+                        height={image.height}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </Marquee>
         </div>
       )}
     </div>
@@ -156,63 +97,70 @@ export default function About({ data }) {
 }
 
 About.getLayout = function getLayout(page) {
-  return (
-    <DefaultLayout>
-      {page}
-    </DefaultLayout>
-  )
+  return <DefaultLayout>{page}</DefaultLayout>
 }
 
 export async function getStaticProps() {
   const aboutData = await fetch(process.env.API_HOST, {
-      cache: 'no-store',
-      method: "POST",
-      headers: {
-        Authorization: `Basic ${process.env.AUTH}`,
+    cache: 'no-store',
+    method: 'POST',
+    headers: {
+      Authorization: `Basic ${process.env.AUTH}`,
+    },
+    body: JSON.stringify({
+      query: "page('About')",
+      select: {
+        mainText: 'page.main_text.kirbytext',
+        backgroundVimeoId: 'page.background_vimeo_id',
+        marqueeImages: {
+          query: 'page.marquee_images.toFiles',
+          select: {
+            url: true,
+            width: true,
+            height: true,
+            alt: true,
+            type: true,
+          },
+        },
+        backgroundVideo: {
+          query: 'page.background_video.toFiles.first',
+          select: {
+            url: true,
+          },
+        },
+        backgroundVideoPoster: {
+          query: 'page.background_video_poster.toFiles.first',
+          select: {
+            url: true,
+          },
+        },
+        backgroundImage: {
+          query: 'page.background_image.toFiles.first',
+          select: {
+            url: true,
+            width: true,
+            height: true,
+            alt: true,
+            type: true,
+          },
+        },
+        largeText: 'page.large_text.markdown',
+        text: 'page.text.markdown',
+        clientTitle: 'page.client_title',
+        clients: {
+          query: 'page.clients.toStructure',
+          select: {
+            title: true,
+          },
+        },
       },
-      body: JSON.stringify({
-        query: "page('About')",
-        select: {
-          backgroundVimeoId: "page.background_vimeo_id",
-          backgroundVideo: {
-            query: "page.background_video.toFiles.first",
-            select: {
-              url: true
-            }
-          },  
-          backgroundVideoPoster: {
-            query: "page.background_video_poster.toFiles.first",
-            select: {
-              url: true
-            }
-          },
-          backgroundImage: {
-            query: "page.background_image.toFiles.first",
-            select: {
-              url: true,
-              width: true,
-              height: true,
-              alt: true,
-              type: true
-            }
-          },
-          largeText: "page.large_text.markdown",
-          text: "page.text.markdown",
-          clientTitle: "page.client_title",
-          clients: {
-            query: "page.clients.toStructure",
-            select: {
-              title: true
-            }
-          }
-        }
-      }),
+    }),
   })
 
   const jsonData = await aboutData.json()
   const { result } = jsonData
 
   return {
-    props: {data: result},
+    props: { data: result },
   }
 }

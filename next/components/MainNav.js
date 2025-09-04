@@ -11,7 +11,7 @@ import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import { useAppUpdate, useAppState } from '../context'
 
-const MainNav = ({links, setMenuOpen}) => {
+const MainNav = ({ links, setMenuOpen }) => {
   const router = useRouter()
   const [hovered, setHovered] = useState(false)
   const state = useAppState()
@@ -20,14 +20,14 @@ const MainNav = ({links, setMenuOpen}) => {
 
   useEffect(() => {
     if (window !== undefined) {
-      setIsLargeQuery(window.matchMedia("(min-width: 992px)").matches)
+      setIsLargeQuery(window.matchMedia('(min-width: 992px)').matches)
     }
   }, [])
 
   useEffect(() => {
     setHovered(false)
 
-    if (router.pathname === '/about' || router.pathname === '/') {
+    if (router.pathname === '/') {
       update.setNavClass('transparent-parchment')
     } else if (router.pathname === '/directors/film/[slug]') {
       update.setNavClass('merlot')
@@ -61,14 +61,14 @@ const MainNav = ({links, setMenuOpen}) => {
   }
 
   return (
-    <header 
-      id={styles['main-nav']} 
+    <header
+      id={styles['main-nav']}
       onMouseEnter={() => handleMouseEnter()}
       onMouseLeave={() => handleMouseLeave()}
       className={`${styles[state.navClass]} ${hovered ? styles.hovered : null} fixed top-0 left-0 w-full flex justify-between items-center def-x`}
     >
-      <Link 
-        href="/" 
+      <Link
+        href="/"
         className={styles['home-link']}
       >
         <WordMark />
@@ -76,29 +76,15 @@ const MainNav = ({links, setMenuOpen}) => {
 
       <div className={`${styles.links} hidden lg:flex items-center`}>
         {links.map((link, index) => (
-          <Link 
-            href={link.link} 
-            className={`${router.asPath === link.link ? styles.active : null} level-subhead`} 
+          <Link
+            href={link.link}
+            className={`${router.asPath === link.link ? styles.active : null} level-subhead`}
             key={index}
           >
             <Diamond />
             <span>{link.text}</span>
           </Link>
         ))}
-
-        <Link
-          href={{
-            pathname: router.asPath,
-            query: {
-              contact: true
-            }
-          }}
-          scroll={false}
-          className={`${router.asPath === '/contact' ? styles.active : null} level-subhead`}
-        >
-          <Diamond />
-          <span>Contact</span>
-        </Link>
       </div>
 
       <button

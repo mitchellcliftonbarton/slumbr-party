@@ -2,11 +2,14 @@
   .hero {
     position: relative;
     overflow: hidden;
-    padding-bottom: 206%;
+    max-height: 800px;
+    min-height: 500px;
+    height: 80svh;
+    // padding-bottom: 206%;
 
-    @media screen and (min-width: theme('screens.lg')) {
-      padding-bottom: 61.6%;
-    }
+    // @media screen and (min-width: theme('screens.lg')) {
+    //   padding-bottom: 61.6%;
+    // }
 
     & > div:first-child {
       // opacity: 0;
@@ -451,5 +454,45 @@
 
   @media screen and (min-width: theme('screens.lg')) {
     max-height: 75%;
+  }
+}
+
+.about-marquee {
+  position: sticky;
+  bottom: 0px;
+}
+
+.popup {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s;
+
+  &.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+.closer {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+}
+
+.x-closer {
+  svg {
+    width: 1rem;
+
+    path {
+      fill: theme('colors.parchment');
+    }
   }
 }

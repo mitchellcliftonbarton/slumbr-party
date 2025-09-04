@@ -1,18 +1,20 @@
 #main-nav {
   height: var(--nav-height);
   z-index: 500;
-  transition: background-color .6s, opacity .3s;
+  transition:
+    background-color 0.6s,
+    opacity 0.3s;
 
   .home-link {
     svg {
       width: 175px;
 
-      @media screen and (min-width: theme("screens.lg")) {
+      @media screen and (min-width: theme('screens.lg')) {
         width: 250px;
       }
 
       path {
-        transition: fill .3s;
+        transition: fill 0.3s;
       }
     }
   }
@@ -22,15 +24,15 @@
       margin-left: 1.7rem;
       display: flex;
       align-items: center;
-      transition: color .3s;
+      transition: color 0.3s;
 
       svg {
         width: 1rem;
-        margin-right: .65rem;
-        
+        margin-right: 0.65rem;
+
         path,
         polygon {
-          transition: fill .3s;
+          transition: fill 0.3s;
         }
       }
 
@@ -47,7 +49,7 @@
       }
 
       &:hover {
-        @media screen and (min-width: theme("screens.lg")) {
+        @media screen and (min-width: theme('screens.lg')) {
           svg {
             polygon {
               fill: theme('colors.merlot');
@@ -67,7 +69,7 @@
         }
       }
     }
-    
+
     .links {
       a {
         color: theme('colors.parchment');
@@ -87,7 +89,7 @@
         }
 
         &:hover {
-          @media screen and (min-width: theme("screens.lg")) {
+          @media screen and (min-width: theme('screens.lg')) {
             svg {
               polygon {
                 fill: theme('colors.merlot');
@@ -215,7 +217,7 @@
 #mobile-menu {
   z-index: 600;
   opacity: 0;
-  transition: opacity .3s;
+  transition: opacity 0.3s;
   pointer-events: none;
 
   & > div:first-child {
@@ -237,17 +239,17 @@
 
 #footer {
   height: auto;
-  min-height: 100vh;
+  min-height: 50vh;
   z-index: 10;
 
-  @media screen and (min-width: theme("screens.lg")) {
-    height: 100vh;
+  @media screen and (min-width: theme('screens.lg')) {
+    min-height: 60vh;
   }
 
   .top {
     margin-bottom: 110px;
 
-    @media screen and (min-width: theme("screens.lg")) {
+    @media screen and (min-width: theme('screens.lg')) {
       margin-bottom: 0px;
     }
   }
@@ -256,7 +258,7 @@
     svg {
       width: 54px;
 
-      @media screen and (min-width: theme("screens.lg")) {
+      @media screen and (min-width: theme('screens.lg')) {
         width: 110px;
       }
     }
@@ -276,12 +278,12 @@
 
       polygon {
         fill: none;
-        transition: fill .3s;
+        transition: fill 0.3s;
       }
     }
 
     &:hover {
-      @media screen and (min-width: theme("screens.lg")) {
+      @media screen and (min-width: theme('screens.lg')) {
         svg polygon {
           fill: theme('colors.parchment');
         }
@@ -296,7 +298,9 @@
   top: 0px;
   left: 0px;
   z-index: 2000;
-  transition: transform .1s, opacity .3s;
+  transition:
+    transform 0.1s,
+    opacity 0.3s;
 
   svg {
     width: 4rem;
@@ -309,7 +313,7 @@
 
 .def-image {
   opacity: 0;
-  transition: opacity .3s;
+  transition: opacity 0.3s;
 
   &.loaded {
     opacity: 1;
@@ -329,7 +333,7 @@
     left: 10px;
     width: 15rem;
 
-    @media screen and (min-width: theme("screens.lg")) {
+    @media screen and (min-width: theme('screens.lg')) {
       width: 25rem;
       bottom: 20px;
       left: 20px;
@@ -337,7 +341,7 @@
   }
 
   &.open {
-    opacity: .9;
+    opacity: 0.9;
     pointer-events: auto;
   }
 }
@@ -346,7 +350,7 @@
   z-index: 2000;
   pointer-events: none;
   opacity: 0;
-  transition: opacity .3s;
+  transition: opacity 0.3s;
 
   .contact-modal {
     width: 100%;
@@ -361,7 +365,7 @@
       svg {
         width: 1.1rem;
 
-        @media screen and (min-width: theme("screens.lg")) {
+        @media screen and (min-width: theme('screens.lg')) {
           width: 1.6rem;
         }
       }
@@ -377,15 +381,15 @@
       height: 100%;
 
       &::-webkit-scrollbar-thumb {
-        background-color : transparent;
+        background-color: transparent;
       }
 
       &::-webkit-scrollbar-track {
-          background-color : transparent;
+        background-color: transparent;
       }
 
       &::-webkit-scrollbar {
-          width : 0px;
+        width: 0px;
       }
     }
   }
