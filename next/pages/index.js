@@ -10,7 +10,7 @@ import Link from 'next/link'
 
 // React
 import { useState, useRef, useEffect } from 'react'
-import Cookies from 'js-cookie'
+// import Cookies from 'js-cookie'
 
 // Styles
 import styles from './../styles/Pages.module.scss'
@@ -73,9 +73,11 @@ export default function Home({ data }) {
 
   // on load, show the popup if there is no cookie
   useEffect(() => {
-    if (!Cookies.get('slumbr-party-popup')) {
-      setPopupOpen(true)
-    }
+    // if (!Cookies.get('slumbr-party-popup')) {
+    //   setPopupOpen(true)
+    // }
+
+    setPopupOpen(true)
   }, [])
 
   const handlePlay = () => {
@@ -87,7 +89,7 @@ export default function Home({ data }) {
 
   const closePopup = () => {
     setPopupOpen(false)
-    Cookies.set('slumbr-party-popup', 'true', { expires: 1 })
+    // Cookies.set('slumbr-party-popup', 'true', { expires: 1 })
   }
 
   return (
@@ -139,6 +141,7 @@ export default function Home({ data }) {
           </div>
         )}
 
+        {/*
         <div
           ref={directorsSection}
           className="directors bg-parchment def-x py-12 grid grid-cols-12 gap-def pb-40"
@@ -172,6 +175,7 @@ export default function Home({ data }) {
             )
           })}
         </div>
+        */}
       </div>
 
       {data.popupTitle && data.popupText && (
