@@ -40,6 +40,19 @@ const MobileMenu = ({ links, menuOpen, setMenuOpen }) => {
             {link.text}
           </Link>
         ))}
+
+        <Link
+          href={{
+            pathname: router.pathname,
+            query: {
+              contact: true,
+            },
+          }}
+          scroll={false}
+          className={`${router.asPath === '/contact' ? styles.active : null} level-1 text-merlot`}
+        >
+          Contact
+        </Link>
       </div>
     </div>
   )

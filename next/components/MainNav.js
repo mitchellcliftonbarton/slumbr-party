@@ -85,6 +85,20 @@ const MainNav = ({ links, setMenuOpen }) => {
             <span>{link.text}</span>
           </Link>
         ))}
+
+        <Link
+          href={{
+            pathname: router.asPath,
+            query: {
+              contact: true,
+            },
+          }}
+          scroll={false}
+          className={`${router.asPath === '/contact' ? styles.active : null} level-subhead`}
+        >
+          <Diamond />
+          <span>Contact</span>
+        </Link>
       </div>
 
       <button

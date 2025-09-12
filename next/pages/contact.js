@@ -13,11 +13,14 @@ export default function Contact({ data }) {
     <div className={`${styles.contact} push-nav def-x bg-periwinkle min-h-screen relative`}>
       <Head>
         <title>SLMBR PRTY | Contact</title>
-        <meta name="description" content="SLMBR PRTY is a women-founded and led production company devoted to craft and intent on transcending tradition." />
+        <meta
+          name="description"
+          content="SLMBR PRTY is a women-founded and led production company devoted to craft and intent on transcending tradition."
+        />
       </Head>
 
       <div className="relative py-40 grid grid-cols-6 gap-def">
-        <div className='col-span-1'>
+        <div className="col-span-1">
           <h1 className={`${styles['contact-h1']} level-subhead text-merlot upright pb-def`}>Contact</h1>
         </div>
 
@@ -25,26 +28,11 @@ export default function Contact({ data }) {
           {data.contactPeopleItems.length > 0 && (
             <div className="people">
               {data.contactPeopleItems.map((item, index) => (
-                <div className="item level-subhead text-merlot text-center mb-10" key={index}>
-                  <h2 className='uppercase'>{item.name}</h2>
-                  <p>{item.title}</p>
-                  <Link href={`mailto:${item.email}`}>{item.email}</Link>
-                </div>
-              ))}
-            </div>
-          )}
-
-          {data.contactPeopleItems.length > 0 && data.contactLocationItems.length > 0 && (
-            <div className={`${styles['contact-diamond']} flex justify-center pt-6 pb-12`}>
-              <Diamond />
-            </div>
-          )}
-
-          {data.contactLocationItems.length > 0 && (
-            <div className="people">
-              {data.contactLocationItems.map((item, index) => (
-                <div className="item level-subhead text-merlot text-center mb-10" key={index}>
-                  <h2 className='uppercase'>{item.name}</h2>
+                <div
+                  className="item level-subhead text-merlot text-center mb-10"
+                  key={index}
+                >
+                  <h2 className="uppercase">{item.name}</h2>
                   <p>{item.title}</p>
                   <Link href={`mailto:${item.email}`}>{item.email}</Link>
                 </div>
@@ -62,47 +50,43 @@ export default function Contact({ data }) {
 }
 
 Contact.getLayout = function getLayout(page) {
-  return (
-    <DefaultLayout>
-      {page}
-    </DefaultLayout>
-  )
+  return <DefaultLayout>{page}</DefaultLayout>
 }
 
 export async function getStaticProps() {
   const contactData = await fetch(process.env.API_HOST, {
-      cache: 'no-store',
-      method: "POST",
-      headers: {
-        Authorization: `Basic ${process.env.AUTH}`,
-      },
-      body: JSON.stringify({
-        query: "page('Contact')",
-        select: {
-          contactPeopleItems: {
-            query: "page.contact_people_items.toStructure",
-            select: {
-              name: true,
-              title: true,
-              email: true
-            }
+    cache: 'no-store',
+    method: 'POST',
+    headers: {
+      Authorization: `Basic ${process.env.AUTH}`,
+    },
+    body: JSON.stringify({
+      query: "page('Contact')",
+      select: {
+        contactPeopleItems: {
+          query: 'page.contact_people_items.toStructure',
+          select: {
+            name: true,
+            title: true,
+            email: true,
           },
-          contactLocationItems: {
-            query: "page.contact_location_items.toStructure",
-            select: {
-              name: true,
-              title: true,
-              email: true
-            }
-          }
-        }
-      }),
+        },
+        contactLocationItems: {
+          query: 'page.contact_location_items.toStructure',
+          select: {
+            name: true,
+            title: true,
+            email: true,
+          },
+        },
+      },
+    }),
   })
 
   const jsonData = await contactData.json()
   const { result } = jsonData
 
   return {
-    props: {data: result},
+    props: { data: result },
   }
 }
