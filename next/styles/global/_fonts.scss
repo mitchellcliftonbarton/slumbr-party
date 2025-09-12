@@ -1,24 +1,27 @@
 @layer base {
   @font-face {
-    font-family: "Bradford LL";
-    src: url("./../../public/BradfordLLWeb-Regular.woff2") format("woff2"),
-    url("./../../public/BradfordLLWeb-Regular.woff") format("woff");
+    font-family: 'Bradford LL';
+    src:
+      url('./../../public/BradfordLLWeb-Regular.woff2') format('woff2'),
+      url('./../../public/BradfordLLWeb-Regular.woff') format('woff');
     font-weight: normal;
     font-style: normal;
   }
 
   @font-face {
-    font-family: "Bradford LL";
-    src: url("./../../public/BradfordLLWeb-Italic.woff2") format("woff2"),
-    url("./../../public/BradfordLLWeb-Italic.woff") format("woff");
+    font-family: 'Bradford LL';
+    src:
+      url('./../../public/BradfordLLWeb-Italic.woff2') format('woff2'),
+      url('./../../public/BradfordLLWeb-Italic.woff') format('woff');
     font-weight: normal;
     font-style: italic;
   }
 
   @font-face {
-    font-family: "Bradford Mono LL";
-    src: url("./../../public/BradfordMonoLLWeb-Regular.woff2") format("woff2"),
-    url("./../../public/BradfordMonoLLWeb-Regular.woff") format("woff");
+    font-family: 'Bradford Mono LL';
+    src:
+      url('./../../public/BradfordMonoLLWeb-Regular.woff2') format('woff2'),
+      url('./../../public/BradfordMonoLLWeb-Regular.woff') format('woff');
     font-weight: normal;
     font-style: normal;
   }
@@ -26,7 +29,7 @@
   .level-1 {
     @apply text-level-1-mobile font-primary;
 
-    @media screen and (min-width: theme("screens.lg")) {
+    @media screen and (min-width: theme('screens.lg')) {
       @apply text-level-1;
     }
 
@@ -40,7 +43,7 @@
   .level-2 {
     @apply text-level-2-mobile font-primary;
 
-    @media screen and (min-width: theme("screens.lg")) {
+    @media screen and (min-width: theme('screens.lg')) {
       @apply text-level-2;
     }
 
@@ -55,7 +58,7 @@
     @apply text-level-3-mobile font-secondary;
     line-height: 1.4;
 
-    @media screen and (min-width: theme("screens.lg")) {
+    @media screen and (min-width: theme('screens.lg')) {
       @apply text-level-3;
     }
 
@@ -69,7 +72,7 @@
   .level-body {
     @apply text-level-body-mobile font-primary;
 
-    @media screen and (min-width: theme("screens.lg")) {
+    @media screen and (min-width: theme('screens.lg')) {
       @apply text-level-body;
     }
 
@@ -77,22 +80,26 @@
       p:not(:last-child) {
         margin-bottom: 1.8rem;
       }
-
-      a {
-        text-decoration: underline;
-
-        &:hover {
-          text-decoration: none;
-        }
-      }
     }
   }
 
   .level-subhead {
     @apply text-level-subhead-mobile font-secondary;
 
-    @media screen and (min-width: theme("screens.lg")) {
+    @media screen and (min-width: theme('screens.lg')) {
       @apply text-level-subhead;
+    }
+  }
+}
+
+.rich-text {
+  a {
+    text-decoration-line: underline;
+    text-decoration-thickness: 0.05em;
+    text-underline-offset: 0.18em;
+
+    &:hover {
+      text-decoration: none;
     }
   }
 }

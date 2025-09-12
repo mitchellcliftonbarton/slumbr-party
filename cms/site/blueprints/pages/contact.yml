@@ -7,6 +7,11 @@ columns:
       top:
         type: fields
         fields:
+          contact_text:
+            type: textarea
+            label: Contact Text
+            help: This text will show up at the top of the contact page.
+            size: medium
           contact_people_items:
             label: Contact People Items
             type: structure

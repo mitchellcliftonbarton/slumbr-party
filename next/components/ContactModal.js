@@ -41,12 +41,19 @@ const ContactModal = ({ data, contactModalOpen }) => {
               <h1 className={`${styles['contact-modal-title']} level-subhead text-merlot upright pb-def`}>Contact</h1>
             </div>
 
-            <div className="col-span-4 pt-40 pb-20 lg:py-48 h-full flex items-center justify-center">
+            <div className="col-span-4 pt-40 pb-20 lg:py-48 h-full flex flex-col items-center justify-center gap-16">
+              {data.contactText && (
+                <div
+                  className="rich-text level-subhead text-merlot text-center"
+                  dangerouslySetInnerHTML={{ __html: data.contactText }}
+                ></div>
+              )}
+
               {data.contactPeopleItems.length > 0 && (
                 <div className="people">
                   {data.contactPeopleItems.map((item, index) => (
                     <div
-                      className="item level-subhead text-merlot text-center mb-6 lg:mb-10"
+                      className="item level-subhead text-merlot text-center"
                       key={index}
                     >
                       <h2 className="uppercase">{item.name}</h2>
