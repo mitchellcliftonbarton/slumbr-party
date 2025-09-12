@@ -125,7 +125,7 @@ export async function getStaticProps() {
     body: JSON.stringify({
       query: "page('Community')",
       select: {
-        archiveDescription: 'page.archive_description.markdown',
+        archiveDescription: 'page.archive_description.kirbyText',
         items: {
           query: 'page.children',
           select: {
