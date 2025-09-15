@@ -61,10 +61,10 @@ export default function CommunityArchive({ data }) {
       <h1 className="wcag-hidden">Community Archive</h1>
 
       <div className="pt-32 pb-def">
-        {data.archiveDescription && data.archiveDescription !== '' && (
+        {data.mainText && data.mainText !== '' && (
           <div
             className="enter-in-1 level-body text-merlot w-full lg:w-5/12 mb-32 def-x rich-text"
-            dangerouslySetInnerHTML={{ __html: data.archiveDescription }}
+            dangerouslySetInnerHTML={{ __html: data.mainText }}
           ></div>
         )}
 
@@ -125,7 +125,7 @@ export async function getStaticProps() {
     body: JSON.stringify({
       query: "page('Community')",
       select: {
-        archiveDescription: 'page.archive_description.kirbyText',
+        mainText: 'page.main_text.kirbyText',
         items: {
           query: 'page.children',
           select: {
