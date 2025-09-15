@@ -24,7 +24,7 @@ const SliderArea = ({ item, index }) => {
 
     return (
       <div
-        className="enter-in-1 col-span-12 col-span-7 h-full relative h-auto pl-def-mobile lg:pl-0"
+        className="enter-in-1 col-span-12 hello col-span-7 h-full relative h-auto pl-def-mobile lg:pl-0"
         style={{
           animationDelay: `${(index + 2) * 100}ms`,
           maxHeight: '400px',
