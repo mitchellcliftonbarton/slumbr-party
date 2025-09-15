@@ -17,16 +17,16 @@ import ContactModal from '../ContactModal'
 
 const links = [
   {
+    text: 'About',
+    link: '/about',
+  },
+  {
     text: 'Films',
     link: '/films',
   },
   {
     text: 'Archives',
     link: '/community/archive',
-  },
-  {
-    text: 'About',
-    link: '/about',
   },
 ]
 
