@@ -76,8 +76,7 @@ export default function Home({ data }) {
     // if (!Cookies.get('slumbr-party-popup')) {
     //   setPopupOpen(true)
     // }
-
-    setPopupOpen(true)
+    // setPopupOpen(true)
   }, [])
 
   const handlePlay = () => {
@@ -179,7 +178,7 @@ export default function Home({ data }) {
       </div>
 
       {data.popupTitle && data.popupText && (
-        <div className={`${styles.popup} flex justify-center items-center ${popupOpen ? styles.open : null}`}>
+        <div className={`${styles.popup} hidden justify-center items-center ${popupOpen ? styles.open : null}`}>
           <button
             className={`${styles.closer}`}
             onClick={closePopup}
